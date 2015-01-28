@@ -14,13 +14,18 @@
   <body>
   	<h2>* Goal Giving *</h2>
 
+<button type="button" class="btn btn-default btn-lg">
+  <a href="AccountSetting.html">Account Setting</a>
+</button>
+
+</div>
 
 <div class="container">
     <section ng-app="myApp" ng-controller="TabController as tab">
         <ul class="nav nav-tabs">
             <li ng-class="{active:tab.isSet(1)}"><a href ng-click="tab.setTab(1)">My Status</a></li>
             <li ng-class="{active:tab.isSet(2)}"><a href ng-click="tab.setTab(2)">Your Partner's Status</a></li>
-            <li ng-class="{active:tab.isSet(3)}"><a href ng-click="tab.setTab(3)">Account Setting</a></li>
+           <!-- <li ng-class="{active:tab.isSet(3)}"><a href ng-click="tab.setTab(3)">Account Setting</a></li> -->
         </ul> 
 
         <div ng-show="tab.isSet(1)">
@@ -36,19 +41,18 @@
 
         <div ng-show="tab.isSet(2)">
             <div id = "JennyTab" >
-            <div id = "JennyPic" >
-            <img src="garfield.gif" width="108" height="94" alt="Planets" usemap="#planetmap">
-            <br>Jenny's Pic
+              <div id = "JennyPic" >
+              <img src="garfield.gif" width="108" height="94" alt="Planets" usemap="#planetmap">
+              <br>Jenny's Pic
+              </div>
+              <h1>Jenny's Goal is ..... <br> <div id = "JennyGoal" > Studying Library for 2 Hours a Day! </div> </h1>
+              <p> blah blah </p>
             </div>
-            <h1>Jenny's Goal is ..... <br> <div id = "JennyGoal" > Studying Library for 2 Hours a Day! </di> </h1>
-            <p> blah blah </p>
-            
-    </div>
+        </div>
 
-        </div>
-        <div ng-show="tab.isSet(3)">
+        <!-- <div ng-show="tab.isSet(3)">
              <h4>This is Account Setting..?</h4>
-        </div>
+        </div> -->
     </section>  
 
 
