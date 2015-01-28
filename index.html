@@ -6,6 +6,9 @@
     <title>Goal Giving</title>
     <link href="GoalGiving.css" rel="stylesheet">
     <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+
   </head>
 
   <body>
@@ -14,11 +17,12 @@
 
 <div class="container">
     <section ng-app="myApp" ng-controller="TabController as tab">
-        <ul class="nav nav-pills">
+        <ul class="nav nav-tabs">
             <li ng-class="{active:tab.isSet(1)}"><a href ng-click="tab.setTab(1)">My Status</a></li>
             <li ng-class="{active:tab.isSet(2)}"><a href ng-click="tab.setTab(2)">Your Partner's Status</a></li>
             <li ng-class="{active:tab.isSet(3)}"><a href ng-click="tab.setTab(3)">Account Setting</a></li>
-        </ul>
+        </ul> 
+
         <div ng-show="tab.isSet(1)">
              <div id = "BobTab" >
              <div id = "BobPic" >
@@ -50,10 +54,9 @@
 
 </div>
 
-
 <footer id="foot01"></footer>
+    <script src="js/Script.js"></script>
 
-<script src="Script.js"></script>
 
   </body>
 
