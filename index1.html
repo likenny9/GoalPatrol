@@ -11,7 +11,11 @@
   </head>
 
   <body>
-  	<div id="title">Goal Patrol</div>
+  	<div class="header-container">
+  		<span id="title">Goal Patrol</span>
+
+  		<span id="settings-icon">Settings</span>
+  	</div>
 
 <div class="container">
     <section ng-app="myApp" ng-controller="TabController as tab">
@@ -39,12 +43,12 @@
         </div>
 
         <div ng-show="tab.isSet(2)">
-         Show Mary
+        	Show Jenny's information
         </div>
 
-        <!-- <div ng-show="tab.isSet(3)">
-             <h4>This is Account Setting..?</h4>
-        </div> -->
+        <div ng-show="tab.isSet(3)">
+        	Show Mary's information.
+        </div> 
     </section>  
 
 
