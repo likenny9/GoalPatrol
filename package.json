@@ -1,0 +1,19 @@
+{
+    "name": "GoalPatrol",
+    "description": "UCSD Winter 2015 COGS120 / CSE170 Project",
+    "author": "Alexandra Huang, Kenny Li, Soohyun Nam, Giulio Perticari",
+    "version": "0.0.1",
+    "private": true,
+
+    "repository": {
+    	"type": "git",
+    	"url": "https://github.com/likenny9/GoalPatrol.git"
+    },
+    "dependencies": {
+        "express": "3.x",
+        "express3-handlebars": "*"
+    },
+    "engines": {
+    	"node": "0.10.x"
+    }
+}

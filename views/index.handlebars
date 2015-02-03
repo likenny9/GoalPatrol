@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Goal Giving</title>
+    <link href="css/GoalPatrol.css" rel="stylesheet">
+    <script src= "js/angular.1.2.26.min.js"></script>
+    <script src="js/GoalPatrolScript.js"></script>
+
+  </head>
+
+  <body>
+  	<div class="header-container">
+  		<span id="title">Goal Patrol</span>
+
+  		<span id="settings-icon">Settings</span>
+  	</div>
+
+<div class="container">
+    <section ng-app="myApp" ng-controller="TabController as tab">
+        <ul class="tab-container">
+            <li class="tab" id="tab1" ng-class="{active:tab.isSet(1)}">
+            	<a href ng-click="tab.setTab(1)"><p>Home</p></a>
+            </li>
+            <li class="tab" id="tab2" ng-class="{active:tab.isSet(2)}">
+            	<a href ng-click="tab.setTab(2)"><p>Jenny</p></a>
+            </li>
+            <li class="tab" id="tab3" ng-class="{active:tab.isSet(3)}">
+            	<a href ng-click="tab.setTab(3)"><p>Mary</p></a>
+            </li>
+        </ul> 
+
+        <div ng-show="tab.isSet(1)">
+        	<p>
+	        	You have 2 goals: <br><br>
+
+	        	<ol>
+	        		<li><a href ng-click="tab.setTab(2)">1. Jenny: Lift three times a day - (53%)</a></li><br>
+	        		<li><a href ng-click="tab.setTab(3)">2. Mary: Eat only three meals a day - (97%)</a></li>
+	        	</ol>
+        	</p>
+        </div>
+
+        <div ng-show="tab.isSet(2)">
+        	Show Jenny's information
+        </div>
+
+        <div ng-show="tab.isSet(3)">
+        	Show Mary's information.
+        </div> 
+    </section>  
+
+
+</div>
+
+  </body>
+
+</html>
