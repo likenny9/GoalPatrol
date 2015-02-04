@@ -1,80 +1,83 @@
-		* {
-			font-family: Calibri;
-			font-size: 1.0rem;
-			color: black;
-			margin: 0;
-			padding: 0;
-		}
+/* Applies to entire page */
 
-		html, body {
-		    height: 100%;
-		    width: 100%;
-		    -min-width: 695px;
-			text-align: left;
-			background: #FFF;
-		}
+* {
+	font-family: Calibri;
+	font-size: 2.0rem;
+	color: black;
+	margin: 0;
+	padding: 0;
+}
 
-		.header-container {
-			width: 100%;
-			-border: 2px solid black;
-		}
-		#title {
-			font-size: 60px;
-  			font-weight: bold;
-		}
+html, body {
+    height: 100%;
+    width: 100%;
+	text-align: left;
+	background: #FFF;
+}
 
-		#settings-icon {
-			font-size: 25px;
-			font-weight: bold;
-			margin: 3px;
-			float: right;
-			cursor: pointer;
-		}
+/* HOME HEADER */
+.header-container {
+	width: 100%;
+	-height: 10%;
+	-border: 2px solid black;
+}
+#title {
+	font-size: 45px;
+	font-weight: bold;
+	float: left;
+}
 
-		.container {
-			float: left;
-			padding: 10px;
-			margin: 10px;
-			margin-top: 40px;
-			position: relative;
+#dropdown-icon {
+	float: right;
+}
 
-			width: 95%;
-			height: 100%;
-			-border: 2px solid black;
-		}
+#dropdown-icon > h2 {
+	font-size: 25px;
+	font-weight: bold;
+}
 
-		ul {
-		    list-style-type: none;
-		    margin: 0;
-		    padding: 0;
-		}
+#dropdown-icon ul li a {
+	font-size: 15px;
+}
 
-		li {
-		    display: inline;
-		}
 
-		li a p {
-			font-size: 26px;
-			text-decoration: none;
-		}
+/* HOME GOAL REQUESTS */
+.goalrequest-container {
+	background: ;
+	border: 2px solid black;
+	border-radius: 10px;
+}
 
-		.active {
-			background-color: gray;
-		}
+.central-container {
+	float: left;
+	padding: 10px;
+	margin: 10px;
+	margin-top: 40px;
+	position: relative;
+	width: 95%;
+	height: 100%;
+	-border: 2px solid black;
+}
 
-		.tab-container {
-			width: 100%;
-			height: 40px;
-			-border: 2px solid black;
-		}
-		.tab {
-			-border: 2px solid black;
-			padding: 3px;
-			float: left;
-		}
-		#tab1 {
 
-		}
-		#tab2 {
 
-		}
+.active {
+	background-color: gray;
+}
+
+.tab-container {
+	width: 100%;
+	height: 40px;
+	-border: 2px solid black;
+}
+.tab {
+	-border: 2px solid black;
+	padding: 3px;
+	float: left;
+}
+#tab1 {
+
+}
+#tab2 {
+
+}

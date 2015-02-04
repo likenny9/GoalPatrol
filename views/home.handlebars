@@ -1,0 +1,96 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Goal Patrol</title>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/GoalPatrol.css" rel="stylesheet">
+    <script src="js/angular.1.2.26.min.js"></script>
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/GoalPatrolScript.js"></script>
+
+  </head>
+
+  <body>
+  	<div class="header-container container">
+      <h1 id="title">Goal Patrol</h1>
+
+      <div class="dropdown" id="dropdown-icon">
+        <h2 class="btn btn-default dropdown-toggle" 
+            id="name-icon" data-toggle="dropdown">
+            Bob
+            <span class="caret"></span>
+        </h2>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="name-icon" id="name-menu">
+          <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">Settings</a>
+          </li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">Help</a>
+          </li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">Logout</a>
+          </li>                   
+        </ul>        
+      </div> 
+  	</div>
+
+    <br><br> <!--Extra spacing-->
+
+    <div class="goalrequest-container container ">
+    <h3>New Goal Request!</h3>
+    <p>From: Jenny<br>
+       Goal: Go to the gym. 1 hours 5 times a week.<br>
+       Complete Date: 02/15/2015
+    </p>
+    <button class="btn btn-block">Accept</button>
+    <button class="btn btn-block">Decline</button>
+    </div>
+
+    <!-- Need to fix everything below -->
+
+    <div class="central-container container">
+        <section ng-app="myApp" ng-controller="TabController as tab">
+            <ul class="tab-container">
+                <li class="tab" id="tab1" ng-class="{active:tab.isSet(1)}">
+                	<a href ng-click="tab.setTab(1)"><p>Home</p></a>
+                </li>
+                <li class="tab" id="tab2" ng-class="{active:tab.isSet(2)}">
+                	<a href ng-click="tab.setTab(2)"><p>Jenny</p></a>
+                </li>
+                <li class="tab" id="tab3" ng-class="{active:tab.isSet(3)}">
+                	<a href ng-click="tab.setTab(3)"><p>Mary</p></a>
+                </li>
+            </ul> 
+
+            <div ng-show="tab.isSet(1)">
+            	<p>
+    	        	You have 2 goals: <br><br>
+
+    	        	<ol>
+    	        		<li><a href ng-click="tab.setTab(2)">1. Jenny: Lift three times a day - (53%)</a></li><br>
+    	        		<li><a href ng-click="tab.setTab(3)">2. Mary: Eat only three meals a day - (97%)</a></li>
+    	        	</ol>
+            	</p>
+            </div>
+
+            <div ng-show="tab.isSet(2)">
+            	Show Jenny's information
+            </div>
+
+            <div ng-show="tab.isSet(3)">
+            	Show Mary's information.
+            </div> 
+        </section>  
+
+    </div>
+
+  </body>
+
+</html>

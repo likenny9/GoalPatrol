@@ -6,7 +6,7 @@ var http = require('http');
 var path = require('path');
 
 //Add requires for pages here
-var index = require('./routes/index');
+var home = require('./routes/home');
 
 //Creates express app
 var app = express();
@@ -30,7 +30,7 @@ if ('development' == app.get('env')) {
 }
 
 //Add routes here
-app.get('/', index.html);
+app.get('/', home.html); //Home Page
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
