@@ -71,7 +71,9 @@ html, body {
 
 .individual-goal {
 	padding-left: 0;
+	margin-left: 0;
 	margin-top: 30px;
+	max-width: 500px; /* Don't want the goal extending too long. */
 }
 
 .avatar-image {
