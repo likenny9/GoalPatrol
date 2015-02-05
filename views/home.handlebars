@@ -41,20 +41,25 @@
             <a role="menuitem" tabindex="-1" href="#">Logout</a>
           </li>                   
         </ul>        
+      </div>
+
+      <!-- Send Goal Button -->
+      <div id="sendgoal-icon">
+        <h2 class="btn btn-warning" type="button">Send Goal</h2>
       </div> 
   	</div>
 
-    <br><br> <!--Extra spacing-->
+    <br> <!--Extra spacing-->
 
     <!-- Goal Requests -->
     <div class="goalrequest-container container ">
-    <h3>New Goal Request!</h3>
-    <p>From: Jenny<br>
-       Goal: Go to the gym. 1 hours 5 times a week.<br>
-       Complete Date: 02/15/2015
-    </p>
-    <button class="btn btn-block">Accept</button>
-    <button class="btn btn-block">Decline</button>
+      <h3>New Goal Request!</h3>
+      <p>From: Jenny<br>
+         Goal: Go to the gym. 1 hours 5 times a week.<br>
+         Complete Date: 02/15/2015
+      </p>
+      <button class="btn btn-block AccRej" onclick="">Accept</button>
+      <button class="btn btn-block AccRej">Decline</button>
     </div>
 
 
@@ -65,12 +70,33 @@
         <!-- GOAL HOME PAGE TAB1-->
         <div ng-show="tab.isSet(1)">
           <p>
-            <h3>Your Goals</h3> <br>
+            <h3>Your Goals</h3>
 
+            <!-- Container for all goals -->
             <div class="goal-container container">
-  	        	<a href ng-click="tab.setTab(2)"> Jenny: Lift three times a day - (53%)</a>
-              <br>
-  	        	<a href ng-click="tab.setTab(3)"> Mary: Eat only three meals a day - (97%)</a>
+
+              <!-- Goal - hardcoded with Jenny -->
+              <div class="individual-goal container">
+                <img class="avatar-image" src="/images/alex.jpg">
+                <p class="patrol-info"><b>Patrol:</b>
+                  <a href ng-click="tab.setTab(2)">Jenny</a>
+                </p>
+                <p class="bubble">Go to the gym for 1 hour 3 times a week.</p>
+                <button class="btn btn-lg btn-success alert" id="inspire1">Inspire Me</button>
+                <button class="btn btn-lg btn-info alert" id="progress1">Progress</button>
+              </div>
+
+              <!-- Goal - hardcoded with Mary -->
+              <div class="individual-goal container">
+                <img class="avatar-image" src="/images/mary.jpg">
+                <p class="patrol-info"><b>Patrol:</b>
+                  <a href ng-click="tab.setTab(3)">Mary</a>
+                </p>
+                <p class="bubble">Eat a salad everyday.</p>
+                <button class="btn btn-lg btn-success alert" id="inspire2">Inspire Me</button>
+                <button class="btn btn-lg btn-info alert" id="progress2">Progress</button>
+              </div>
+
             </div>
           </p>
         </div>
@@ -89,6 +115,7 @@
           </p>
         </div>
 
+        <!-- Mary's stuff -->
         <div ng-show="tab.isSet(3)">
           <p>
             <h3>Mary's Goal</h3><br>
