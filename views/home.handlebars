@@ -16,9 +16,12 @@
   </head>
 
   <body>
+
+    <!-- Header: Title & Name -->
   	<div class="header-container container">
       <h1 id="title">Goal Patrol</h1>
 
+      <!-- Name & Settings Dropdown Menu -->
       <div class="dropdown" id="dropdown-icon">
         <h2 class="btn btn-default dropdown-toggle" 
             id="name-icon" data-toggle="dropdown">
@@ -43,6 +46,7 @@
 
     <br><br> <!--Extra spacing-->
 
+    <!-- Goal Requests -->
     <div class="goalrequest-container container ">
     <h3>New Goal Request!</h3>
     <p>From: Jenny<br>
@@ -53,42 +57,52 @@
     <button class="btn btn-block">Decline</button>
     </div>
 
-    <!-- Need to fix everything below -->
 
+    <!-- Goals -->
     <div class="central-container container">
-        <section ng-app="myApp" ng-controller="TabController as tab">
-            <ul class="tab-container">
-                <li class="tab" id="tab1" ng-class="{active:tab.isSet(1)}">
-                	<a href ng-click="tab.setTab(1)"><p>Home</p></a>
-                </li>
-                <li class="tab" id="tab2" ng-class="{active:tab.isSet(2)}">
-                	<a href ng-click="tab.setTab(2)"><p>Jenny</p></a>
-                </li>
-                <li class="tab" id="tab3" ng-class="{active:tab.isSet(3)}">
-                	<a href ng-click="tab.setTab(3)"><p>Mary</p></a>
-                </li>
-            </ul> 
+      <section ng-app="myApp" ng-controller="TabController as tab">
+        
+        <!-- GOAL HOME PAGE TAB1-->
+        <div ng-show="tab.isSet(1)">
+          <p>
+            <h3>Your Goals</h3> <br>
 
-            <div ng-show="tab.isSet(1)">
-            	<p>
-    	        	You have 2 goals: <br><br>
-
-    	        	<ol>
-    	        		<li><a href ng-click="tab.setTab(2)">1. Jenny: Lift three times a day - (53%)</a></li><br>
-    	        		<li><a href ng-click="tab.setTab(3)">2. Mary: Eat only three meals a day - (97%)</a></li>
-    	        	</ol>
-            	</p>
+            <div class="goal-container container">
+  	        	<a href ng-click="tab.setTab(2)"> Jenny: Lift three times a day - (53%)</a>
+              <br>
+  	        	<a href ng-click="tab.setTab(3)"> Mary: Eat only three meals a day - (97%)</a>
             </div>
+          </p>
+        </div>
 
-            <div ng-show="tab.isSet(2)">
-            	Show Jenny's information
+        <!-- JENNY'S STUFF -->
+        <div ng-show="tab.isSet(2)">
+          <p>
+            <h3>Jenny's Goal</h3><br>
+
+            <button class="btn btn-xs">
+              <a href ng-click="tab.setTab(1)">&lt;- Back</a>
+            </button>
+            <div class="goal-container container">
+          	 Show Jenny's information
             </div>
+          </p>
+        </div>
 
-            <div ng-show="tab.isSet(3)">
-            	Show Mary's information.
-            </div> 
-        </section>  
+        <div ng-show="tab.isSet(3)">
+          <p>
+            <h3>Mary's Goal</h3><br>
+            
+            <button class="btn btn-xs">
+              <a href ng-click="tab.setTab(1)">&lt;- Back</a>
+            </button>
+            <div class="goal-container container">
+              Show Mary's information
+            </div>
+          </p>
+        </div> 
 
+      </section>  
     </div>
 
   </body>
