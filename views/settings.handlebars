@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Goal Patrol</title>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/GoalPatrol.css" rel="stylesheet">
+    <script src="js/angular.1.2.26.min.js"></script>
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/GoalPatrolScript.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Header: Title & Name -->
+  	<div class="header-container container">
+      <h1 id="title">Goal Patrol</h1>
+
+      <!-- Name & Settings Dropdown Menu -->
+      <div class="dropdown" id="dropdown-icon">
+        <h2 class="btn btn-default dropdown-toggle" 
+            id="name-icon" data-toggle="dropdown">
+            Bob
+            <span class="caret"></span>
+        </h2>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="name-icon" id="name-menu">
+          <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">Settings</a>
+          </li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">Help</a>
+          </li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="/index">Logout</a>
+          </li>                   
+        </ul>        
+      </div>
+
+    <br> <!--Extra spacing-->
+    <br>
+    <br>
+
+    <div class= "container">
+    <button class="btn btn-xs" onclick="window.location.href='/'"><span class="glyphicon glyphicon-arrow-left"> </span> Home </a>
+    </button>
+    <h1>Settings</h1>
+    </div>
+
+
+
+
+  </body>
+
+</html>

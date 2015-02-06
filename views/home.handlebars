@@ -30,22 +30,22 @@
         </h2>
         <ul class="dropdown-menu" role="menu" aria-labelledby="name-icon" id="name-menu">
           <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="#">Settings</a>
+            <a role="menuitem" tabindex="-1" href="/settings">Settings</a>
           </li>
           <li role="presentation" class="divider"></li>
           <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="#">Help</a>
+            <a role="menuitem" tabindex="-1" href="/help">Help</a>
           </li>
           <li role="presentation" class="divider"></li>
           <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="#">Logout</a>
+            <a role="menuitem" tabindex="-1" href="/index">Logout</a>
           </li>                   
         </ul>        
       </div>
 
       <!-- Send Goal Button -->
       <div id="sendgoal-icon">
-        <h2 class="btn btn-warning" type="button">Send Goal</h2>
+        <h2 class="btn btn-warning" type="button" onclick="window.location.href='sendgoal'">Send Goal</h2>
       </div> 
   	</div>
 
@@ -58,7 +58,7 @@
          Goal: Go to the gym. 1 hours 5 times a week.<br>
          Complete Date: 02/15/2015
       </p>
-      <button class="btn btn-block AccRej" onclick="window.location.href='setgoal'"> Accept</button>
+      <button class="btn btn-block" onclick="window.location.href='setgoal'"> Accept</button>
       <button class="btn btn-block AccRej">Decline</button>
     </div>
 
