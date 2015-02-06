@@ -2,7 +2,7 @@
 //"<p>&copy;  " + new Date().getFullYear() + " UCSD COGS120/CSE170. All rights reserved.</p>";
 
 $(document).ready(function() {
-    doFakeAlert();
+    //doFakeAlert();
     //doFakeAcceptReject();
 
 });
