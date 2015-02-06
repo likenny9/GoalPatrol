@@ -3,7 +3,7 @@
 
 $(document).ready(function() {
     doFakeAlert();
-    doFakeAcceptReject();
+    //doFakeAcceptReject();
 
 });
 
