@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Goal Patrol</title>
+    <title>Goal Patrol - Track Progress</title>
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/bootstrap-theme.css" rel="stylesheet">
     <link href="css/GoalPatrol.css" rel="stylesheet">
@@ -42,14 +42,9 @@
           </li>                   
         </ul>        
       </div>
-
-        <!-- Send Goal Button -->
-      <!-- <div id="sendgoal-icon">
-        <h2 class="btn btn-warning" type="button">Send Goal</h2>
-      </div> -->
     </div>
 
-    <br><br> <!--Extra spacing-->
+    <br><!--Extra spacing-->
 
     <div class= "container">
     <button class="btn btn-xs" onclick="window.location.href='/'"><span class="glyphicon glyphicon-arrow-left"> </span> Back</a>
@@ -62,56 +57,57 @@
       <h3>Track Progress</h3>
 
       Progress reports for 
-  <div class="btn-group">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    1 week <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#">2 weeks</a></li>
-    <li><a href="#">1 month</a></li>
-    <li><a href="#">2 month</a></li>
-    <li><a href="#">All</a></li>
-  </ul> 
-  </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" 
+                data-toggle="dropdown" aria-expanded="false">
+          1 week <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">2 weeks</a></li>
+          <li><a href="#">1 month</a></li>
+          <li><a href="#">2 month</a></li>
+          <li><a href="#">All</a></li>
+        </ul> 
+      </div>
 
-  <div class="container">            
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Completed?</th>
-        <th>Overwhelmed?</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Feb 2, 2015</td>
-        <td>Yes</td>
-        <td>No</td>
-        <td><button class="btn btn-xs" onclick="window.location.href='trackprogress'">Modify</button></td>
-      </tr>
-      <tr>
-        <td>Jan 30, 2015</td>
-        <td>No</td>
-        <td>Yes</td>
-        <td><button class="btn btn-xs" onclick="window.location.href='trackprogress'">Modify</button></td>
-      </tr>
-      <tr>
-        <td>Jan 29, 2015</td>
-        <td>Yes</td>
-        <td>Yes</td>
-        <td><button class="btn btn-xs" onclick="window.location.href='trackprogress'">Modify</button></td>
-      </tr>
-       <tr>
-        <td>Jan 29, 2015</td>
-        <td>Yes</td>
-        <td>Yes</td>
-        <td><button class="btn btn-xs" onclick="window.location.href='trackprogress'">Modify</button></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+      <div class="container">            
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Completed?</th>
+              <th>Overwhelmed?</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Feb 2, 2015</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td><button class="btn btn-xs" onclick="window.location.href='trackprogress'">Modify</button></td>
+            </tr>
+            <tr>
+              <td>Jan 30, 2015</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td><button class="btn btn-xs" onclick="window.location.href='trackprogress'">Modify</button></td>
+            </tr>
+            <tr>
+              <td>Jan 29, 2015</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td><button class="btn btn-xs" onclick="window.location.href='trackprogress'">Modify</button></td>
+            </tr>
+             <tr>
+              <td>Jan 29, 2015</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td><button class="btn btn-xs" onclick="window.location.href='trackprogress'">Modify</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <br>
 
@@ -119,11 +115,6 @@
       <div id="sendgoal-icon">
         <h2 class="btn btn-warning" type="button" onclick="alert('Saved!')">Save</h2>
       </div> 
-    </div>
-
-    </div>
-
-      </section>  
     </div>
 
   </body>

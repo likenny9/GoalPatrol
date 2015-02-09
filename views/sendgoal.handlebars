@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Goal Patrol</title>
+    <title>Goal Patrol - Search for a Partner</title>
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/bootstrap-theme.css" rel="stylesheet">
     <link href="css/GoalPatrol.css" rel="stylesheet">
@@ -42,20 +42,34 @@
           </li>                   
         </ul>        
       </div>
-
-    <br> <!--Extra spacing-->
-    <br>
-    <br>
-
-    <div class= "container">
-    <button class="btn btn-xs" onclick="window.location.href='/setgoal'"><span class="glyphicon glyphicon-arrow-left"> </span> Next </a>
-    </button>
-    <h1>Send Goal!</h1>
     </div>
 
+    <br> <!--Extra spacing-->
 
+    <div class= "container">
+      <button class="btn btn-xs" onclick="window.location.href='/setgoal'"><span class="glyphicon glyphicon-arrow-left"> </span> Next </a>
+      </button>
+    </div>
 
+    <br>
 
+    <div class="container">
+      <h1>Add a Partner</h1>
+      
+      <form role="form">
+          <div class="row">
+              <div class="form-group">
+                  <input type="text" class="form-control input-lg" placeholder="Search by Email">
+              </div>
+          </div>
+      </form>
+
+      <div>
+        <h2 class="btn btn-info btn-block" type="button" onclick="window.location.href='#'">
+          Search
+        </h2>
+      </div> 
+    </div>
   </body>
 
 </html>

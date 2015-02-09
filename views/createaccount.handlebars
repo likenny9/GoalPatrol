@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Goal Patrol</title>
+    <title>Goal Patrol - Create Account</title>
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/bootstrap-theme.css" rel="stylesheet">
     <link href="css/GoalPatrol.css" rel="stylesheet">
@@ -18,26 +18,60 @@
   <body>
 
     <!-- Header: Title & Name -->
-  	<div class="header-container container">
-      <h1 id="title">Goal Patrol</h1>
-
-      <!-- Name & Settings Dropdown Menu -->
-     
-
-    <br> <!--Extra spacing-->
-    <br>
-    <br>
-
-    <div class= "container">
-    <button class="btn btn-xs" onclick="window.location.href='/index'"><span class="glyphicon glyphicon-arrow-left"> </span> Back </a>
-    </button>
-    <button class="btn btn-xs" onclick="window.location.href='/sendgoal'"><span class="glyphicon glyphicon-arrow-left"> </span> Next </a>
-    </button>
-    <h1>Create Account</h1>
+    <div class="header-container container">
+      <a href="/index"><h1 id="title">Goal Patrol</h1></a>
     </div>
 
+    <br><!--Extra spacing-->
 
+    <!-- Goal Giving -->
+    <div class= "container">
 
+      <h2>New User</h2>
+
+      <br>
+
+      <form role="form">
+        <div class="row">
+            <div class="form-group">
+                <input type="text" class="form-control input-lg" placeholder="Name">
+            </div>
+        </div>
+      </form>
+
+      <form role="form">
+        <div class="row">
+            <div class="form-group">
+                <input type="email" class="form-control input-lg" placeholder="Email">
+            </div>
+        </div>
+      </form>
+
+      <form role="form">
+        <div class="row">
+            <div class="form-group">
+                <input type="password" class="form-control input-lg" placeholder="Password">
+            </div>
+        </div>
+      </form>
+
+      <form role="form">
+        <div class="row">
+            <div class="form-group">
+                <input type="password" class="form-control input-lg" placeholder="Confirm Password">
+            </div>
+        </div>
+      </form>
+
+      <br>
+
+      <div>
+        <h2 class="btn btn-info btn-block" type="button" onclick="window.location.href='/sendgoal'">Sign Up</h2>
+      </div> 
+
+      
+      </section>  
+    </div>
 
   </body>
 

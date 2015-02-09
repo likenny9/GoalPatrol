@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Goal Patrol</title>
+    <title>Goal Patrol - Log In</title>
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/bootstrap-theme.css" rel="stylesheet">
     <link href="css/GoalPatrol.css" rel="stylesheet">
@@ -19,59 +19,41 @@
 
     <!-- Header: Title & Name -->
     <div class="header-container container">
-      <h1 id="title">Goal Patrol</h1>
-
-
+      <a href="/index"><h1 id="title">Goal Patrol</h1></a>
     </div>
 
-
-      
-
-    <br><br> <!--Extra spacing-->
-
-    <div class= "container">
-    <button class="btn btn-xs" onclick="window.location.href='/index'"><span class="glyphicon glyphicon-arrow-left"> </span> Back</a>
-    </button>
-    </div>
+    <br><!--Extra spacing-->
 
     <!-- Goal Giving -->
     <div class= "container">
 
       <h2>Welcome Back!</h2>
-      <h3>Username</h3>
-
-      <form role="form">
-        <div class="row">
-            <div class="form-group">
-                <!--<label for="code">Name</label>-->
-                <input type="text" class="form-control input-lg">
-            </div>
-        </div>
-        </form>
-
-      <h3>
-
-      <h3>Email Address</h3>
-
-      <form role="form">
-        <div class="row">
-            <div class="form-group">
-                <!--<label for="code">Name</label>-->
-                <input type="text" class="form-control input-lg">
-            </div>
-        </div>
-        </form>
-
-      <h3>
 
       <br>
 
-      <div id="sendgoal-icon">
-        <h2 class="btn btn-warning" type="button" onclick="window.location.href='/'">Log in</h2>
-      </div> 
+      <form role="form">
+        <div class="row">
+            <div class="form-group">
+                <!--<label for="code">Name</label>-->
+                <input type="text" class="form-control input-lg" placeholder="Email">
+            </div>
+        </div>
+      </form>
 
-      
-      </section>  
+      <form role="form">
+        <div class="row">
+            <div class="form-group">
+                <!--<label for="code">Name</label>-->
+                <input type="password" class="form-control input-lg" placeholder="Password">
+            </div>
+        </div>
+      </form>
+
+      <br>
+
+      <div>
+        <h2 class="btn btn-info btn-block" type="button" onclick="window.location.href='/'">Log in</h2>
+      </div> 
     </div>
 
   </body>
