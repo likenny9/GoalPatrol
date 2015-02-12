@@ -25,7 +25,7 @@
       <div class="dropdown" id="dropdown-icon">
         <h2 class="btn btn-default dropdown-toggle" 
             id="name-icon" data-toggle="dropdown">
-            Bob
+            Kenny
             <span class="caret"></span>
         </h2>
         <ul class="dropdown-menu" role="menu" aria-labelledby="name-icon" id="name-menu">
@@ -75,14 +75,38 @@
             <!-- Container for all goals -->
             <div class="goal-container container">
 
+
+            <!--{{#each Users}}-->
+              <div class="Users">
+        
+              <!--<img src={{imageURL}} class="img-responsive" id="FriendImg">-->
+              <!--<img src={{imageURL}} class="img-rounded" id="FriendImg">-->
+              <!--<a href="#"> <h3 class="clickfriends"> {{name}} </h3></a>-->
+              <hr>
+
+              <img class="avatar-image" src={{Kenny.patrol1imgsrc}}>
+                <p class="patrol-info"><b>Patrol:</b>
+                  <a href ng-click="tab.setTab(2)">{{Kenny.patrol1}}</a>
+                </p>
+                <p class="bubble">{{Kenny.goal1}}</p>
+                <!--<p class="bubble">{{Kenny.goal2}}</p>-->
+                <button class="btn btn-lg btn-success alert" onclick="doInspireMe()" id="inspire1">Inspire Me</button>
+                <button class="btn btn-lg btn-info alert" id="progress1" onclick="window.location.href='trackprogress'">Track Progress</button>
+            </div>
+            <!--{{/each}}-->
+
+
+
               <!-- Goal - hardcoded with Jenny -->
               <div class="individual-goal container">
                 <img class="avatar-image" src="/images/alex.jpg">
                 <p class="patrol-info"><b>Patrol:</b>
-                  <a href ng-click="tab.setTab(2)">Jenny</a>
+                  <!--<a href ng-click="tab.setTab(2)">Jenny</a>-->
+                  <a href ng-click="tab.setTab(2)">{{name}}</a>
                 </p>
                 <p class="bubble">Go to the gym for 1 hour 3 times a week.</p>
-                <button class="btn btn-lg btn-success alert" id="inspire1">Inspire Me</button>
+                <button class="btn btn-lg btn-success alert" onclick="doInspireMe()" id="inspire1">Inspire Me</button>
+                <!--<button class="btn btn-lg btn-success alert" id="inspire1">Inspire Me</button>-->
                 <button class="btn btn-lg btn-info alert" id="progress1" onclick="window.location.href='trackprogress'">Track Progress</button>
               </div>
 

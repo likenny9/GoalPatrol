@@ -1,14 +1,14 @@
 
 $(document).ready(function() {
-    myFunction();
+    //myFunction();
     //doFakeAlert();
     doFakeAcceptReject();
 
 });
 
-function myFunction() {
+function doInspireMe() {
     var x;
-    if (confirm("Press a button!") == true) {
+    if (confirm("Today's inspiring message") == true) {
         x = "You pressed OK!";
     } else {
         x = "You pressed Cancel!";
