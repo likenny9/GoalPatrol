@@ -1,32 +1,52 @@
 {
-"Users": [
-      {	"email": "k3li@ucsd.edu", 
-        "password": "kennyli", 
-        "name": "Kenny",
-        "goal1": "Go to Gym 3 times a week"
-        "goal2": "Study library 3 hrs 2 times a week"
-        "goal3": "Walk 1 hr 2 times a week"
+  "Users": [
+      { "Kenny": 
+        {
+          "email": "k3li@ucsd.edu", 
+          "password": "kennyli", 
+          "imgsrc": "/images/default.jpg",
+          "goal1": "Go to Gym 3 times a week",
+          "patrol1": "Soohyun",
+          "patrol1imgsrc": "/images/soohyun.jpg",
+          "goal2": "Study library 3 hrs 2 times a week",
+          "goal3": "Walk 1 hr 2 times a week"
+        }      
       },
-      {	"email": "a5huang@ucsd.edu",
-      	"password": "alexhuang", 
-      	"name": "Alexandra"
-      	"goal1": "Go to Gym 3 times a week"
-        "goal2": "Study library 3 hrs 2 times a week"
-        "goal3": "Walk 1 hr 2 times a week"
+      { "Alexandra": 
+        {
+          "email": "a5huang@ucsd.edu",
+          "password": "alexhuang", 
+          "imgsrc": "/images/alex.jpg",
+          "goal1": "Go to Gym 3 times a week",
+          "patrol1": "Soohyun",
+          "patrol1imgsrc": "/images/soohyun.jpg",
+          "goal2": "Study library 3 hrs 2 times a week",
+          "goal3": "Walk 1 hr 2 times a week"
+        }
       },
-      {	"email": "gpertica@ucsd.edu", 
-      	"password": "giulioperticari", 
-      	"name": "Giulio"
-      	"goal1": "Go to Gym 3 times a week"
-        "goal2": "Study library 3 hrs 2 times a week"
-        "goal3": "Walk 1 hr 2 times a week"
+      { "Giulio": 
+        {
+          "email": "gpertica@ucsd.edu", 
+          "password": "giulioperticari", 
+          "imgsrc": "/images/default.jpg",
+          "goal1": "Go to Gym 3 times a week",
+          "patrol1": "Soohyun",
+          "patrol1imgsrc": "/images/soohyun.jpg",
+          "goal2": "Study library 3 hrs 2 times a week",
+          "goal3": "Walk 1 hr 2 times a week"
+        }
       },
-      {	"email": "snam@ucsd.edu", 
-      	"password": "soonam", 
-      	"name": "Soohyun"
-      	"goal1": "Go to Gym 3 times a week"
-        "goal2": "Study library 3 hrs 2 times a week"
-        "goal3": "Walk 1 hr 2 times a week"
+      { "Soohyun": 
+        {
+          "email": "snam@ucsd.edu", 
+          "password": "soonam",     
+          "imgsrc": "/images/soohyun.jpg",
+          "goal1": "Go to Gym 3 times a week",
+          "patrol1": "Soohyun",
+          "patrol1imgsrc": "/images/soohyun.jpg",
+          "goal2": "Study library 3 hrs 2 times a week",
+          "goal3": "Walk 1 hr 2 times a week"
+        }
       }
     ]
 }
