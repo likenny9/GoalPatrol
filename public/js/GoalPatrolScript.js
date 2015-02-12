@@ -1,18 +1,32 @@
 
 $(document).ready(function() {
-    doFakeAlert();
+    myFunction();
+    //doFakeAlert();
     doFakeAcceptReject();
 
 });
 
-function doFakeAlert() {
+function myFunction() {
+    var x;
+    if (confirm("Press a button!") == true) {
+        x = "You pressed OK!";
+    } else {
+        x = "You pressed Cancel!";
+    }
+    document.getElementById("demo").innerHTML = x;
+}
+
+/*function doFakeAlert() {
+    
+
     $('#inspire1').click(function() {
         alert('You have been inspired!');
     });
     $('#inspire2').click(function() {
         alert('You have been inspired!');
     });
-};
+
+};*/
 
 function doFakeAcceptReject() {
     $('.AccRej').on('click', function() {
