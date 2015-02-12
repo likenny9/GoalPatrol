@@ -13,7 +13,7 @@ function myFunction() {
     } else {
         x = "You pressed Cancel!";
     }
-    document.getElementById("demo").innerHTML = x;
+    //document.getElementById("demo").innerHTML = x;
 }
 
 /*function doFakeAlert() {

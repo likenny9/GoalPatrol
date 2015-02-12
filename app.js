@@ -62,7 +62,7 @@ app.configure(function() {
 passport.use(new googleAuth({
 	clientID: config.consumer_key,
 	clientSecret: config.consumer_secret,
-	callbackURL: "http://cogs120-goalpatrol.herokuapp.com/auth/callback",
+	callbackURL: "http://localhost:8080/auth/callback",
 	scope: ['openid', 'email', 'https://www.googleapis.com/auth/calendar']
 },
 function(accessToken, refreshToken, profile, done) {
