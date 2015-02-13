@@ -22,6 +22,7 @@ var help = require('./routes/help');
 var createaccount = require('./routes/createaccount');
 var goaldetails = require('./routes/goaldetails');
 var userinfo = require('./routes/userinfo');
+var history = require('./routes/history');
 
 //Creates express app
 var app = express();
@@ -149,6 +150,7 @@ app.get('/sendgoal', sendgoal.html);
 app.get('/help', help.html);
 app.get('/createaccount', createaccount.html);
 app.get('/goaldetails', goaldetails.html);
+app.get('/history', history.html);
 
 //Json routes
 app.all('/insertUserInfo', userinfo.html);

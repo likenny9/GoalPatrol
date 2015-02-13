@@ -19,7 +19,7 @@
 
     <!-- Header: Title & Name -->
     <div class="header-container container">
-      <h1 id="title">Goal Patrol</h1>
+      <a href="/"><h1 id="title">Goal Patrol</h1></a>
 
       <!-- Name & Settings Dropdown Menu -->
       <div class="dropdown" id="dropdown-icon">
@@ -29,6 +29,10 @@
             <span class="caret"></span>
         </h2>
         <ul class="dropdown-menu" role="menu" aria-labelledby="name-icon" id="name-menu">
+          <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="/history">History</a>
+          </li>
+          <li role="presentation" class="divider"></li>
           <li role="presentation">
             <a role="menuitem" tabindex="-1" href="/settings">Settings</a>
           </li>
@@ -46,11 +50,6 @@
 
 
     <br><br> <!--Extra spacing-->
-
-    <div class= "container">
-    <button class="btn btn-xs" onclick="window.location.href='/'"><span class="glyphicon glyphicon-arrow-left"> </span> Home</a>
-    </button>
-    </div>
 
     <!-- Goal Giving -->
     <div class= "container">
@@ -122,7 +121,7 @@
 
       <!-- Send Goal Button -->
       <div id="sendgoal-icon">
-        <h2 class="btn btn-warning" type="button" onclick="window.location.href='/'">Send Goal to Jenny</h2>
+        <h2 class="btn btn-warning" type="button" onclick="alert('Goal sent!');window.location.href='/'">Send Goal</h2>
       </div> 
 
     </div>
