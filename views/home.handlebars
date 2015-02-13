@@ -12,6 +12,24 @@
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/GoalPatrolScript.js"></script>
+   <script > 
+      var NAME = "Kenny";
+      window.onload = function() {
+        document.getElementById("demo").innerHTML = NAME; 
+      }
+
+      function doInspireMe() {
+          var x;
+          if (confirm("Today's inspiring message") == true) {
+              x = "You pressed OK!";
+          } else {
+              x = "You pressed Cancel!";
+          }
+          //document.getElementById("demo").innerHTML = x;
+      }
+
+  </script>
+    
 
   </head>
 
@@ -25,7 +43,7 @@
       <div class="dropdown" id="dropdown-icon">
         <h2 class="btn btn-default dropdown-toggle" 
             id="name-icon" data-toggle="dropdown">
-            Kenny
+            <a id="demo"></a>
             <span class="caret"></span>
         </h2>
         <ul class="dropdown-menu" role="menu" aria-labelledby="name-icon" id="name-menu">
@@ -74,15 +92,10 @@
 
             <!-- Container for all goals -->
             <div class="goal-container container">
+            
+          {{#each Users}}
 
-
-            <!--{{#each Users}}-->
               <div class="Users">
-        
-              <!--<img src={{imageURL}} class="img-responsive" id="FriendImg">-->
-              <!--<img src={{imageURL}} class="img-rounded" id="FriendImg">-->
-              <!--<a href="#"> <h3 class="clickfriends"> {{name}} </h3></a>-->
-              <hr>
 
               <img class="avatar-image" src={{Kenny.patrol1imgsrc}}>
                 <p class="patrol-info"><b>Patrol:</b>
@@ -93,33 +106,19 @@
                 <button class="btn btn-lg btn-success alert" onclick="doInspireMe()" id="inspire1">Inspire Me</button>
                 <button class="btn btn-lg btn-info alert" id="progress1" onclick="window.location.href='trackprogress'">Track Progress</button>
             </div>
-            <!--{{/each}}-->
 
+            <div class="Users">
 
-
-              <!-- Goal - hardcoded with Jenny -->
-              <div class="individual-goal container">
-                <img class="avatar-image" src="/images/alex.jpg">
+              <img class="avatar-image" src={{Kenny.patrol2imgsrc}}>
                 <p class="patrol-info"><b>Patrol:</b>
-                  <!--<a href ng-click="tab.setTab(2)">Jenny</a>-->
-                  <a href ng-click="tab.setTab(2)">{{name}}</a>
+                  <a href ng-click="tab.setTab(2)">{{Kenny.patrol2}}</a>
                 </p>
-                <p class="bubble">Go to the gym for 1 hour 3 times a week.</p>
+                <p class="bubble">{{Kenny.goal2}}</p>
+                <!--<p class="bubble">{{Kenny.goal2}}</p>-->
                 <button class="btn btn-lg btn-success alert" onclick="doInspireMe()" id="inspire1">Inspire Me</button>
-                <!--<button class="btn btn-lg btn-success alert" id="inspire1">Inspire Me</button>-->
                 <button class="btn btn-lg btn-info alert" id="progress1" onclick="window.location.href='trackprogress'">Track Progress</button>
-              </div>
-
-              <!-- Goal - hardcoded with Mary -->
-              <div class="individual-goal container">
-                <img class="avatar-image" src="/images/mary.jpg">
-                <p class="patrol-info"><b>Patrol:</b>
-                  <a href ng-click="tab.setTab(3)">Mary</a>
-                </p>
-                <p class="bubble">Eat a salad everyday.</p>
-                <button class="btn btn-lg btn-success alert" id="inspire2">Inspire Me</button>
-                <button class="btn btn-lg btn-info alert" id="progress2" onclick="window.location.href='trackprogress'">Track Progress</button>
-              </div>
+            </div>
+          {{/each }}
 
             </div>
           </p>
@@ -128,13 +127,13 @@
         <!-- JENNY'S STUFF -->
         <div ng-show="tab.isSet(2)">
           <p>
-            <h3>Jenny's Goal</h3><br>
+            <h3>Soohyun's Goal</h3><br>
 
             <button class="btn btn-xs">
               <a href ng-click="tab.setTab(1)">&lt;- Back</a>
             </button>
             <div class="goal-container container">
-          	 Show Jenny's information
+          	 Show Soohyun's information
             </div>
           </p>
         </div>
@@ -142,13 +141,13 @@
         <!-- Mary's stuff -->
         <div ng-show="tab.isSet(3)">
           <p>
-            <h3>Mary's Goal</h3><br>
+            <h3>Alexandra's Goal</h3><br>
             
             <button class="btn btn-xs">
               <a href ng-click="tab.setTab(1)">&lt;- Back</a>
             </button>
             <div class="goal-container container">
-              Show Mary's information
+              Show Alexandra's information
             </div>
           </p>
         </div> 
