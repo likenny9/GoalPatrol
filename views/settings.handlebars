@@ -50,7 +50,36 @@
     <div class= "container">
       <button class="btn btn-xs" onclick="window.location.href='/'"><span class="glyphicon glyphicon-arrow-left"> </span> Home </a>
       </button>
-      <h1>Settings</h1>
+      <h1 align="center">Settings</h1>
+
+      <script>
+      //Upload photo 
+      var imagePath = $('#input_id').val()
+      </script>
+
+      <h3>Upload a profile picture</h3><input type="file" accept="image/*" capture="camera">
+      <form role="form">
+        <h3>Change Email</h3>
+        <div class="row">
+            <div class="form-group">
+                <!--<label for="code">Name</label>-->
+                <input type="text" class="form-control input-lg" placeholder="Email">
+            </div>
+        </div>
+        <h3>Change Password</h3>
+        <div class="row">
+            <div class="form-group">
+                <!--<label for="code">Name</label>-->
+                <input type="password" class="form-control input-lg" placeholder="Password">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <!--<label for="code">Name</label>-->
+                <input type="password" class="form-control input-lg" placeholder="Confirm Password">
+            </div>
+        </div>
+      </form>
     </div>
 
   </body>
