@@ -10,9 +10,51 @@
     <link href="css/GoalPatrol.css" rel="stylesheet">
     <script src="js/angular.1.2.26.min.js"></script>
     <script src="js/jquery-1.11.2.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>    
     <script src="js/GoalPatrolScript.js"></script>
 
+
+    <script>
+    $(function() {
+      $('#create-form').submit(function(evt) {
+        evt.preventDefault();
+
+        //Get values
+        var name = $('#personname')[0].value;
+        var email = $('#personemail')[0].value;
+        var password = $('#personpassword')[0].value;
+        var passwordConfirmation = $('#personpasswordconf')[0].value;
+
+        var userinfo = {
+          'name' : name,
+          'email' : email,
+          'password' : password
+        };
+
+        //Convert to JSON style
+        userinfo = JSON.stringify(userinfo);
+
+        insertUserInfo(userinfo);
+      });
+
+      function insertUserInfo(data) {
+        $.ajax({
+          url: "/insertUserInfo/",
+          method: "POST",
+          data: data,
+          contentType: "application/json",
+          processdata: true,
+          success: function(result) {
+            alert("Account created.");
+          },
+          error: function(result) {
+            alert("Error, account not created.")
+          }
+        });        
+      }
+
+    });
+    </script>
   </head>
 
   <body>
@@ -31,43 +73,32 @@
 
       <br>
 
-      <form role="form">
+      <form role="form" id="create-form">
         <div class="row">
             <div class="form-group">
-                <input type="text" class="form-control input-lg" placeholder="Name">
+                <input type="text" id="personname" class="form-control input-lg" placeholder="Name">
             </div>
         </div>
-      </form>
 
-      <form role="form">
         <div class="row">
             <div class="form-group">
-                <input type="email" class="form-control input-lg" placeholder="Email">
+                <input type="email" id="personemail" class="form-control input-lg" placeholder="Email">
             </div>
         </div>
-      </form>
 
-      <form role="form">
         <div class="row">
             <div class="form-group">
-                <input type="password" class="form-control input-lg" placeholder="Password">
+                <input type="password" id="personpassword" class="form-control input-lg" placeholder="Password">
             </div>
         </div>
-      </form>
 
-      <form role="form">
         <div class="row">
             <div class="form-group">
-                <input type="password" class="form-control input-lg" placeholder="Confirm Password">
+                <input type="password" id="personpasswordconf" class="form-control input-lg" placeholder="Confirm Password">
             </div>
         </div>
+        <h2><button class="btn btn-info btn-block" type="submit">Create Account</button></h2>
       </form>
-
-      <br>
-
-      <div>
-        <h2 class="btn btn-info btn-block" type="button" onclick="window.location.href='/sendgoal'">Sign Up</h2>
-      </div> 
     </div>
 
   </body>

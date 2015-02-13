@@ -21,6 +21,7 @@ var sendgoal = require('./routes/sendgoal');
 var help = require('./routes/help');
 var createaccount = require('./routes/createaccount');
 var goaldetails = require('./routes/goaldetails');
+var userinfo = require('./routes/userinfo');
 
 //Creates express app
 var app = express();
@@ -62,7 +63,7 @@ app.configure(function() {
 passport.use(new googleAuth({
 	clientID: config.consumer_key,
 	clientSecret: config.consumer_secret,
-	callbackURL: "http://localhost:8080/auth/callback",
+	callbackURL: "http://cogs120-goalpatrol.herokuapp.com/auth/callback",
 	scope: ['openid', 'email', 'https://www.googleapis.com/auth/calendar']
 },
 function(accessToken, refreshToken, profile, done) {
@@ -148,6 +149,9 @@ app.get('/sendgoal', sendgoal.html);
 app.get('/help', help.html);
 app.get('/createaccount', createaccount.html);
 app.get('/goaldetails', goaldetails.html);
+
+//Json routes
+app.all('/insertUserInfo', userinfo.html);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
