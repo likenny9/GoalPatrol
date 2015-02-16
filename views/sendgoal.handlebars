@@ -13,9 +13,57 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/GoalPatrolScript.js"></script>
 
+    <script>
+    $(function() {
+      $('#search-partner').submit(function(evt) {
+        evt.preventDefault();
+
+        var email = $('#email')[0].value;
+        var partnerEmail;
+        var userNumber;
+
+        //ajax call to get the user's json
+        $.get("/renderJson",getJSON);
+
+        function getJSON(result) {
+          var users = result['users'];
+
+          //Loops through users and looks for one with same email.
+          for(i = 0; i < users.length; i++) {
+            partnerEmail = users[i]['email'];
+            if(email == partnerEmail) {
+              userNumber = i;
+              break; //we got the right person!
+            }
+            else {
+              partnerEmail = "0"; //just set to 0/false
+            }
+          }
+
+          //Partner not found
+          if(partnerEmail == "0") { 
+            angular.element(document.getElementById('bodyid')).scope().tab.setTab('3');
+            $('#nopartner-tab').removeClass('ng-hide');
+            $('#search-tab').addClass('ng-hide');
+            $('#render-email').html(email + " not found. Invite this person?");
+          }
+          //Partner found
+          else {
+            name = users[userNumber]['name'];
+            profile = users[userNumber]['profilepic'];
+            angular.element(document.getElementById('bodyid')).scope().tab.setTab('2');
+            $('#foundpartner-tab').removeClass('ng-hide');
+            $('#search-tab').addClass('ng-hide');
+            $('#profileimg').attr('src',profile);
+            $('#namecaption').html(name + "  -  " + email);            
+          }
+        };
+      });
+    });
+    </script>
   </head>
 
-  <body>
+  <body id="bodyid" ng-app="myApp" ng-controller="TabController as tab">
 
     <!-- Header: Title & Name -->
   	<div class="header-container container">
@@ -52,22 +100,49 @@
 
     <br>
 
-    <div class="container">
+    <div class="container" id="search-tab" ng-show="tab.isSet(1)">
       <h1>Add a Partner</h1>
-      
-      <form role="form">
+      <form role="form" id="search-partner">
           <div class="row">
               <div class="form-group">
-                  <input type="text" class="form-control input-lg" placeholder="Search by Email">
+                  <input type="text" id="email" class="form-control input-lg" placeholder="Search by Email">
               </div>
           </div>
-      </form>
-
-      <div>
-        <h2 class="btn btn-info btn-block" type="button" onclick="window.location.href='/setgoal'">
+          <h2><button class="btn btn-info btn-block" type="submit">
           Search
+          </button></h2>
+      </form>
+    </div>
+
+    <div class="container" id="foundpartner-tab" ng-show="tab.isSet(2)">
+      <h1>Add a Partner</h1>
+      <p>Is this who you are looking for?</p>
+      <img id="profileimg" class="avatar-image"></img>
+      <p id="namecaption"></p>
+      <h2 class="btn btn-warning btn-block" type="button" onclick="window.location.href='/setgoal';">
+        Yes
+      </h2>
+      <h2 class="btn btn-danger btn-block" type="button" onclick="alert('Returing to search page.'); window.location.href='/sendgoal';">
+        No
+      </h2>
+    </div>
+
+    <div class="container" id="nopartner-tab" ng-show="tab.isSet(3)">
+      <h1>Add a Partner</h1>
+      <p id="render-email"></p> <!-- render's email address from javascript code -->
+      <form role="form" id="send-email">
+        <div class="row">
+          <div class="form-group">
+            <textarea type="datetime" id="notes" class="form-control" rows="5" style="resize: none;">Please join me in Goal Patrol.</textarea>
+          </div>
+        </div>
+        <h2 class="btn btn-warning btn-block" type="submit" onclick="alert('Email Sent. Redirecting to home page.'); window.location.href='/';">
+          Send Email
         </h2>
-      </div> 
+        <h2 class="btn btn-danger btn-block" type="button" onclick="window.location.href='/sendgoal';">
+          Cancel
+        </h2>
+      </form>
     </div>
   </body>
 
