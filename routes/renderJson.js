@@ -1,5 +1,6 @@
 var data = require('../fakedata.json');
 
 exports.html = function(req, res){
-  res.render('sendgoal', data);
+	//Maybe only render the logged in user's details here
+	res.json(data);
 };

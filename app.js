@@ -21,8 +21,11 @@ var sendgoal = require('./routes/sendgoal');
 var help = require('./routes/help');
 var createaccount = require('./routes/createaccount');
 var goaldetails = require('./routes/goaldetails');
-var userinfo = require('./routes/userinfo');
 var history = require('./routes/history');
+
+//Add requires for ajax calling here
+var userinfo = require('./routes/userinfo');
+var renderJson = require('./routes/renderJson');
 
 //Creates express app
 var app = express();
@@ -193,6 +196,7 @@ app.get('/history', history.html);
 
 //Json routes
 app.all('/insertUserInfo', userinfo.html);
+app.get('/renderJson', renderJson.html);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
