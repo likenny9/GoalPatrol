@@ -50,12 +50,11 @@ var CORS = function(req, res, next) {
 /* Google Calendar */
 
 app.configure(function() {
+  app.use(CORS); //cross domain
 	app.use(express.static(path.join(__dirname, 'public')));
 	app.use(express.cookieParser());
 	app.use(express.bodyParser());
-
 	app.use(express.session({ secret: 'cogs120 sk' }));
-	app.use(CORS); //cross domain
 	app.use(passport.initialize());
 	app.use(passport.session());
 	app.use(app.router);

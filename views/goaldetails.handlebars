@@ -81,6 +81,23 @@
         return b[2] + "-" + b[0] + "-" + b[1] + 'T';
       }
 
+      $('#auth').click(function(evt) {
+        evt.preventDefault();
+        $.ajax({
+          url: "/auth",
+          method: "GET",
+          data: "",
+          crossDomain: true,
+          success: function(result) {
+            $('#addbtn').css("display","block");
+          },
+          error: function(result) {
+            alert("Error authenticating with Google.")
+          }
+        }); 
+
+      });
+
       $('#calendar-form').submit(function(evt) {
         evt.preventDefault();
 
@@ -232,7 +249,10 @@
           </div>
         </div>
 
-        <h2><button class="btn btn-info btn-block" type="submit">Add to Calendar</button></h2>
+        <!--<span style="font-size: 1rem">Once you allow access to your Google Calendar, you will be able to add the event.</span>
+        <h2><button class="btn btn-info btn-block" id="auth" type="button">Allow Access to Google Calendar</button></h2>-->
+
+        <h2><button class="btn btn-warning btn-block" id="addbtn" type="submit" >Add to Calendar</button></h2>
       </form>
     </div>
 
