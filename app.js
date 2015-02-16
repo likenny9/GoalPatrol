@@ -26,17 +26,7 @@ var history = require('./routes/history');
 
 //Creates express app
 var app = express();
-
-/** App environments **/
-app.set('port', process.env.PORT || 8080);
-app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars',handlebars());
-app.set('view engine', 'handlebars');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.methodOverride());
+var hbs;
 
 //Allows access to another domain 
 var CORS = function(req, res, next) {
@@ -133,10 +123,60 @@ app.post('/addToCalendar', function(req,res) {
 /* End Google Calendar */
 
 
+/* Custom Handlebars Helpers */
+
+hbs = handlebars.create({
+  helpers: {
+    compare: function(lvalue, rvalue, options) {
+     
+        if (arguments.length < 3)
+          throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
+     
+        operator = options.hash.operator || "==";
+        
+        var operators = {
+          '==':   function(l,r) { return l == r; },
+          '===':  function(l,r) { return l === r; },
+          '!=':   function(l,r) { return l != r; },
+          '<':    function(l,r) { return l < r; },
+          '>':    function(l,r) { return l > r; },
+          '<=':   function(l,r) { return l <= r; },
+          '>=':   function(l,r) { return l >= r; },
+          'typeof': function(l,r) { return typeof l == r; }
+        }
+     
+        if (!operators[operator])
+          throw new Error("Handlerbars Helper 'compare' doesn't know the operator "+operator);
+     
+        var result = operators[operator](lvalue,rvalue);
+     
+        if( result ) {
+          return options.fn(this);
+        } else {
+          return options.inverse(this);
+        }
+
+      }
+    }  
+  });
+
+  /* End Handlebars */
+
 // development only
 if ('development' == app.get('env')) {
 	app.use(express.errorHandler());
 }
+
+/** App environments **/
+app.set('port', process.env.PORT || 8080);
+app.set('views', path.join(__dirname, 'views'));
+app.engine('handlebars',hbs.engine);
+app.set('view engine', 'handlebars');
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded());
+app.use(express.methodOverride());
 
 //Add routes here
 app.get('/', home.html); //Home Page

@@ -1,4 +1,4 @@
-var data = require('../data.json');
+var data = require('../fakedata.json');
 //var data = JSON.parse(obj);
 
 //Render Home HTML Page

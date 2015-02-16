@@ -97,20 +97,22 @@
             <!-- Container for all goals -->
             <div class="goal-container container">
             
-          {{#each Users}}
-
+          {{#users}}
+          {{#compare name "Kenny" operator="=="}}
+          {{#patrol}}
               <div class="Users">
 
-              <img class="avatar-image" src={{Kenny.patrol1imgsrc}}>
+              <img class="avatar-image" src={{pprofilepic}}>
+
                 <p class="patrol-info"><b>Patrol:</b>
-                  <a href ng-click="tab.setTab(2)">{{Kenny.patrol1}}</a>
+                  <a href ng-click="tab.setTab(2)">{{pname}}</a>
                 </p>
-                <p class="bubble">{{Kenny.goal1}}</p>
-                <!--<p class="bubble">{{Kenny.goal2}}</p>-->
+                <p class="bubble">{{goal}} for {{hoursweek}} hours {{timesweek}} times a week</p>
                 <button class="btn btn-lg btn-success alert" onclick="doInspireMe()" id="inspire1">Inspire Me</button>
                 <button class="btn btn-lg btn-info alert" id="progress1" onclick="window.location.href='trackprogress'">Track Progress</button>
+              {{/patrol}}
             </div>
-
+<!--
             <div class="Users">
 
               <img class="avatar-image" src={{Kenny.patrol2imgsrc}}>
@@ -118,11 +120,11 @@
                   <a href ng-click="tab.setTab(2)">{{Kenny.patrol2}}</a>
                 </p>
                 <p class="bubble">{{Kenny.goal2}}</p>
-                <!--<p class="bubble">{{Kenny.goal2}}</p>-->
                 <button class="btn btn-lg btn-success alert" onclick="doInspireMe()" id="inspire1">Inspire Me</button>
                 <button class="btn btn-lg btn-info alert" id="progress1" onclick="window.location.href='trackprogress'">Track Progress</button>
-            </div>
-          {{/each }}
+            </div>-->
+          {{/compare}}
+          {{/users}}
 
             </div>
           </p>
