@@ -12,13 +12,77 @@
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/GoalPatrolScript.js"></script>
-    <script src="routes/login.js"></script>
 
     <script>
+    $(function() {
+        $('#login-form').submit(function(evt) {
+            evt.preventDefault();
 
+            var email = $('#username')[0].value;
+            var password = $('#password')[0].value;
+            var partnerEmail;
+            var partnerPassword;
+            var userNumber;
+
+            if(email == "" || password == "") {
+                alert('Empty email or password input.');
+                return;
+            }
+
+            $.get("/renderJSON", getJSON);
+
+            function getJSON(result) {
+                var users = result['users'];
+                for(i = 0; i < users.length; i++) {
+                    partnerEmail = users[i]['email'];
+                    partnerPassword = users[i]['password'];
+                    if(email == partnerEmail) {
+                        userNumber = i;
+                        break;
+                    }
+                    else {
+                        partnerEmail = "0";
+                    }
+                }
+                console.log(password + " " + partnerPassword);
+                if(partnerEmail == "0") {
+                    alert("Email not found.");
+                }
+                else if(password != partnerPassword) {
+                    alert("Incorrect password.");
+                }
+                else {
+                    var data = {'email' : email };
+                    data = JSON.stringify(data);
+
+                    $.ajax({
+                        url: "/saveSessionEmail",
+                        method: "POST",
+                        data: data,
+                        contentType: "application/json",
+                        processdata: true,
+                        success: function(result) {
+                          console.log(result);
+                          console.log('success insert sent to session');
+                        },
+                        error: function(result) {
+                          console.log("failed insert sent to session");
+                        }
+                    });
+
+                    window.location.href="/";
+                }
+            }
+
+        });
+
+    });
+
+
+/*
     var attempt = 3;
-//login function! used in login.handlebars
-function validate() {
+    //login function! used in login.handlebars
+    function validate() {
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
 
@@ -48,7 +112,7 @@ function validate() {
     }
     */
 
-
+/*
     if ( username == "k3li@ucsd.edu" && password == "kennyli"){
     alert ("Login successfully");
     window.location = "/"; // Redirecting to other page.
@@ -85,7 +149,7 @@ function validate() {
         }
     }
 
-}
+}*/
     </script>
 
 
@@ -100,36 +164,26 @@ function validate() {
 
     <br><!--Extra spacing-->
 
-    <!-- Goal Giving -->
     <div class= "container">
-
       <h2>Welcome Back!</h2>
 
       <br>
 
-      <form name = "login" >
+      <form role="form" id="login-form">
         <div class="row">
             <div class="form-group">
-                <!--<label for="code">Name</label>-->
                 <input id="username" type="text" class="form-control input-lg" placeholder="Email">
             </div>
         </div>
         <div class="row">
             <div class="form-group">
-                <!--<label for="code">Name</label>-->
                 <input id="password" type="password" class="form-control input-lg" placeholder="Password">
             </div>
         </div>
-    
-
       <br>
 
-      <div>
-        <h2 class="btn btn-info btn-block" type="button" onclick="validate()">Log in</h2>
-          </form>
-
-        
-      </div> 
+      <h2><button class="btn btn-info btn-block" type="submit">Log in</button></h2>
+      </form>
     </div>
 
   </body>
