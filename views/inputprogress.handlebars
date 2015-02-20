@@ -14,6 +14,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/star-rating.min.js"></script>
     <script src="js/GoalPatrolScript.js"></script>
+    <script src="js/handlebars-v3.0.0.js"></script>
 
     <style type="text/css">
       /* Weird bug - with a font, stars show up as boxes */
@@ -96,7 +97,7 @@
 
       var today = new Date();
       today = getMonthInWords(today.getMonth()) + " " + today.getDate() + ", " + today.getFullYear();
-      $('.today-date').html(today);
+      $('.today-date').html(today); 
 
       //Displays empty form if nothing loaded from handlebars
       if($('#progress-form').length != 0) {
@@ -106,16 +107,16 @@
         $('#empty-progress-form').css('display','block');
       }
 
-      //User clicks submit
-      $('.progress-forms').submit(function(evt) {
+      //Already have progress - user clicks submit
+      $('#progress-form').submit(function(evt) {
         evt.preventDefault();
 
         var date = today;
-        var difficulty = $('#difficulty')[0].value;
-        var experience = $('#experience')[0].value;
-        var satisfaction = $('#satisfaction')[0].value;
-        var stress = $('#stress')[0].value;
-        var comments = $('#notes')[0].value;
+        var difficulty = $('#difficulty-f')[0].value;
+        var experience = $('#experience-f')[0].value;
+        var satisfaction = $('#satisfaction-f')[0].value;
+        var stress = $('#stress-f')[0].value;
+        var comments = $('#notes-f')[0].value;
 
         var progressReport = {
           'date': date,
@@ -138,14 +139,56 @@
             contentType: "application/json",
             processdata: true,
             success: function(result) {
-              console.log("success insert");
+
             },
             error: function(result) {
-              console.log("failed insert");
+
             }
           });
-
+          window.location.href = '/trackprogress';
         }
+      });
+
+      //No progress yet - user clicks submit
+      $('#empty-progress-form').submit(function(evt) {
+        evt.preventDefault();
+
+        var date = today;
+        var difficulty = $('#difficulty')[0].value;
+        var experience = $('#experience')[0].value;
+        var satisfaction = $('#satisfaction')[0].value;
+        var stress = $('#stress')[0].value;
+        var comments = $('#notes')[0].value;
+
+        var progressReport = {
+          'date': date,
+          'difficulty': difficulty,
+          'experience': experience,
+          'satisfaction': satisfaction,
+          'stress': stress,
+          'comments': comments
+        };
+        console.log(progressReport);
+        progressReport = JSON.stringify(progressReport);
+
+        insertProgressInfo(progressReport);
+        
+        function insertProgressInfo(data) {
+          $.ajax({
+            url: "/insertProgressInfo",
+            method: "POST",
+            data: data,
+            contentType: "application/json",
+            processdata: true,
+            success: function(result) {
+              
+            },
+            error: function(result) {
+
+            }
+          });
+        }
+        window.location.href = '/trackprogress';
       });
     });
     </script>
@@ -208,49 +251,48 @@
         <h2><button class="btn btn-warning btn-block" type="submit">Submit Progress </button></h2>
         <h2><button class="btn btn-danger btn-block" type="button" onclick="window.location.href='/trackprogress'">Cancel </button></h2>
       </form>
-
       {{#users}}
       {{#compare name "Kenny" operator="=="}}
       {{#patrol}}
       {{#compare pname "Alexandra" operator="=="}}
       {{#progress}}
-      {{#compare date "February 20, 2015" operator="=="}}
+      {{#compare ../../../../../date-today date operator="=="}}
       <form role="form" class="progress-forms" id="progress-form">
         <div class="row">
           <div class="form-group">
-            <p>Today is <span class="today-date" id="dateinput" style="font-weight: bold"></span></p>
+            <p>Today is <span class="today-date" id="dateinput-f" style="font-weight: bold"></span></p>
           </div>
         </div>
 
         <div class="row">
           <div class="form-group">
             Difficulty
-            <input type="number" id="difficulty" class="form-control input-lg rating-css rating" value={{difficulty}}>
+            <input type="number" id="difficulty-f" class="form-control input-lg rating-css rating" value={{difficulty}}>
           </div>
         </div>
 
         <div class="row">
           <div class="form-group">
             Experience
-            <input type="number" id="experience" class="form-control input-lg rating-css rating" value={{experience}}>
+            <input type="number" id="experience-f" class="form-control input-lg rating-css rating" value={{experience}}>
           </div>
         </div>
 
         <div class="row">
           <div class="form-group">
             Satisfaction
-            <input type="number" id="satisfaction" class="form-control input-lg rating-css rating" value={{satisfaction}}>
+            <input type="number" id="satisfaction-f" class="form-control input-lg rating-css rating" value={{satisfaction}}>
           </div>
         </div>
         <div class="row">
           <div class="form-group">
             Stress
-            <input type="number" id="stress" class="form-control input-lg rating-css rating" value={{stress}}>
+            <input type="number" id="stress-f" class="form-control input-lg rating-css rating" value={{stress}}>
           </div>
         </div>
         <div class="row">
           <div class="form-group">
-            <textarea type="text" id="notes" class="form-control" 
+            <textarea type="text" id="notes-f" class="form-control" 
               rows="3" style="resize: none;" placeholder="Comments">{{comments}}</textarea>
           </div>
         </div>
@@ -266,7 +308,7 @@
     </div>
 
     <script>
-      $('.rating-css').rating({'size': 'xxs', 'showClear': true, 'showCaption': false, 'step': 1});       
+      $('.rating-css').rating({'size': 'xxs', 'showClear': false, 'showCaption': false, 'step': 1});       
     </script>
   </body>
 

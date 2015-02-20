@@ -12,7 +12,25 @@ exports.html = function(req, res) {
 			break;
 		}
 	}
-	newJson.users[i].patrol[1].progress.push(userInfo);
+
+	//Today is already in the JSON
+	for(j = 0; j < newJson.users[i].patrol[1].progress.length; j++) {
+		if(newJson.users[i].patrol[1].progress[j].date == userInfo.date) {
+			break;
+		}
+	}
+
+	if(newJson.users[i].patrol[1].progress[j].date == userInfo.date) {
+		newJson.users[i].patrol[1].progress[j].difficulty = userInfo.difficulty;
+		newJson.users[i].patrol[1].progress[j].experience = userInfo.experience;
+		newJson.users[i].patrol[1].progress[j].satisfaction = userInfo.satisfaction;
+		newJson.users[i].patrol[1].progress[j].stress = userInfo.stress;
+		newJson.users[i].patrol[1].progress[j].comments = userInfo.comments;									
+	}
+	else {
+		newJson.users[i].patrol[1].progress.push(userInfo);		
+	}
+
 	newJson = JSON.stringify(newJson);
 
 	fileSystem.writeFile('fakedata.json',newJson, function(err) {
