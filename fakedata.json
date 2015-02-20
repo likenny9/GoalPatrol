@@ -53,12 +53,18 @@
           "progress" : [
             {
               "date" : "February 22, 2015",
-              "overwhelmed" : "yes",
+              "difficulty" : "5",
+              "experience" : "3",
+              "satisfaction" : "4",
+              "stress" : "3",
               "comments" : "hard"
             },
             {
               "date" : "February 23, 2015",
-              "overwhelmed" : "no",
+              "difficulty" : "3",
+              "experience" : "4",
+              "satisfaction" : "4",
+              "stress" : "2",
               "comments" : "got better"
             }
           ],
@@ -77,14 +83,28 @@
           ],
           "progress" : [
             {
-              "date" : "February 22, 2015",
-              "overwhelmed" : "yes",
-              "comments" : "hard"
+              "date" : "February 20, 2015",
+              "difficulty" : "4",
+              "experience" : "2",
+              "satisfaction" : "1",
+              "stress" : "5",
+              "comments" : "bad"
             },
             {
-              "date" : "February 23, 2015",
-              "overwhelmed" : "no",
-              "comments" : "got better"
+              "date" : "February 21, 2015",
+              "difficulty" : "5",
+              "experience" : "1",
+              "satisfaction" : "1",
+              "stress" : "5",
+              "comments" : "even worse"
+            },
+            {
+              "date" : "February 22, 2015",
+              "difficulty" : "5",
+              "experience" : "2",
+              "satisfaction" : "2",
+              "stress" : "4",
+              "comments" : "okay maybe it's getting a little better, but bad still"
             }
           ],
           "goalwaiting" : "no"

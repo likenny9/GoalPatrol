@@ -1,4 +1,5 @@
-//Render Home HTML Page
+var data = require('../fakedata.json');
+
 exports.html = function(req, res){
-  res.render('trackprogress');
+  res.render('trackprogress', data);
 };
