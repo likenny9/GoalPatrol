@@ -7,45 +7,143 @@
     <title>Goal Patrol - Track Progress</title>
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/bootstrap-theme.css" rel="stylesheet">
-    <link href="css/GoalPatrol.css" rel="stylesheet">
+    <link href="/css/star-rating.min.css" rel="stylesheet">
+    <!--<link href="css/GoalPatrol.css" rel="stylesheet">-->
     <script src="js/angular.1.2.26.min.js"></script>
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/star-rating.min.js"></script>
     <script src="js/GoalPatrolScript.js"></script>
 
+    <style type="text/css">
+      /* Weird bug - with a font, stars show up as boxes */
+      * {
+        -font-family: Calibri;
+        font-size: 2.0rem;
+        color: black;
+        margin: 0;
+        padding: 0;
+      }
+
+      html, body {
+        height: 100%;
+        width: 100%;
+        text-align: left;
+        background: #FFF;
+      }
+
+      /* HOME HEADER */
+      .header-container {
+        width: 100%;
+        -height: 10%;
+        -border: 2px solid black;
+      }
+      #title {
+        font-size: 45px;
+        font-weight: bold;
+        float: left;
+      }
+
+      #dropdown-icon {
+        float: right;
+      }
+
+      #dropdown-icon > h2 {
+        font-size: 25px;
+        font-weight: bold;
+      }
+
+      #dropdown-icon ul li a {
+        font-size: 15px;
+      }
+
+      #sendgoal-icon {
+        float: right;
+        clear: right;
+      }
+
+      /****** Rating ******/
+      .text-tab {
+        -display: block;
+      }
+      .star-rating {
+        display: inline;
+      }
+
+      /****** Bootstrap Code Override Table Color *******/
+      .table-striped > tbody > tr:nth-of-type(odd) > th {
+        background-color: #888;
+      } 
+
+      .table-striped > tbody > tr:nth-of-type(odd) > td {
+        background-color: #CCC;
+      }
+
+      .table-striped > tbody > tr:nth-of-type(even) > td {
+        background-color: #EEE;
+      }
+
+      /***** Table formatting for mobile ******/
+      /** Credits to Geoff Yuen at http://codepen.io/geoffyuen/pen/FCBEg **/
+      .rwd-table {
+        margin: 1em 0;
+        min-width: 300px;
+      }
+      .rwd-table tr {
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+      }
+      .rwd-table th {
+        display: none;
+      }
+      .rwd-table td {
+        display: block;
+      }
+      .rwd-table td:first-child {
+        padding-top: .5em;
+      }
+      .rwd-table td:last-child {
+        padding-bottom: .5em;
+      }
+      .rwd-table td:before {
+        content: attr(data-th) " ";
+        font-weight: bold;
+        width: 6.5em;
+        display: inline-block;
+      }
+      @media (min-width: 720px) {
+        .rwd-table td:before {
+          display: none;
+        }
+      }
+      .rwd-table th, .rwd-table td {
+        text-align: left;
+      }
+      @media (min-width: 720px) {
+        .rwd-table th, .rwd-table td {
+          display: table-cell;
+          padding: .25em .5em;
+        }
+        .rwd-table th:first-child, .rwd-table td:first-child {
+          padding-left: 0;
+        }
+        .rwd-table th:last-child, .rwd-table td:last-child {
+          padding-right: 0;
+        }
+      }
+
+    </style>
+
+    <script>
+    var patrolName = "Soohyun";
+    </script>
   </head>
 
   <body>
 
     <!-- Header: Title & Name -->
     <div class="header-container container">
-      <a href="/"><h1 id="title">Goal Patrol</h1></a>
-
-      <!-- Name & Settings Dropdown Menu -->
-      <div class="dropdown" id="dropdown-icon">
-        <h2 class="btn btn-default dropdown-toggle" 
-            id="name-icon" data-toggle="dropdown">
-            Kenny
-            <span class="caret"></span>
-        </h2>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="name-icon" id="name-menu">
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/history">History</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/settings">Settings</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/help">Help</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/index">Logout</a>
-          </li>                   
-        </ul>        
-      </div>
+    {{> header}}
     </div>
 
     <br><!--Extra spacing-->
@@ -53,69 +151,52 @@
     <!-- Goal Giving -->
     <div class= "container">
 
-      <h3>Track Progress</h3>
+      <h1>Track Progress</h1>
 
-      Progress reports for 
-      <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle" 
-                data-toggle="dropdown" aria-expanded="false">
-          1 week <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#">2 weeks</a></li>
-          <li><a href="#">1 month</a></li>
-          <li><a href="#">2 month</a></li>
-          <li><a href="#">All</a></li>
-        </ul> 
-      </div>
+      <p>Week Progress</p>
 
       <div class="container">            
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Completed?</th>
-              <th>Overwhelmed?</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Feb 2, 2015</td>
-              <td>Yes</td>
-              <td>No</td>
-              <td><button class="btn btn-xs" onclick="window.location.href='trackprogress'">Modify</button></td>
-            </tr>
-            <tr>
-              <td>Jan 30, 2015</td>
-              <td>No</td>
-              <td>Yes</td>
-              <td><button class="btn btn-xs" onclick="window.location.href='trackprogress'">Modify</button></td>
-            </tr>
-            <tr>
-              <td>Jan 29, 2015</td>
-              <td>Yes</td>
-              <td>Yes</td>
-              <td><button class="btn btn-xs" onclick="window.location.href='trackprogress'">Modify</button></td>
-            </tr>
-             <tr>
-              <td>Jan 29, 2015</td>
-              <td>Yes</td>
-              <td>Yes</td>
-              <td><button class="btn btn-xs" onclick="window.location.href='trackprogress'">Modify</button></td>
-            </tr>
-          </tbody>
+        <table class="table table-striped rwd-table">
+          <tr>
+            <th data-th="Date">Date</th>
+            <th data-th="Difficulty">Difficulty</th>
+            <th data-th="Experience">Experience</th>
+            <th data-th="Satisfaction">Satisfaction</th>
+            <th data-th="Stress">Stress</th>
+            <th data-th="Comments">Comments</th>
+          </tr>
+          {{#users}}
+          {{#compare name "Kenny" operator="=="}}
+          {{#patrol}}
+          {{#compare pname "Alexandra" operator="=="}}
+          {{#progress}}
+          <tr>
+            <td data-th="Date"><span class="text-tab">{{date}}</span></td>
+            <td data-th="Difficulty"><input class="rating-css rating" value={{difficulty}} type="number"></input></td>
+            <td data-th="Experience"><input class="rating-css rating" value={{experience}} type="number"></input></td>
+            <td data-th="Satisfaction"><input class="rating-css rating" value={{satisfaction}} type="number"></input></td>
+            <td data-th="Stress"><input class="rating-css rating" value={{stress}} type="number"></input></td>
+            <td data-th="Comments"><span class="text-tab">{{comments}}</span></td>
+          </tr>
+          {{/progress}}
+          {{/compare}}
+          {{/patrol}}
+          {{/compare}}
+          {{/users}}
         </table>
       </div>
 
       <br>
 
-      <!-- Send Goal Button -->
-      <div id="sendgoal-icon">
-        <h2 class="btn btn-warning" type="button" onclick="alert('Saved!')">Save</h2>
-      </div> 
+      <h2 class="btn btn-warning btn-block" type="button" 
+        onclick="window.location.href='/inputprogress';">
+        Input Today's Progress
+      </h2>
     </div>
 
+    <script>
+      $('.rating-css').rating({'size': 'xxs', 'readonly' : true, 'showClear': false, 'showCaption': false});       
+    </script>
   </body>
 
 </html>
