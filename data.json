@@ -14,7 +14,7 @@
           "goal3": "Walk 1 hr 2 times a week"
         }      
       },
-      { "Alexandra": 
+      { "Alexandra":
         {
           "email": "a5huang@ucsd.edu",
           "password": "alexhuang", 
@@ -28,7 +28,7 @@
       },
       { "Giulio": 
         {
-          "email": "gpertica@ucsd.edu", 
+          "email": "laperticari@gmail.com", 
           "password": "giulioperticari", 
           "imgsrc": "/images/default.jpg",
           "goal1": "Go to Gym 3 times a week",
