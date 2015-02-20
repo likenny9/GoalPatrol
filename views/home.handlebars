@@ -13,10 +13,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/GoalPatrolScript.js"></script>
    <script > 
-      var NAME = "Kenny";
-      window.onload = function() {
-        document.getElementById("demo").innerHTML = NAME; 
-      }
 
       function doInspireMe() {
           var x;
@@ -109,8 +105,8 @@
           {{/patrol}}
           {{/compare}}
           {{/users}}
-            <button class="btn btn-block"> 
-              <a href ng-click="tab.setTab(1)">Back</a>
+            <button class="btn btn-block" href ng-click="tab.setTab(1)"> 
+              Back
             </button>
             </div>
         </div>
@@ -136,8 +132,8 @@
               {{/patrol}}
               {{/compare}}
               {{/users}}
-            <button class="btn btn-block"> 
-              <a href ng-click="tab.setTab(1)">Back</a>
+            <button class="btn btn-block" href ng-click="tab.setTab(1)"> 
+              Back
             </button>
             </div>
         </div> 
