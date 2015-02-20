@@ -17,6 +17,30 @@
 
   <body>
 
+    <script>
+    function textFunction() {
+        var text = prompt("Please enter the message you would like to send");
+    }
+    </script>
+
+    <script>
+    function urlFunction() {
+        var URL = prompt("Please enter the URL you would like to send");
+    }
+    </script>
+
+    <!--<script>
+    $(function(){
+      var textarea = $('#area');
+    $("#popup").click(function(){
+
+       // To show it
+       textarea.show();
+
+    });
+  })
+    </script>-->
+
     <!-- Header: Title & Name -->
     <div class="header-container container">
       <a href="/"><h1 id="title">Goal Patrol</h1></a>
@@ -65,36 +89,38 @@
         </div>
       </form>
 
-      <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-          0 <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#">0</a></li>
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-        </ul>
-      </div>
-
-      hrs 
-
-      <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-          0 <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#">0</a></li>
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-          <li><a href="#">6</a></li>
-          <li><a href="#">7</a></li>
-        </ul>
-      </div>
-     
-      times a week
+        <p>
+        <select>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+        hrs
+        <select>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+        times a week
+      </p>
 
       <br><br>
 
@@ -104,16 +130,20 @@
 
       <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <div class="btn-group" role="group">
-          <button type="button" class="btn btn-default">Text</button>
+          <button type="button" class="btn btn-default" onclick="textFunction()">Text</button>
+          <!--<button type="button" class="btn btn-default" id="popup"> Text </button>-->
+          <!--<div class="form-group">
+            <textarea id="area" style="display:none"></textarea>
+          </div>-->
         </div>
         <div class="btn-group" role="group">
-          <button type="button" class="btn btn-default">Photo</button>
+          <button type="button" class="btn btn-default" disabled>Photo</button>
         </div>
         <div class="btn-group" role="group">
-          <button type="button" class="btn btn-default">Video</button>
+          <button type="button" class="btn btn-default" disabled>Video</button>
         </div>
         <div class="btn-group" role="group">
-          <button type="button" class="btn btn-default">URL Link</button>
+          <button type="button" class="btn btn-default" onclick="urlFunction()">URL Link</button>
         </div>
       </div>
 
@@ -123,6 +153,7 @@
       <div id="sendgoal-icon">
         <h2 class="btn btn-warning" type="button" onclick="alert('Goal sent!');window.location.href='/'">Send Goal</h2>
       </div> 
+    </div>
 
     </div>
   </body>
