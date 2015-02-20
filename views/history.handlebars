@@ -19,37 +19,8 @@
 
     <!-- Header: Title & Name -->
     <div class="header-container container">
-      <a href="/"><h1 id="title">Goal Patrol</h1></a>
-
-      <!-- Name & Settings Dropdown Menu -->
-      <div class="dropdown" id="dropdown-icon">
-        <h2 class="btn btn-default dropdown-toggle" 
-            id="name-icon" data-toggle="dropdown">
-            Bob
-            <span class="caret"></span>
-        </h2>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="name-icon" id="name-menu">
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="#">History</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/settings">Settings</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/help">Help</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/index">Logout</a>
-          </li>                   
-        </ul>        
-      </div>
-
-    <br> <!--Extra spacing-->
-    <br>
-    <br>
+      {{> header}}
+    </div>
 
     <div class= "container">
       <h1 align="center">History</h1>

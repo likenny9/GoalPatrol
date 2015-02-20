@@ -4,14 +4,14 @@
       "name" : "Soohyun",
       "email" : "snam@ucsd.edu",
       "password" : "soonam",
-      "profilepic" : "/images/soohyun.jpg",
+      "profilepic" : "/images/silhouette-question-mark.jpg",
       "patrol" : [
         {
-          "pname" : "Alex",
-          "pprofilepic" : "/images/alex.jpg",
-          "goal" : "Go to the gym.",
-          "hoursweek" : "3",
-          "timesweek" : "2",
+          "pname" : "Kenny",
+          "pprofilepic" : "/images/silhouette-question-mark.jpg",
+          "goal" : "Study at the library.",
+          "hoursweek" : "2",
+          "timesweek" : "5",
           "motivations" : [
             {
               "1" : "Do work"
@@ -21,27 +21,27 @@
             {
               "date" : "February 22, 2015",
               "overwhelmed" : "yes",
-              "comments" : "hard"
+              "comments" : "stressful"
             },
             {
               "date" : "February 23, 2015",
               "overwhelmed" : "no",
-              "comments" : "got better"
+              "comments" : "less stressed"
             }
           ],
-          "goalwaiting" : "no"
-        }
+          "goalwaiting" : "no"}
       ]
     },
     {
       "name" : "Kenny",
       "email" : "k3li@ucsd.edu",
       "password" : "kennyli",
-      "profilepic" : "/images/default.jpg",
+      "profilepic" : "/images/silhouette-question-mark.jpg",
       "patrol" : [
         {
+          "tabID" : "2",
           "pname" : "Soohyun",
-          "pprofilepic" : "/images/soohyun.jpg",
+          "pprofilepic" : "/images/silhouette-question-mark.jpg",
           "goal" : "Go to the gym.",
           "hoursweek" : "3",
           "timesweek" : "2",
@@ -65,14 +65,15 @@
           "goalwaiting" : "no"
         },
         {
+          "tabID" : "3",
           "pname" : "Alexandra",
-          "pprofilepic" : "/images/alex.jpg",
+          "pprofilepic" : "/images/silhouette-question-mark.jpg",
           "goal" : "Eat a healthy snack.",
           "hoursweek" : "1",
           "timesweek" : "7",
           "motivations" : [
             {
-              "1" : "Do work"
+              "1" : "Do eat healthy"
             }
           ],
           "progress" : [
@@ -95,11 +96,11 @@
       "name" : "Alexandra",
       "email" : "a5huang@ucsd.edu",
       "password" : "alexhuang",
-      "profilepic" : "/images/alex.jpg",
+      "profilepic" : "/images/silhouette-question-mark.jpg",
       "patrol" : [
         {
           "pname" : "Kenny",
-          "pprofilepic" : "/images/default.jpg",
+          "pprofilepic" : "/images/silhouette-question-mark.jpg",
           "goal" : "Get enough sleep.",
           "hoursweek" : "8",
           "timesweek" : "7",

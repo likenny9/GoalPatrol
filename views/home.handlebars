@@ -37,52 +37,23 @@
 
     <!-- Header: Title & Name -->
   	<div class="header-container container">
-      <a href="/"><h1 id="title">Goal Patrol</h1></a>
-
-      <!-- Name & Settings Dropdown Menu -->
-      <div class="dropdown" id="dropdown-icon">
-        <h2 class="btn btn-default dropdown-toggle" 
-            id="name-icon" data-toggle="dropdown">
-            <a id="demo"></a>
-            <span class="caret"></span>
-        </h2>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="name-icon" id="name-menu">
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/history">History</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/settings">Settings</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/help">Help</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/index">Logout</a>
-          </li>                   
-        </ul>        
-      </div>
-
-      <!-- Send Goal Button -->
-      <div id="sendgoal-icon">
-        <h2 class="btn btn-warning" type="button" onclick="window.location.href='sendgoal'">Send Goal</h2>
-      </div> 
+      {{> header}}
   	</div>
 
     <br> <!--Extra spacing-->
 
     <!-- Goal Requests -->
+    
     <div class="goalrequest-container container ">
       <h3>New Goal Request!</h3>
       <p>From: Jenny<br>
-         Goal: Go to the gym. 1 hours 5 times a week.<br>
+         Goal: Go to the gym 1 hours 5 times a week.<br>
          Complete Date: 02/15/2015
       </p>
       <button class="btn btn-block" onclick="window.location.href='goaldetails'"> Accept</button>
       <button class="btn btn-block AccRej">Decline</button>
     </div>
+    
 
 
     <!-- Goals -->
@@ -91,7 +62,6 @@
         
         <!-- GOAL HOME PAGE TAB1-->
         <div ng-show="tab.isSet(1)">
-          <p>
             <h3>Your Goals</h3>
 
             <!-- Container for all goals -->
@@ -105,57 +75,71 @@
               <img class="avatar-image" src={{pprofilepic}}>
 
                 <p class="patrol-info"><b>Patrol:</b>
-                  <a href ng-click="tab.setTab(2)">{{pname}}</a>
+                  <a href ng-click="tab.setTab({{tabID}})">{{pname}}</a>
                 </p>
                 <p class="bubble">{{goal}} for {{hoursweek}} hours {{timesweek}} times a week</p>
                 <button class="btn btn-lg btn-success alert" onclick="doInspireMe()" id="inspire1">Inspire Me</button>
                 <button class="btn btn-lg btn-info alert" id="progress1" onclick="window.location.href='trackprogress'">Track Progress</button>
-              {{/patrol}}
-            </div>
-<!--
-            <div class="Users">
-
-              <img class="avatar-image" src={{Kenny.patrol2imgsrc}}>
-                <p class="patrol-info"><b>Patrol:</b>
-                  <a href ng-click="tab.setTab(2)">{{Kenny.patrol2}}</a>
-                </p>
-                <p class="bubble">{{Kenny.goal2}}</p>
-                <button class="btn btn-lg btn-success alert" onclick="doInspireMe()" id="inspire1">Inspire Me</button>
-                <button class="btn btn-lg btn-info alert" id="progress1" onclick="window.location.href='trackprogress'">Track Progress</button>
-            </div>-->
+              
+              </div>
+          {{/patrol}}
           {{/compare}}
           {{/users}}
-
-            </div>
-          </p>
+          </div>
         </div>
 
         <!-- JENNY'S STUFF -->
         <div ng-show="tab.isSet(2)">
-          <p>
             <h3>Soohyun's Goal</h3><br>
 
-            <button class="btn btn-xs">
-              <a href ng-click="tab.setTab(1)">&lt;- Back</a>
-            </button>
             <div class="goal-container container">
-          	 Show Soohyun's information
+          	 <!--Show Soohyun's information-->
+          {{#users}}
+          {{#compare name "Soohyun" operator="=="}}
+          {{#patrol}}
+              <div class="Users">
+
+              <img class="avatar-image" src={{pprofilepic}}>
+
+                <p class="patrol-info"><b>Patrol:</b>
+                  {{pname}}
+                </p>
+                <p class="bubble">{{goal}} for {{hoursweek}} hours {{timesweek}} times a week</p>
+              </div>
+          {{/patrol}}
+          {{/compare}}
+          {{/users}}
+            <button class="btn btn-block"> 
+              <a href ng-click="tab.setTab(1)">Back</a>
+            </button>
             </div>
-          </p>
         </div>
 
         <!-- Mary's stuff -->
         <div ng-show="tab.isSet(3)">
-          <p>
             <h3>Alexandra's Goal</h3><br>
-            
-            <button class="btn btn-xs">
-              <a href ng-click="tab.setTab(1)">&lt;- Back</a>
-            </button>
+
             <div class="goal-container container">
-              Show Alexandra's information
+              <!--Show Alexandra's information-->
+              {{#users}}
+              {{#compare name "Alexandra" operator="=="}}
+              {{#patrol}}
+              <div class="Users">
+
+              <img class="avatar-image" src={{pprofilepic}}>
+
+                <p class="patrol-info"><b>Patrol:</b>
+                  {{pname}}
+                </p>
+                <p class="bubble">{{goal}} for {{hoursweek}} hours {{timesweek}} times a week</p>
+              </div>
+              {{/patrol}}
+              {{/compare}}
+              {{/users}}
+            <button class="btn btn-block"> 
+              <a href ng-click="tab.setTab(1)">Back</a>
+            </button>
             </div>
-          </p>
         </div> 
 
       </section>  
