@@ -1,0 +1,273 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Goal Patrol - Track Progress</title>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="/css/star-rating.min.css" rel="stylesheet">
+    <!--<link href="css/GoalPatrol.css" rel="stylesheet">-->
+    <script src="js/angular.1.2.26.min.js"></script>
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/star-rating.min.js"></script>
+    <script src="js/GoalPatrolScript.js"></script>
+
+    <style type="text/css">
+      /* Weird bug - with a font, stars show up as boxes */
+      * {
+        -font-family: Calibri;
+        font-size: 2.0rem;
+        color: black;
+        margin: 0;
+        padding: 0;
+      }
+
+      html, body {
+        height: 100%;
+        width: 100%;
+        text-align: left;
+        background: #FFF;
+      }
+
+      /* HOME HEADER */
+      .header-container {
+        width: 100%;
+        -height: 10%;
+        -border: 2px solid black;
+      }
+      #title {
+        font-size: 45px;
+        font-weight: bold;
+        float: left;
+      }
+
+      #dropdown-icon {
+        float: right;
+      }
+
+      #dropdown-icon > h2 {
+        font-size: 25px;
+        font-weight: bold;
+      }
+
+      #dropdown-icon ul li a {
+        font-size: 15px;
+      }
+
+      #sendgoal-icon {
+        float: right;
+        clear: right;
+      }      
+
+
+      /****** Rating ******/
+      .text-tab {
+        -display: block;
+      }
+      .star-rating {
+        display: inline;
+      }
+
+
+    </style>
+
+    <script>
+    $(function() {
+
+      function getMonthInWords(num) {
+        var month = new Array(12);
+        month[0]=  "January";
+        month[1] = "February";
+        month[2] = "March";
+        month[3] = "April";
+        month[4] = "May";
+        month[5] = "June";
+        month[6] = "July";
+        month[7]=  "August";
+        month[8] = "September";
+        month[9] = "October";
+        month[10] = "November";
+        month[11] = "December";
+        return month[num];
+      }
+
+      var today = new Date();
+      today = getMonthInWords(today.getMonth()) + " " + today.getDate() + ", " + today.getFullYear();
+      $('.today-date').html(today);
+
+      //Displays empty form if nothing loaded from handlebars
+      if($('#progress-form').length != 0) {
+        $('#empty-progress-form').css('display','none');
+      }
+      else {
+        $('#empty-progress-form').css('display','block');
+      }
+
+      //User clicks submit
+      $('.progress-forms').submit(function(evt) {
+        evt.preventDefault();
+
+        var date = today;
+        var difficulty = $('#difficulty')[0].value;
+        var experience = $('#experience')[0].value;
+        var satisfaction = $('#satisfaction')[0].value;
+        var stress = $('#stress')[0].value;
+        var comments = $('#notes')[0].value;
+
+        var progressReport = {
+          'date': date,
+          'difficulty': difficulty,
+          'experience': experience,
+          'satisfaction': satisfaction,
+          'stress': stress,
+          'comments': comments
+        };
+
+        progressReport = JSON.stringify(progressReport);
+
+        insertProgressInfo(progressReport);
+        
+        function insertProgressInfo(data) {
+          $.ajax({
+            url: "/insertProgressInfo",
+            method: "POST",
+            data: data,
+            contentType: "application/json",
+            processdata: true,
+            success: function(result) {
+              console.log("success insert");
+            },
+            error: function(result) {
+              console.log("failed insert");
+            }
+          });
+
+        }
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+
+    <!-- Header: Title & Name -->
+    <div class="header-container container">
+    {{> header}}
+    </div>
+
+    <br><!--Extra spacing-->
+
+    <div class= "container">
+
+      <h2>Input Today's Progress</h2>
+
+      <br>
+
+      <form role="form" class="progress-forms" id="empty-progress-form">
+        <div class="row">
+          <div class="form-group">
+            <p>Today is <span class="today-date" id="dateinput" style="font-weight: bold"></span></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            Difficulty
+            <input type="number" id="difficulty" class="form-control input-lg rating-css rating" value={{difficulty}}>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            Experience
+            <input type="number" id="experience" class="form-control input-lg rating-css rating" value={{experience}}>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            Satisfaction
+            <input type="number" id="satisfaction" class="form-control input-lg rating-css rating" value={{satisfaction}}>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            Stress
+            <input type="number" id="stress" class="form-control input-lg rating-css rating" value={{stress}}>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <textarea type="text" id="notes" class="form-control" 
+              rows="3" style="resize: none;" placeholder="Comments">{{comments}}</textarea>
+          </div>
+        </div>
+        <h2><button class="btn btn-warning btn-block" type="submit">Submit Progress </button></h2>
+        <h2><button class="btn btn-danger btn-block" type="button" onclick="window.location.href='/trackprogress'">Cancel </button></h2>
+      </form>
+
+      {{#users}}
+      {{#compare name "Kenny" operator="=="}}
+      {{#patrol}}
+      {{#compare pname "Alexandra" operator="=="}}
+      {{#progress}}
+      {{#compare date "February 20, 2015" operator="=="}}
+      <form role="form" class="progress-forms" id="progress-form">
+        <div class="row">
+          <div class="form-group">
+            <p>Today is <span class="today-date" id="dateinput" style="font-weight: bold"></span></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            Difficulty
+            <input type="number" id="difficulty" class="form-control input-lg rating-css rating" value={{difficulty}}>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            Experience
+            <input type="number" id="experience" class="form-control input-lg rating-css rating" value={{experience}}>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            Satisfaction
+            <input type="number" id="satisfaction" class="form-control input-lg rating-css rating" value={{satisfaction}}>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            Stress
+            <input type="number" id="stress" class="form-control input-lg rating-css rating" value={{stress}}>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <textarea type="text" id="notes" class="form-control" 
+              rows="3" style="resize: none;" placeholder="Comments">{{comments}}</textarea>
+          </div>
+        </div>
+        <h2><button class="btn btn-warning btn-block" type="submit">Submit Progress </button></h2>
+        <h2><button class="btn btn-danger btn-block" type="button" onclick="window.location.href='/trackprogress'">Cancel </button></h2>
+      </form>
+      {{/compare}}
+      {{/progress}}
+      {{/compare}}
+      {{/patrol}}
+      {{/compare}}
+      {{/users}}
+    </div>
+
+    <script>
+      $('.rating-css').rating({'size': 'xxs', 'showClear': true, 'showCaption': false, 'step': 1});       
+    </script>
+  </body>
+
+</html>
