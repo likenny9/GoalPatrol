@@ -1,1 +1,38 @@
-{"members":{"name":"Kenny","email":"k3li@ucsd.edu","password":"password"}}
+[
+	{
+		"name" : "Alexandra",
+		"email" : "a5huang@ucsd.edu",
+		"password" : "alexhuang",
+		"profilepic" : "/images/silhouette-question-mark.jpg"
+	},
+	{
+		"name" : "Kenny",
+		"email" : "k3li@ucsd.edu",
+		"password" : "kennyli",
+		"profilepic" : "/images/silhouette-question-mark.jpg"
+	},
+	{
+		"name" : "Giulio",
+		"email" : "gpertica@ucsd.edu",
+		"password" : "giulioperticari",
+		"profilepic" : "/images/silhouette-question-mark.jpg"
+	},
+	{
+		"name" : "Test1",
+		"email" : "test1@gmail.com",
+		"password" : "test1",
+		"profilepic" : "/images/silhouette-question-mark.jpg"
+	},
+	{
+		"name" : "Test2",
+		"email" : "test2@gmail.com",
+		"password" : "test2",
+		"profilepic" : "/images/silhouette-question-mark.jpg"
+	},
+	{
+		"name" : "Test3",
+		"email" : "test3@gmail.com",
+		"password" : "test3",
+		"profilepic" : "/images/silhouette-question-mark.jpg"
+	}
+]

@@ -12,6 +12,8 @@
     "express": "3.x",
     "express3-handlebars": "*",
     "googleapis": "^1.1.2",
+    "mongodb": "^1.4.31",
+    "mongoose": "^3.8.23",
     "passport": "~0.1",
     "passport-google-oauth": "~0.1"
   },

@@ -42,19 +42,21 @@
 
   	</div>
 
-    <br> <!--Extra spacing-->
 
     <!-- Goal Requests -->
-    
+    {{#patrols}}
+    {{#compare goalwaiting "true" operator="=="}}
+    <br>
     <div class="goalrequest-container container ">
       <h3>New Goal Request!</h3>
-      <p>From: Jenny<br>
-         Goal: Go to the gym 1 hours 5 times a week.<br>
-         Complete Date: 02/15/2015
+      <p>From: {{pname}}<br>
+         Goal: {{goal}} for {{hoursweek}} hours {{timesweek}} times a week.<br>
       </p>
       <button class="btn btn-block" onclick="window.location.href='goaldetails'"> Accept</button>
       <button class="btn btn-block AccRej">Decline</button>
     </div>
+    {{/compare}}
+    {{/patrols}}
     
 
 
@@ -69,26 +71,41 @@
             <!-- Container for all goals -->
             <div class="goal-container container">
             
-          {{#users}}
-          {{#compare name "Kenny" operator="=="}}
-          {{#patrol}}
+          {{#patrols}}
+          {{#compare goalwaiting "false" operator="=="}}
               <div class="Users">
 
               <img class="avatar-image" src={{pprofilepic}}>
 
                 <p class="patrol-info"><b>Patrol:</b>
-                  <a href ng-click="tab.setTab({{tabID}})">{{pname}}</a>
+                  <a href ng-click="tab.setTab('{{_id}}')">{{pname}}</a>
                 </p>
                 <p class="bubble">{{goal}} for {{hoursweek}} hours {{timesweek}} times a week</p>
                 <button class="btn btn-lg btn-success alert" onclick="doInspireMe()" id="inspire1">Inspire Me</button>
                 <button class="btn btn-lg btn-info alert" id="progress1" onclick="window.location.href='trackprogress'">Track Progress</button>
-              
               </div>
-          {{/patrol}}
-          {{/compare}}
-          {{/users}}
+            {{/compare}}
+          {{/patrols}}
           </div>
         </div>
+
+        {{#patrols}}
+        <div ng-show="tab.isSet('{{_id}}')">
+            <h3>Your Goal for {{pname}}</h3><br>
+
+            <div class="goal-container container">
+              <div class="Users">
+
+              <img class="avatar-image" src={{pprofilepic}}>
+              <p class="bubble">{{goal}} for {{hoursweek}} hours {{timesweek}} times a week</p>
+              </div>
+              <button class="btn btn-lg btn-info alert" id="progress1" onclick="window.location.href='trackprogress'">Their Progress</button>
+              <button class="btn btn-block" href ng-click="tab.setTab(1)"> 
+                Back
+              </button>
+            </div>
+        </div>
+        {{/patrols}}
 
         <!-- JENNY'S STUFF -->
         <div ng-show="tab.isSet(2)">

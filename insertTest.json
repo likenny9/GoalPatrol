@@ -1,0 +1,164 @@
+{
+   "users":[
+      {
+         "name":"Soohyun",
+         "email":"snam@ucsd.edu",
+         "password":"soonam",
+         "profilepic":"/images/soohyun.jpg",
+         "patrol":[
+            {
+               "pname":"Alex",
+               "pprofilepic":"/images/alex.jpg",
+               "goal":"Go to the gym.",
+               "hoursweek":"3",
+               "timesweek":"2",
+               "motivations":[
+                  {
+                     "1":"Do work"
+                  }
+               ],
+               "progress":[
+                  {
+                     "date":"February 22, 2015",
+                     "overwhelmed":"yes",
+                     "comments":"hard"
+                  },
+                  {
+                     "date":"February 23, 2015",
+                     "overwhelmed":"no",
+                     "comments":"got better"
+                  }
+               ],
+               "goalwaiting":"no"
+            }
+         ]
+      },
+      {
+         "name":"Kenny",
+         "email":"k3li@ucsd.edu",
+         "password":"kennyli",
+         "profilepic":"/images/default.jpg",
+         "patrol":[
+            {
+               "pname":"Soohyun",
+               "pprofilepic":"/images/soohyun.jpg",
+               "goal":"Go to the gym.",
+               "hoursweek":"3",
+               "timesweek":"2",
+               "motivations":[
+                  {
+                     "1":"Do work"
+                  }
+               ],
+               "progress":[
+                  {
+                     "date":"February 22, 2015",
+                     "difficulty":"5",
+                     "experience":"3",
+                     "satisfaction":"4",
+                     "stress":"3",
+                     "comments":"hard"
+                  },
+                  {
+                     "date":"February 23, 2015",
+                     "difficulty":"3",
+                     "experience":"4",
+                     "satisfaction":"4",
+                     "stress":"2",
+                     "comments":"got better"
+                  }
+               ],
+               "goalwaiting":"no"
+            },
+            {
+               "pname":"Alexandra",
+               "pprofilepic":"/images/alex.jpg",
+               "goal":"Eat a healthy snack.",
+               "hoursweek":"1",
+               "timesweek":"7",
+               "motivations":[
+                  {
+                     "1":"Do work"
+                  }
+               ],
+               "progress":[
+                  {
+                     "date":"February 19, 2015",
+                     "difficulty":"4",
+                     "experience":"2",
+                     "satisfaction":"1",
+                     "stress":"5",
+                     "comments":"bad"
+                  },
+                  {
+                     "date":"February 20, 2015",
+                     "difficulty":"5",
+                     "experience":"1",
+                     "satisfaction":"1",
+                     "stress":"5",
+                     "comments":"even worse"
+                  },
+                  {
+                     "date":"February 21, 2015",
+                     "difficulty":"5",
+                     "experience":"2",
+                     "satisfaction":"2",
+                     "stress":"4",
+                     "comments":"okay maybe it's getting a little better, but bad still"
+                  },
+                  {
+                     "date":"February 19, 2015",
+                     "difficulty":"0",
+                     "experience":"0",
+                     "satisfaction":"0",
+                     "stress":"0",
+                     "comments":""
+                  },
+                  {
+                     "date":"February 19, 2015",
+                     "difficulty":"5",
+                     "experience":"3",
+                     "satisfaction":"3",
+                     "stress":"4",
+                     "comments":"as"
+                  }
+               ],
+               "goalwaiting":"no"
+            }
+         ]
+      },
+      {
+         "name":"Alexandra",
+         "email":"a5huang@ucsd.edu",
+         "password":"alexhuang",
+         "profilepic":"/images/alex.jpg",
+         "patrol":[
+            {
+               "pname":"Kenny",
+               "pprofilepic":"/images/default.jpg",
+               "goal":"Get enough sleep.",
+               "hoursweek":"8",
+               "timesweek":"7",
+               "motivations":[
+                  {
+                     "1":"Do sleep"
+                  }
+               ],
+               "progress":[
+                  {
+                     "date":"February 22, 2015",
+                     "overwhelmed":"yes",
+                     "comments":"hard to do"
+                  },
+                  {
+                     "date":"February 23, 2015",
+                     "overwhelmed":"yes",
+                     "comments":"too much work to do"
+                  }
+               ],
+               "goalwaiting":"no"
+            }
+         ]
+      }
+   ]
+}

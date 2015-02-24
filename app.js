@@ -2,6 +2,7 @@
 
 var express = require('express');
 var handlebars = require('express3-handlebars');
+var mongoose = require('mongoose');
 var googleCal = require('google-calendar');
 var googleAuth = require('passport-google-oauth').OAuth2Strategy;
 var passport = require('passport');
@@ -9,6 +10,12 @@ var config = require('./config');
 
 var http = require('http');
 var path = require('path');
+
+//Mongoose
+var local_DB_name = 'GoalPatrol';
+var local_DB_uri = 'mongodb://localhost/' + local_DB_name;
+var dB_uri = process.env.MONGOLAB_URI || local_DB_uri;
+mongoose.connect(dB_uri);
 
 //Add requires for pages here
 var home = require('./routes/home');
