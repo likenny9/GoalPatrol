@@ -68,8 +68,8 @@
 
             //Set the tab and show/hide the right sections of the HTML
             angular.element(document.getElementById('bodyid')).scope().tab.setTab('2');
-            $('#foundpartner-tab').removeClass('ng-hide');
-            $('#search-tab').addClass('ng-hide');
+            $('#goal-tab').removeClass('ng-hide');
+            $('#show-tab').addClass('ng-hide');
 
             //Render the user's information onto the page
             $('#profileimg').attr('src',profile);
@@ -85,33 +85,7 @@
 
     <!-- Header: Title & Name -->
   	<div class="header-container container">
-      <a href="/"><h1 id="title">Goal Patrol</h1></a>
-
-      <!-- Name & Settings Dropdown Menu -->
-      <div class="dropdown" id="dropdown-icon">
-        <h2 class="btn btn-default dropdown-toggle" 
-            id="name-icon" data-toggle="dropdown">
-            Kenny
-            <span class="caret"></span>
-        </h2>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="name-icon" id="name-menu">
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/history">History</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/settings">Settings</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/help">Help</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/index">Logout</a>
-          </li>                   
-        </ul>        
-      </div>
+    {{> header}}
     </div>
 
     <br> <!--Extra spacing-->
