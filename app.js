@@ -221,6 +221,7 @@ app.all('/insertUserInfo', userinfo.html);
 app.all('/insertProgressInfo', insertProgress.html);
 app.all('/authenticate', authenticate.login);
 app.all('/createUserInfo', authenticate.create);
+app.all('/getUsers', authenticate.getUsers);
 
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -29,47 +29,10 @@
     }
     </script>
 
-    <!--<script>
-    $(function(){
-      var textarea = $('#area');
-    $("#popup").click(function(){
-
-       // To show it
-       textarea.show();
-
-    });
-  })
-    </script>-->
 
     <!-- Header: Title & Name -->
     <div class="header-container container">
-      <a href="/"><h1 id="title">Goal Patrol</h1></a>
-
-      <!-- Name & Settings Dropdown Menu -->
-      <div class="dropdown" id="dropdown-icon">
-        <h2 class="btn btn-default dropdown-toggle" 
-            id="name-icon" data-toggle="dropdown">
-            Kenny
-            <span class="caret"></span>
-        </h2>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="name-icon" id="name-menu">
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/history">History</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/settings">Settings</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/help">Help</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/index">Logout</a>
-          </li>                   
-        </ul>        
-      </div>
+    {{> header}}
     </div>
 
 
@@ -77,20 +40,19 @@
 
     <!-- Goal Giving -->
     <div class= "container">
-
-      <h3>Send a goal to: Jenny</h3>
-
-      <form role="form">
+      {{#goalToUser}}
+      <h3>Send a goal to: {{name}}</h3>
+      {{/goalToUser}}
+      <form role="form" id="setgoal-form">
         <div class="row">
             <div class="form-group">
-                <!--<label for="code">Name</label>-->
                 <input type="text" class="form-control input-lg">
             </div>
         </div>
       </form>
 
         <p>
-        <select>
+        <select form="setgoal-form">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -105,7 +67,7 @@
           <option value="12">12</option>
         </select>
         hrs
-        <select>
+        <select form="setgoal-form">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>

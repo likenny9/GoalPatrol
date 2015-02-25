@@ -15,6 +15,7 @@
 
     <script>
     $(function() {
+      var userInfo = "";
 
       //User clicks on search
       $('#search-partner').submit(function(evt) {
@@ -22,8 +23,6 @@
 
         //Get email from JSON file
         var email = $('#email')[0].value;
-        var partnerEmail;
-        var userNumber;
 
         //Just error checking
         if(email == "") {
@@ -31,52 +30,67 @@
           return;
         }
 
-        //Ajax GET call to the JSON file.
-        $.get("/renderJson",getJSON);
-
-        //Callback returning the results of the JSON file
-        function getJSON(result) {
-          var users = result['users'];
-
-          //Loops through users and looks for one with same email
-          for(i = 0; i < users.length; i++) {
-            partnerEmail = users[i]['email'];
-            if(email == partnerEmail) {
-              userNumber = i; //So we know where in the JSON this user is
-              break; 
-            }
-            else {
-              partnerEmail = "0"; //false - not the correct email
-            }
-          }
-
-          //Partner not found
-          if(partnerEmail == "0") { 
-            //Set the tab and show/hide the right sections of the HTML
-            angular.element(document.getElementById('bodyid')).scope().tab.setTab('3');
-            $('#nopartner-tab').removeClass('ng-hide');
-            $('#search-tab').addClass('ng-hide');
-
-            //Render the email address onto the page
-            $('#render-email').html(email + " not found. Invite this person?");
-          }
-          //Partner found
-          else {
-            //Gets the user's details
-            name = users[userNumber]['name'];
-            profile = users[userNumber]['profilepic'];
-
-            //Set the tab and show/hide the right sections of the HTML
-            angular.element(document.getElementById('bodyid')).scope().tab.setTab('2');
-            $('#goal-tab').removeClass('ng-hide');
-            $('#show-tab').addClass('ng-hide');
-
-            //Render the user's information onto the page
-            $('#profileimg').attr('src',profile);
-            $('#namecaption').html(name + "  -  " + email);            
-          }
+        var emailJSON = {
+          "email" : email
         };
+
+        emailJSON = JSON.stringify(emailJSON);
+
+        //Ajax GET call to the server.
+        $.ajax({
+          url: "/getUsers",
+          method: "POST",
+          data: emailJSON,
+          contentType: "application/json",
+          processdata: true
+        }).done(function(info) {
+          if(info.error) {
+            alert(info.error); //Alert any errors that were checked in server side
+          }
+          else {
+            userInfo = info;
+
+            //User not found
+            if(info == "NotFound") {
+
+              //Set the tab and show/hide the right sections of the HTML
+              angular.element(document.getElementById('bodyid')).scope().tab.setTab('3');
+              $('#nopartner-tab').removeClass('ng-hide');
+              $('#search-tab').addClass('ng-hide');
+
+              //Render the email address onto the page
+              $('#render-email').html(email + " not found. Invite this person?");
+            }
+            //User founds
+            else {
+
+              //Gets the user's details
+              var name = info.name;
+              var profilepic = info.profilepic;
+              email = info.email;
+
+              //Set the tab and show/hide the right sections of the HTML
+              angular.element(document.getElementById('bodyid')).scope().tab.setTab('2');
+              $('#foundpartner-tab').removeClass('ng-hide');
+              $('#search-tab').addClass('ng-hide');
+
+              //Render the user's information onto the page
+              $('#profileimg').attr('src',profilepic);
+              $('#namecaption').html(name + "  -  " + email);                
+            }
+          }
+        });
+        // end of ajax call  
       });
+
+      //User clicks yes - sends goal
+      $('#yes-sendgoal').click(function(evt) {
+        evt.preventDefault();
+
+        window.location.href = '/setgoal';
+
+      });
+
     });
     </script>
   </head>
@@ -98,7 +112,7 @@
       <form role="form" id="search-partner">
         <div class="row">
             <div class="form-group">
-                <input type="text" id="email" class="form-control input-lg" placeholder="Search by Email">
+                <input type="email" id="email" class="form-control input-lg" placeholder="Search by Email">
             </div>
         </div>
         <h2><button class="btn btn-info btn-block" type="submit">
@@ -115,8 +129,7 @@
       <img id="profileimg" class="avatar-image"></img>
       <p id="namecaption"></p>
 
-      <h2 class="btn btn-warning btn-block" type="button" 
-        onclick="window.location.href='/setgoal';">
+      <h2 id="yes-sendgoal" class="btn btn-warning btn-block" type="button">
         Yes
       </h2>
       <h2 class="btn btn-danger btn-block" type="button" 

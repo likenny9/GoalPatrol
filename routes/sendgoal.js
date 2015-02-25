@@ -1,5 +1,17 @@
-var data = require('../fakedata.json');
+var models = require('../models');
 
 exports.html = function(req, res){
-  res.render('sendgoal', data);
+	var sessionUser = req.session.userEmail;
+
+	if(typeof sessionUser == 'undefined') {
+		res.redirect('/login');
+	}
+	else {
+		models.User
+			.find( { "email" : sessionUser })
+			.exec(renderSendGoal);
+		function renderSendGoal(err, users) {
+  			res.render('sendgoal', { "users" : users });
+		}
+  	}
 };
