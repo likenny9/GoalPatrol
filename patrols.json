@@ -2,13 +2,13 @@
 	{
 		"pname" : "Alexandra",
 		"pprofilepic" : "",
-		"goal" : "Do 50 push ups",
-		"hoursweek" : "",
+		"goal" : "Eat some rice",
+		"hoursweek" : "1",
 		"timesweek" : "7",
 		"motivations" : [{ "1" : "Nice one" }],
 		"goalwaiting" : "false",
-		"user" : "54ebe99d82330142146edc59",
-		"myid" : "54ebe99d82330142146edc58"	
+		"user" : "54ed6d8a9ff3ed8a21fdb7ef",
+		"myid" : "54ed6d8a9ff3ed8a21fdb7ee"	
 
 	},
 	{
@@ -19,8 +19,56 @@
 		"timesweek" : "7",
 		"motivations" : [{ "1" : "You can do better than that." }],
 		"goalwaiting" : "false",
-		"user" : "54ebe99d82330142146edc58",
-		"myid" : "54ebe99d82330142146edc59"	
+		"user" : "54ed6d8a9ff3ed8a21fdb7ee",
+		"myid" : "54ed6d8a9ff3ed8a21fdb7ef"	
+
+	},
+	{
+		"pname" : "Giulio",
+		"pprofilepic" : "",
+		"goal" : "Sleep ",
+		"hoursweek" : "9",
+		"timesweek" : "7",
+		"motivations" : [{ "1" : "Nice one" }],
+		"goalwaiting" : "false",
+		"user" : "54ed6d8a9ff3ed8a21fdb7ef",
+		"myid" : "54ed6d8a9ff3ed8a21fdb7f0"	
+
+	},
+	{
+		"pname" : "Kenny",
+		"pprofilepic" : "",
+		"goal" : "Scale a 3 story building",
+		"hoursweek" : "1",
+		"timesweek" : "5",
+		"motivations" : [{ "1" : "You can do better than that." }],
+		"goalwaiting" : "false",
+		"user" : "54ed6d8a9ff3ed8a21fdb7f0",
+		"myid" : "54ed6d8a9ff3ed8a21fdb7ef"	
+
+	},
+	{
+		"pname" : "Test1",
+		"pprofilepic" : "",
+		"goal" : "Yawn",
+		"hoursweek" : "24",
+		"timesweek" : "7",
+		"motivations" : [{ "1" : "You can do better than that." }],
+		"goalwaiting" : "false",
+		"user" : "54ed6d8a9ff3ed8a21fdb7ef",
+		"myid" : "54ed6d8a9ff3ed8a21fdb7f1"	
+
+	},
+	{
+		"pname" : "Kenny",
+		"pprofilepic" : "",
+		"goal" : "Test yourself",
+		"hoursweek" : "1",
+		"timesweek" : "7",
+		"motivations" : [{ "1" : "You can do better than that." }],
+		"goalwaiting" : "false",
+		"user" : "54ed6d8a9ff3ed8a21fdb7f1",
+		"myid" : "54ed6d8a9ff3ed8a21fdb7ef"	
 
 	}	
 

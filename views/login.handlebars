@@ -29,50 +29,27 @@
                 return;
             }
 
-            $.get("/renderJSON", getJSON);
+            var combo = {
+                "email" : email,
+                "password" : password
+            };
+            combo = JSON.stringify(combo);
+            $.ajax({
+                url: "/authenticate",
+                method: "POST",
+                data: combo,
+                contentType: "application/json",
+                processdata: true
+            }).done( function(info) {
 
-            function getJSON(result) {
-                var users = result['users'];
-                for(i = 0; i < users.length; i++) {
-                    partnerEmail = users[i]['email'];
-                    partnerPassword = users[i]['password'];
-                    if(email == partnerEmail) {
-                        userNumber = i;
-                        break;
-                    }
-                    else {
-                        partnerEmail = "0";
-                    }
+                //Returns string if it's a redirection url, otherwise error object
+                if(typeof info == 'string') {
+                    window.location = '/';
                 }
-                console.log(password + " " + partnerPassword);
-                if(partnerEmail == "0") {
-                    alert("Email not found.");
+                else {                
+                    alert(info.error);
                 }
-                else if(password != partnerPassword) {
-                    alert("Incorrect password.");
-                }
-                else {
-                    var data = {'email' : email };
-                    data = JSON.stringify(data);
-
-                    $.ajax({
-                        url: "/saveSessionEmail",
-                        method: "POST",
-                        data: data,
-                        contentType: "application/json",
-                        processdata: true,
-                        success: function(result) {
-                          console.log(result);
-                          console.log('success insert sent to session');
-                        },
-                        error: function(result) {
-                          console.log("failed insert sent to session");
-                        }
-                    });
-
-                    window.location.href="/";
-                }
-            }
+            });
 
         });
 
