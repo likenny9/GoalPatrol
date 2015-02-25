@@ -1,0 +1,67 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Goal Patrol - Patrol</title>
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap-theme.css" rel="stylesheet">
+    <link href="../css/GoalPatrol.css" rel="stylesheet">
+    <script src="../js/angular.1.2.26.min.js"></script>
+    <script src="../js/jquery-1.11.2.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/GoalPatrolScript.js"></script>
+   <script > 
+  </script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Header: Title & Name -->
+  	<div class="header-container container">
+      {{> header}}
+      
+      <!-- Send Goal Button -->
+      <div id="sendgoal-icon">
+        <h2 class="btn btn-warning" type="button" onclick="window.location.href='sendgoal'">Send Goal</h2>
+      </div>
+
+  	</div>
+
+
+    <!-- Goals -->
+    <div class="central-container container">
+      <section>
+        <br>
+        <!-- TAB Information -->
+        <div>
+            {{#goalUserInfo}}
+            <h3>Your Goal for {{name}}</h3><br>
+            {{/goalUserInfo}}
+
+            <div class="goal-container container">
+              <div class="Users">
+              {{#goalUserInfo}}
+              <img class="avatar-image" src={{pprofilepic}}>
+              {{/goalUserInfo}}
+              {{#patrols}}      
+              <p class="bubble" id="tab-goal-for-you">{{goal}}</p>
+              {{/patrols}}
+              </div>
+              <button class="btn btn-lg btn-info alert" id="progress1" onclick="window.location.href='trackprogress'">Their Progress</button>
+              <button id="tab-back-button" class="btn btn-block" onclick="window.location.href='/'"> 
+                Back
+              </button>
+            </div>
+
+        </div>
+
+      </section>  
+    </div>
+
+  </body>
+
+</html>

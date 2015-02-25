@@ -19,6 +19,7 @@ mongoose.connect(dB_uri);
 
 //Add requires for pages here
 var home = require('./routes/home');
+var patrolInfo = require('./routes/patrolInfo');
 var setgoal = require('./routes/setgoal');
 var index = require('./routes/index');
 var login = require('./routes/login');
@@ -33,9 +34,10 @@ var history = require('./routes/history');
 
 //Add requires for ajax calling here
 var userinfo = require('./routes/userinfo');
-var renderJson = require('./routes/renderJson');
-var saveSession = require('./routes/saveSession');
+var authenticate = require('./routes/authenticate');
+//var saveSession = require('./routes/saveSession');
 var insertProgress = require('./routes/insertProgress');
+//var patrol = require('./routes/patrol');
 
 //Creates express app
 var app = express();
@@ -199,6 +201,8 @@ app.use(express.methodOverride());
 
 //Add routes here
 app.get('/', home.html); //Home Page
+app.get('/:id/:myid', patrolInfo.yourGoalForPatrol);
+//app.get('/patrol/:id/:myid', patrol.yourGoalForPatrol);
 app.get('/setgoal', setgoal.html); //setgoal
 app.get('/index', index.html);
 app.get('/login', login.html);
@@ -213,9 +217,10 @@ app.get('/history', history.html);
 
 //Json routes
 app.all('/insertUserInfo', userinfo.html);
-app.all('/saveSessionEmail', saveSession.html);
+//app.all('/saveSessionEmail', saveSession.html);
 app.all('/insertProgressInfo', insertProgress.html);
-app.get('/renderJson', renderJson.html);
+app.all('/authenticate', authenticate.login);
+app.all('/createUserInfo', authenticate.create);
 
 
 http.createServer(app).listen(app.get('port'), function(){
