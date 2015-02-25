@@ -4,7 +4,9 @@
 <div class="dropdown" id="dropdown-icon">
   <h2 class="btn btn-default dropdown-toggle" 
       id="name-icon" data-toggle="dropdown">
-      Kenny
+      {{#users}}
+      {{name}}
+      {{/users}}
       <span class="caret"></span>
   </h2>
   <ul class="dropdown-menu" role="menu" aria-labelledby="name-icon" id="name-menu">
