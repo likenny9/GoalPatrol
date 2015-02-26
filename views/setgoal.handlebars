@@ -27,6 +27,65 @@
     function urlFunction() {
         var URL = prompt("Please enter the URL you would like to send");
     }
+
+    $(function() {
+      var motivations = []; //initialize empty array
+
+      $('#sendgoal-button').click(function() {
+        var goal = $('#goal-info')[0].value;
+        var hours = $('#hours-info')[0].value;
+        var times = $('#timesweek-info')[0].value;
+
+        var goalJSON = {
+          "goal" : goal,
+          "hours" : hours,
+          "times" : times,
+          "motivations" : motivations
+        };
+
+        goalJSON = JSON.stringify(goalJSON);
+
+        //Ajax GET call to the server.
+        $.ajax({
+          url: "/saveGoal",
+          method: "POST",
+          data: goalJSON,
+          contentType: "application/json",
+          processdata: true
+        }).done(function(info) {
+          if(info.error) {
+            alert(info.error); //Alert any errors that were checked in server side
+          }
+          else {
+            alert('Goal sent. Click ok to return to home page.');
+            window.location.href='/';
+          }
+        });
+
+      });
+
+      $('#text-button').click(function() {
+        var inspiration = $('#message-info')[0].value;
+        motivations.push(inspiration);
+        $('#added-info').html("Text added!");
+        $('#added-info').fadeOut(1500, function() {
+          $('#added-info').html("");
+          $('#added-info').css('display', 'block');
+        });
+      });
+
+      $('#url-button').click(function() {
+        var inspiration = $('#message-info')[0].value;
+        motivations.push(inspiration);
+        $('#added-info').html("URL Link added!");
+        $('#added-info').fadeOut(1500, function() {
+          $('#added-info').html("");
+          $('#added-info').css('display', 'block');
+        });
+      });
+
+    });
+
     </script>
 
 
@@ -46,57 +105,54 @@
       <form role="form" id="setgoal-form">
         <div class="row">
             <div class="form-group">
-                <input type="text" class="form-control input-lg">
+                <input id="goal-info" type="text" class="form-control input-lg" placeholder="Goal">
             </div>
         </div>
-      </form>
 
-        <p>
-        <select form="setgoal-form">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-        </select>
-        hrs
-        <select form="setgoal-form">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-        </select>
-        times a week
-      </p>
+      <select id="hours-info" form="setgoal-form" class="form-control" style="width: 60px; display: inline">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select>
+      hours for
+      <select id="timesweek-info" form="setgoal-form" class="form-control" style="width: 60px; display: inline">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select>
+      times a week
 
       <br><br>
 
       <h3>
         Add Motivational Messages
         <br><br>
-
+    <div class="row">
+      <div class="form-group">
+        <textarea type="text" id="message-info" class="form-control" 
+          rows="5" style="resize: none;" placeholder="Type text or URL in here.  To submit, click the button for the type of information you are submitting. Submit ONE motivational text or URL at a time."></textarea>
+      </div>
       <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <div class="btn-group" role="group">
-          <button type="button" class="btn btn-default" onclick="textFunction()">Text</button>
-          <!--<button type="button" class="btn btn-default" id="popup"> Text </button>-->
-          <!--<div class="form-group">
-            <textarea id="area" style="display:none"></textarea>
-          </div>-->
+          <button id="text-button" type="button" class="btn btn-default">Text</button>
         </div>
         <div class="btn-group" role="group">
           <button type="button" class="btn btn-default" disabled>Photo</button>
@@ -105,15 +161,16 @@
           <button type="button" class="btn btn-default" disabled>Video</button>
         </div>
         <div class="btn-group" role="group">
-          <button type="button" class="btn btn-default" onclick="urlFunction()">URL Link</button>
+          <button id="url-button" type="button" class="btn btn-default">URL Link</button>
         </div>
       </div>
 
       </h3>
 
+      <p id="added-info" style="color: red"></p>
       <!-- Send Goal Button -->
       <div id="sendgoal-icon">
-        <h2 class="btn btn-warning" type="button" onclick="alert('Goal sent!');window.location.href='/'">Send Goal</h2>
+        <h2 id="sendgoal-button" class="btn btn-warning" type="button">Send Goal</h2>
       </div> 
     </div>
 

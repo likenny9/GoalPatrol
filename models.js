@@ -13,7 +13,7 @@ var PatrolSchema = new Mongoose.Schema({
 	"goal" : String,
 	"hoursweek" : Number,
 	"timesweek" : Number,
-	"motivations" : [{ "1" : String }],
+	"motivations" : [String],
 	"goalwaiting" : String,
 	//the user this person is patrolling
 	"user" : [{ type: Mongoose.Schema.ObjectId, ref: 'User' }],

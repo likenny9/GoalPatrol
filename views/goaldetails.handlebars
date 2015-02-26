@@ -171,6 +171,17 @@
         });        
       }
 
+      $('#go-home').click(function(evt) {
+        evt.preventDefault();
+
+        $.get('/removeGoalWaiting', removeGoalWaiting);
+
+        function removeGoalWaiting(data) {
+          window.location.href = '/';
+        }
+
+      });
+
     });
     </script>
 
@@ -180,41 +191,15 @@
 
     <!-- Header: Title & Name -->
     <div class="header-container container">
-      <a href="/"><h1 id="title">Goal Patrol</h1></a>
-
-      <!-- Name & Settings Dropdown Menu -->
-      <div class="dropdown" id="dropdown-icon">
-        <h2 class="btn btn-default dropdown-toggle" 
-            id="name-icon" data-toggle="dropdown">
-            Kenny
-            <span class="caret"></span>
-        </h2>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="name-icon" id="name-menu">
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/history">History</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/settings">Settings</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/help">Help</a>
-          </li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="/index">Logout</a>
-          </li>                   
-        </ul>        
-      </div>
+    {{> header}}
     </div>
     
     <!-- Form -->
     <div class= "container">
 
-      <h2>You've accepted the goal, now think of when you will taken action toward the goal.</h2>
-
-      <br>
+      <h2>You've accepted the goal!<br>
+          Think of when you will taken action toward the goal.</h2>
+      <h6>This is optional.  To skip, just click 'Go home'</h6>
 
       <form role="form" id="calendar-form">
         <div class="row">
@@ -249,21 +234,18 @@
           </div>
         </div>
 
-        <!--<span style="font-size: 1rem">Once you allow access to your Google Calendar, you will be able to add the event.</span>
-        <h2><button class="btn btn-info btn-block" id="auth" type="button">Allow Access to Google Calendar</button></h2>-->
-
         <p>Authorize Google Calendar to continue by following this <a href="/auth">link</a>.</p>
+        <h6>You must authorize to add to calendar.</h6>
         <h2><button class="btn btn-warning btn-block" id="addbtn" type="submit" >Add to Calendar</button></h2>
       </form>
     </div>
 
-    <br><br>
+    <br>
 
     <div class="container">
-      <p>When you're ready, set a goal for your partner.</p>
-      <h2><button class="btn btn-info btn-block" onclick="window.location.href='/setgoal'">Next</button></h2>  
+      <h2><button id="go-home" class="btn btn-info btn-block">Go Home</button></h2>  
     </div>
-
+    <br>
   </body>
 
 </html>

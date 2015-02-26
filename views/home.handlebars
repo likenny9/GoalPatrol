@@ -24,6 +24,70 @@
         //document.getElementById("demo").innerHTML = x;
     }
 
+    $(function() {
+
+      //Declines goal
+      $('.decline-btn').click(function(evt) {
+        evt.preventDefault();
+
+        var goalInfoID = evt.currentTarget.name;
+
+        var idJSON = {
+          "idToDelete" : goalInfoID
+        };
+
+        idJSON = JSON.stringify(idJSON);
+
+        //Ajax GET call to the server.
+        $.ajax({
+          url: "/deleteGoal",
+          method: "POST",
+          data: idJSON,
+          contentType: "application/json",
+          processdata: true
+        }).done(function(info) {
+          if(info.error) {
+            alert(info.error); //Alert any errors that were checked in server side
+          }
+          else {
+            alert('Goal deleted.');
+            window.location.href='/';
+          }
+        });
+      });
+
+      //Accepts goal
+      $('.accept-btn').click(function(evt) {
+        evt.preventDefault();
+
+        var goalInfoID = evt.currentTarget.name;
+
+        var idJSON = {
+          "idToSave" : goalInfoID
+        };
+
+        idJSON = JSON.stringify(idJSON);
+
+        //Ajax GET call to the server.
+        $.ajax({
+          url: "/saveGoalID",
+          method: "POST",
+          data: idJSON,
+          contentType: "application/json",
+          processdata: true
+        }).done(function(info) {
+          if(info.error) {
+            alert(info.error); //Alert any errors that were checked in server side
+          }
+          else {
+            window.location.href='/goaldetails';
+          }
+        });
+      });
+
+    });
+
+
   </script>
     
 
@@ -47,13 +111,13 @@
     {{#patrols}}
     {{#compare goalwaiting "true" operator="=="}}
     <br>
-    <div class="goalrequest-container container ">
+    <div class="goalrequest-container container">
       <h3>New Goal Request!</h3>
       <p>From: {{pname}}<br>
          Goal: {{goal}} for {{hoursweek}} hours {{timesweek}} times a week.<br>
       </p>
-      <button class="btn btn-block" onclick="window.location.href='goaldetails'"> Accept</button>
-      <button class="btn btn-block AccRej">Decline</button>
+      <button name="{{_id}}" class="btn btn-block accept-btn" onclick="window.location.href='goaldetails'"> Accept</button>
+      <button name="{{_id}}" class="btn btn-block decline-btn">Decline</button>
     </div>
     {{/compare}}
     {{/patrols}}

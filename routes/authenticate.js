@@ -17,6 +17,8 @@ exports.login = function(req, res){
 		else {
 			req.session.userEmail = req.body.email;
 			req.session.name = loginResults[0].name;
+			req.session.myid = loginResults[0]._id;
+			req.session.profilepic = loginResults[0].profilepic;
 			res.send();			
 		}
 	}
@@ -59,6 +61,8 @@ exports.create = function(req, res){
 			else {
 				req.session.userEmail = email;
 				req.session.name = name;
+				req.session.myid = newUser._id;
+				req.session.profilepic = profilepic;
 				res.send();
 			}
 		}
@@ -95,5 +99,140 @@ exports.getUsers = function(req, res){
 		}
 	}
 
+};
+
+//Checks that user does not already have that patrol
+exports.checkAlreadyHaveGoal = function(req, res){
+	var sessionUser = req.session.myid;
+	var potentialPatrol = req.session.sendGoalToID;
+
+	models.Patrol
+		.find( { "myid" : sessionUser, "user" : potentialPatrol })
+		.exec(afterSearch);
+
+	function afterSearch(err, user) {
+		if(err) {
+			res.send({ error: 'Encountered an error searching for a user'});
+		}
+		else {
+			if(user.length != 0) {
+				res.send("FoundMatch");
+			}
+			else {
+				res.send("Great");
+			}
+		}
+	}
 
 };
+
+//Save a goal and patrol to database
+exports.saveGoal = function(req, res){
+	var goal = req.body.goal;
+	var hoursweek = req.body.hours;
+	var timesweek = req.body.times;
+	var motivations = req.body.motivations;
+	var sessionUser = req.session.userEmail;
+	var sendGoalToID = req.session.sendGoalToID;
+	var myid = req.session.myid;
+	var pname = req.session.name;
+	var profilepic = req.session.profilepic;
+
+	var newPatrol = new models.Patrol({
+		"pname" : pname,
+		"pprofilepic" : profilepic,
+		"goal" : goal,
+		"hoursweek" : hoursweek,
+		"timesweek" : timesweek,
+		"motivations" : motivations,
+		"goalwaiting" : "true",
+		"user" : sendGoalToID,
+		"myid" : myid
+	});
+
+	newPatrol.save(afterSetGoal);
+
+	function afterSetGoal(err) {
+		if(err) {
+			res.send({ error: 'Encountered an error while saving the goal.'});
+		}
+		else {
+			res.send();
+		}
+	}
+};
+
+//Deletes a goal and patrol when user clicks decline
+exports.deleteGoal = function(req, res){
+	var idToDelete = req.body.idToDelete;
+
+	models.Patrol
+		.find({ "_id" : idToDelete})
+		.remove()
+		.exec(afterDelete);
+
+	function afterDelete(err) {
+		if(err) {
+			res.send({ error: 'Encountered an error while deleting the goal.'});
+		}
+		else {
+			res.send();
+		}
+	}
+};
+
+//Just saves the goal ID to session
+exports.saveGoalID = function(req, res){
+	var idToSave = req.body.idToSave;
+	req.session.goalID = idToSave;
+	res.send();
+};
+
+//Removes goal waiting
+exports.removeGoalWaiting = function(req, res){
+	var goalID = req.session.goalID;
+	
+	models.Patrol
+		.find({ "_id" : goalID})
+		.exec(updateFields);
+
+	function updateFields(err, patrol) {
+		if(err) {
+			res.send({ error: 'Encountered an error while changing goalwaiting to false.'});
+		}
+		else {
+			models.Patrol
+				.find({ "_id" : goalID})
+				.remove()
+				.exec(afterDelete);
+
+			function afterDelete(err) {
+				if(err) {
+					res.send({ error: 'Encountered an error while deleting the goal.'});
+				}
+			}
+
+			var patrolModel = new models.Patrol({
+				"_id" : patrol[0]._id,
+				"pname" : patrol[0].pname,
+				"pprofilepic" : patrol[0].profilepic,
+				"goal" : patrol[0].goal,
+				"hoursweek" : patrol[0].hoursweek,
+				"timesweek" : patrol[0].timesweek,
+				"motivations" : patrol[0].motivations,
+				"goalwaiting" : "false",
+				"user" : patrol[0].user,
+				"myid" : patrol[0].myid
+			});
+
+			patrolModel.save(afterUpdating);
+
+			function afterUpdating(err) {
+				if(err) { res.send({ error: 'Encountered updating patrol information. '}); }
+				else { res.send(); }
+			}
+		}
+	}
+
+};
+

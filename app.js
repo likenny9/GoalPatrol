@@ -222,7 +222,11 @@ app.all('/insertProgressInfo', insertProgress.html);
 app.all('/authenticate', authenticate.login);
 app.all('/createUserInfo', authenticate.create);
 app.all('/getUsers', authenticate.getUsers);
-
+app.all('/checkAlreadyHaveGoal', authenticate.checkAlreadyHaveGoal);
+app.all('/saveGoal', authenticate.saveGoal);
+app.all('/deleteGoal', authenticate.deleteGoal);
+app.all('/saveGoalID', authenticate.saveGoalID);
+app.all('/removeGoalWaiting', authenticate.removeGoalWaiting);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

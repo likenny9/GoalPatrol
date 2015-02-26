@@ -1,11 +1,11 @@
 [
 	{
 		"pname" : "Alexandra",
-		"pprofilepic" : "",
+		"pprofilepic" : "/images/silhouette-question-mark.jpg",
 		"goal" : "Eat some rice",
 		"hoursweek" : "1",
 		"timesweek" : "7",
-		"motivations" : [{ "1" : "Nice one" }],
+		"motivations" : [ "Nice one" ],
 		"goalwaiting" : "false",
 		"user" : "54ed6d8a9ff3ed8a21fdb7ef",
 		"myid" : "54ed6d8a9ff3ed8a21fdb7ee"	
@@ -13,11 +13,11 @@
 	},
 	{
 		"pname" : "Kenny",
-		"pprofilepic" : "",
+		"pprofilepic" : "/images/silhouette-question-mark.jpg",
 		"goal" : "Do push ups until I say so",
 		"hoursweek" : "24",
 		"timesweek" : "7",
-		"motivations" : [{ "1" : "You can do better than that." }],
+		"motivations" : ["You can do better than that." ],
 		"goalwaiting" : "false",
 		"user" : "54ed6d8a9ff3ed8a21fdb7ee",
 		"myid" : "54ed6d8a9ff3ed8a21fdb7ef"	
@@ -25,11 +25,11 @@
 	},
 	{
 		"pname" : "Giulio",
-		"pprofilepic" : "",
+		"pprofilepic" : "/images/silhouette-question-mark.jpg",
 		"goal" : "Sleep ",
 		"hoursweek" : "9",
 		"timesweek" : "7",
-		"motivations" : [{ "1" : "Nice one" }],
+		"motivations" : ["Nice one"],
 		"goalwaiting" : "false",
 		"user" : "54ed6d8a9ff3ed8a21fdb7ef",
 		"myid" : "54ed6d8a9ff3ed8a21fdb7f0"	
@@ -37,11 +37,11 @@
 	},
 	{
 		"pname" : "Kenny",
-		"pprofilepic" : "",
+		"pprofilepic" : "/images/silhouette-question-mark.jpg",
 		"goal" : "Scale a 3 story building",
 		"hoursweek" : "1",
 		"timesweek" : "5",
-		"motivations" : [{ "1" : "You can do better than that." }],
+		"motivations" : ["You can do better than that."],
 		"goalwaiting" : "false",
 		"user" : "54ed6d8a9ff3ed8a21fdb7f0",
 		"myid" : "54ed6d8a9ff3ed8a21fdb7ef"	
@@ -49,11 +49,11 @@
 	},
 	{
 		"pname" : "Test1",
-		"pprofilepic" : "",
+		"pprofilepic" : "/images/silhouette-question-mark.jpg",
 		"goal" : "Yawn",
 		"hoursweek" : "24",
 		"timesweek" : "7",
-		"motivations" : [{ "1" : "You can do better than that." }],
+		"motivations" : ["You can do better than that."],
 		"goalwaiting" : "false",
 		"user" : "54ed6d8a9ff3ed8a21fdb7ef",
 		"myid" : "54ed6d8a9ff3ed8a21fdb7f1"	
@@ -61,11 +61,11 @@
 	},
 	{
 		"pname" : "Kenny",
-		"pprofilepic" : "",
+		"pprofilepic" : "/images/silhouette-question-mark.jpg",
 		"goal" : "Test yourself",
 		"hoursweek" : "1",
 		"timesweek" : "7",
-		"motivations" : [{ "1" : "You can do better than that." }],
+		"motivations" : ["You can do better than that." ],
 		"goalwaiting" : "false",
 		"user" : "54ed6d8a9ff3ed8a21fdb7f1",
 		"myid" : "54ed6d8a9ff3ed8a21fdb7ef"	

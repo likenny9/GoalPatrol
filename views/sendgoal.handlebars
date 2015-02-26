@@ -87,7 +87,18 @@
       $('#yes-sendgoal').click(function(evt) {
         evt.preventDefault();
 
-        window.location.href = '/setgoal';
+        $.get('/checkAlreadyHaveGoal', afterChecking);
+
+        function afterChecking(data) {
+          if(data == "FoundMatch") {
+            alert('You cannot send more than 1 goal to a person at a time.');
+          }
+          else {
+            window.location.href = '/setgoal';            
+          }
+         
+        }
+
 
       });
 
@@ -149,7 +160,7 @@
 
         <div class="row">
           <div class="form-group">
-            <textarea type="datetime" id="notes" class="form-control" 
+            <textarea type="text" id="notes" class="form-control" 
               rows="5" style="resize: none;">
               Please join me in Goal Patrol.
             </textarea>
