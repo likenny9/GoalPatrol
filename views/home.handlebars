@@ -26,6 +26,10 @@
 
     $(function() {
 
+      if($('.Users').length == 0) {
+        $('.no-goals').css('display', 'block');
+      }
+
       //Declines goal
       $('.decline-btn').click(function(evt) {
         evt.preventDefault();
@@ -140,10 +144,9 @@
             <h3>Your Goals</h3>
 
             <!-- Container for all goals -->
-            <div class="goal-container container">
-            
-          {{#patrols}}
-          {{#compare goalwaiting "false" operator="=="}}
+            <div class="goal-container container">        
+            {{#patrols}}
+            {{#compare goalwaiting "false" operator="=="}}
               <div class="Users">
 
               <img class="avatar-image" src={{pprofilepic}}>
@@ -157,8 +160,15 @@
               </div>
               <br>
             {{/compare}}
-          {{/patrols}}
-          </div>
+            {{/patrols}}
+
+            <!-- User has no goals -->
+            <div class="no-goals" style="display: none;">
+              <br>
+              <p>You have no goals! <br> How about you send someone a goal? </p>
+            </div>
+
+            </div>
         </div>
 
       </section>  
