@@ -1,0 +1,52 @@
+[
+	{
+	    "date":"February 20, 2015",
+	    "difficulty":"4",
+	    "experience":"2",
+	    "satisfaction":"1",
+	    "stress":"5",
+	    "comments":"bad",
+	    "patrol" : "54eeac938493533b2ab3a782"
+
+	},
+	{
+	    "date":"February 21, 2015",
+	    "difficulty":"3",
+	    "experience":"2",
+	    "satisfaction":"3",
+	    "stress":"4",
+	    "comments":"getting better",
+	    "patrol" : "54eeac938493533b2ab3a782"
+
+	},
+	{
+	    "date":"February 22, 2015",
+	    "difficulty":"3",
+	    "experience":"3",
+	    "satisfaction":"3",
+	    "stress":"3",
+	    "comments":"numbers going up",
+	    "patrol" : "54eeac938493533b2ab3a782"
+
+	},
+	{
+	    "date":"February 23, 2015",
+	    "difficulty":"2",
+	    "experience":"4",
+	    "satisfaction":"4",
+	    "stress":"2",
+	    "comments":"there we go",
+	    "patrol" : "54eeac938493533b2ab3a782"
+
+	},
+	{
+	    "date":"February 24, 2015",
+	    "difficulty":"1",
+	    "experience":"5",
+	    "satisfaction":"5",
+	    "stress":"1",
+	    "comments":"best experience ever!!",
+	    "patrol" : "54eeac938493533b2ab3a782"
+
+	}
+]
