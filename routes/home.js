@@ -22,7 +22,7 @@ exports.html = function(req, res){
 				.exec(renderPatrols);
 
 			function renderPatrols(err, patrols) {
-				res.render('home', {'users': users, 'patrols' : patrols })
+				res.render('home', {'users': users, 'patrols' : patrols });
 			}
 		}
 	}
