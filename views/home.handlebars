@@ -85,6 +85,13 @@
         });
       });
 
+      $('.track-progress').click(function(evt) {
+        evt.preventDefault();
+
+        var goalInfoID = evt.currentTarget.name;
+        window.location.href = '/trackprogress/' + goalInfoID + '/track';
+      });
+
     });
 
 
@@ -146,7 +153,7 @@
                 </p>
                 <p class="bubble">{{goal}} for {{hoursweek}} hours {{timesweek}} times a week</p>
                 <button class="btn btn-lg btn-success alert" onclick="doInspireMe()" id="inspire1">Inspire Me</button>
-                <button class="btn btn-lg btn-info alert" id="progress1" onclick="window.location.href='trackprogress'">Track Progress</button>
+                <button class="btn btn-lg btn-info alert track-progress" name="{{_id}}">Track Progress</button>
               </div>
               <br>
             {{/compare}}

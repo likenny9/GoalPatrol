@@ -5,16 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Goal Patrol - Track Progress</title>
-    <link href="/css/bootstrap.css" rel="stylesheet">
-    <link href="/css/bootstrap-theme.css" rel="stylesheet">
-    <link href="/css/star-rating.min.css" rel="stylesheet">
+    <link href="../../../../css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../css/bootstrap-theme.css" rel="stylesheet">
+    <link href="../../../../css/star-rating.min.css" rel="stylesheet">
     <!--<link href="css/GoalPatrol.css" rel="stylesheet">-->
-    <script src="js/angular.1.2.26.min.js"></script>
-    <script src="js/jquery-1.11.2.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/star-rating.min.js"></script>
-    <script src="js/GoalPatrolScript.js"></script>
-    <script src="js/handlebars-v3.0.0.js"></script>
+    <script src="../../../../js/angular.1.2.26.min.js"></script>
+    <script src="../../../../js/jquery-1.11.2.min.js"></script>
+    <script src="../../../../js/bootstrap.min.js"></script>
+    <script src="../../../../js/star-rating.min.js"></script>
+    <script src="../../../../js/GoalPatrolScript.js"></script>
 
     <style type="text/css">
       /* Weird bug - with a font, stars show up as boxes */
@@ -97,10 +96,11 @@
 
       var today = new Date();
       today = getMonthInWords(today.getMonth()) + " " + today.getDate() + ", " + today.getFullYear();
-      $('.today-date').html(today); 
+      $('.today-date').html(today);
 
       //Displays empty form if nothing loaded from handlebars
       if($('#progress-form').length != 0) {
+        console.log($('#progress-form').length);
         $('#empty-progress-form').css('display','none');
       }
       else {
@@ -119,12 +119,13 @@
         var comments = $('#notes-f')[0].value;
 
         var progressReport = {
-          'date': date,
+          'date': new Date().toDateString(),
           'difficulty': difficulty,
           'experience': experience,
           'satisfaction': satisfaction,
           'stress': stress,
-          'comments': comments
+          'comments': comments,
+          'patrol' : ""
         };
 
         progressReport = JSON.stringify(progressReport);
@@ -137,23 +138,22 @@
             method: "POST",
             data: data,
             contentType: "application/json",
-            processdata: true,
-            success: function(result) {
-
-            },
-            error: function(result) {
-
+            processdata: true
+          }).done(function(data) {
+            $.get('/getGoalID', goalID);
+            function goalID(id) {
+              window.location.href = '/trackprogress/' + id + '/track';              
             }
           });
-          window.location.href = '/trackprogress';
         }
+
       });
 
       //No progress yet - user clicks submit
       $('#empty-progress-form').submit(function(evt) {
         evt.preventDefault();
 
-        var date = today;
+        var date = new Date().toDateString();
         var difficulty = $('#difficulty')[0].value;
         var experience = $('#experience')[0].value;
         var satisfaction = $('#satisfaction')[0].value;
@@ -161,14 +161,15 @@
         var comments = $('#notes')[0].value;
 
         var progressReport = {
-          'date': date,
+          'date': new Date().toDateString(),
           'difficulty': difficulty,
           'experience': experience,
           'satisfaction': satisfaction,
           'stress': stress,
-          'comments': comments
+          'comments': comments,
+          'goalInfoID' : ""
         };
-        console.log(progressReport);
+
         progressReport = JSON.stringify(progressReport);
 
         insertProgressInfo(progressReport);
@@ -179,17 +180,28 @@
             method: "POST",
             data: data,
             contentType: "application/json",
-            processdata: true,
-            success: function(result) {
-              
-            },
-            error: function(result) {
-
+            processdata: true
+          }).done(function(data) {
+            $.get('/getGoalID', goalID);
+            function goalID(id) {
+              window.location.href = '/trackprogress/' + id + '/track';              
             }
           });
         }
-        window.location.href = '/trackprogress';
+
       });
+
+      //Cancel - goes back to track progress
+      $('[id="cancel-btn"]').click(function(evt) {
+        evt.preventDefault();
+
+        $.get('/getGoalID', goalID);
+        function goalID(data) {
+           window.location.href = '/trackprogress/' + data + '/track';       
+        }
+
+      });
+
     });
     </script>
   </head>
@@ -209,6 +221,7 @@
 
       <br>
 
+      <!-- Empty form -->
       <form role="form" class="progress-forms" id="empty-progress-form">
         <div class="row">
           <div class="form-group">
@@ -249,14 +262,11 @@
           </div>
         </div>
         <h2><button class="btn btn-warning btn-block" type="submit">Submit Progress </button></h2>
-        <h2><button class="btn btn-danger btn-block" type="button" onclick="window.location.href='/trackprogress'">Cancel </button></h2>
+        <h2><button id="cancel-btn" class="btn btn-danger btn-block" type="button">Cancel </button></h2>
       </form>
-      {{#users}}
-      {{#compare name "Kenny" operator="=="}}
-      {{#patrol}}
-      {{#compare pname "Alexandra" operator="=="}}
+
+      <!-- Form for updating progress -->
       {{#progress}}
-      {{#compare ../../../../../date-today date operator="=="}}
       <form role="form" class="progress-forms" id="progress-form">
         <div class="row">
           <div class="form-group">
@@ -296,15 +306,10 @@
               rows="3" style="resize: none;" placeholder="Comments">{{comments}}</textarea>
           </div>
         </div>
-        <h2><button class="btn btn-warning btn-block" type="submit">Submit Progress </button></h2>
-        <h2><button class="btn btn-danger btn-block" type="button" onclick="window.location.href='/trackprogress'">Cancel </button></h2>
+        <h2><button class="btn btn-warning btn-block" type="submit" name="{{_id}}">Submit Progress </button></h2>
+        <h2><button id="cancel-btn" class="btn btn-danger btn-block" type="button">Cancel </button></h2>
       </form>
-      {{/compare}}
       {{/progress}}
-      {{/compare}}
-      {{/patrol}}
-      {{/compare}}
-      {{/users}}
     </div>
 
     <script>

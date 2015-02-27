@@ -1,27 +1,42 @@
-var data = require('../fakedata.json');
+var models = require('../models');
 
 exports.html = function(req, res){
+	var sessionUser = req.session.userEmail;
+	var goalInfoID = req.session.goalID;
+	var name = req.session.name;
 
-  function getMonthInWords(num) {
-	  var month = new Array(12);
-	  month[0]=  "January";
-	  month[1] = "February";
-	  month[2] = "March";
-	  month[3] = "April";
-	  month[4] = "May";
-	  month[5] = "June";
-	  month[6] = "July";
-	  month[7]=  "August";
-	  month[8] = "September";
-	  month[9] = "October";
-	  month[10] = "November";
-	  month[11] = "December";
-	  return month[num];
+	var users = {
+		"name" : name
+	};
+
+	if(typeof sessionUser == 'undefined') {
+		res.redirect('/login');
 	}
+	else {
+		models.Progress
+			.find({ "patrol" : goalInfoID })
+			.exec(foundProgress);
 
-	var today = new Date();
-	today = getMonthInWords(today.getMonth()) + " " + today.getDate() + ", " + today.getFullYear();
-	data['date-today'] = today;
+		function foundProgress(err, progress) {
+			var newProgress = [];
+			var today = new Date().toDateString();
 
-  res.render('inputprogress', data);
+			for(var i=0; i < progress.length; i++) {
+				if(today == progress[i].date.toDateString()) {
+					var newJson = {
+						"date" : progress[i].date.toDateString(),
+						"difficulty" : progress[i].difficulty,
+						"experience" : progress[i].experience,
+						"satisfaction" : progress[i].satisfaction,
+						"stress" : progress[i].stress,
+						"comments" : progress[i].comments,
+						"patrol" : progress[i].patrol
+					}
+					newProgress.push(newJson);
+				}
+			}
+
+			res.render('inputprogress', { 'users': users, 'progress' : newProgress });
+		}
+	}	
 };

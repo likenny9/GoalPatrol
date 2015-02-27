@@ -188,6 +188,11 @@ exports.saveGoalID = function(req, res){
 	res.send();
 };
 
+//Gets the goal ID
+exports.getGoalID = function(req, res) {
+	res.send(req.session.goalID);
+}
+
 //Removes goal waiting
 exports.removeGoalWaiting = function(req, res){
 	var goalID = req.session.goalID;
@@ -236,3 +241,77 @@ exports.removeGoalWaiting = function(req, res){
 
 };
 
+//Updates Progress
+exports.insertProgress = function(req, res){
+	var goalID = req.session.goalID;
+	
+	models.Progress
+		.find({ "patrol" : goalID})
+		.exec(updateProgress);
+
+	function updateProgress(err, progress) {
+		//New Insert
+		var newProgress = true;
+		for(var i = 0; i < progress.length; i++) {
+			if(progress[i].date.toDateString() == req.body.date) {
+				newProgress = false;
+				break;
+			}
+		}
+		
+		if(newProgress) {
+			var progressModel = new models.Progress({
+				"date" : req.body.date,
+				"difficulty" : req.body.difficulty,
+				"experience" : req.body.experience,
+				"satisfaction" : req.body.satisfaction,
+				"stress" : req.body.stress,
+				"comments" : req.body.comments,
+				"patrol" : goalID
+			});
+
+			progressModel.save(afterCreateProgress);
+
+			function afterCreateProgress(err) {
+				if(err) { res.send({ error: 'Encountered error entering progress information. '}); }
+				else { res.send(req.body.patrol); }
+			}
+		}
+		//Update
+		else {
+			models.Progress
+				.find({ "patrol" : goalID, "date" : req.body.date })
+				.remove()
+				.exec(afterDelete);
+
+			function afterDelete(err) {
+				if(err) {
+					res.send({ error: 'Encountered an error while deleting progress.'});
+				}
+			}
+
+			var progressModel = new models.Progress({
+				"date" : req.body.date,
+				"difficulty" : req.body.difficulty,
+				"experience" : req.body.experience,
+				"satisfaction" : req.body.satisfaction,
+				"stress" : req.body.stress,
+				"comments" : req.body.comments,
+				"patrol" : goalID
+			});
+
+			progressModel.save(afterUpdating);
+
+			function afterUpdating(err) {
+				if(err) { res.send({ error: 'Encountered error updating progress information. '}); }
+				else { res.send(req.body.patrol); }
+			}
+		}
+	}
+};
+
+//Updates Progress
+exports.logout = function(req, res){
+	req.session.destroy();
+	res.send();
+};

@@ -38,7 +38,7 @@ var home2 = require('./routes/home2');
 var userinfo = require('./routes/userinfo');
 var authenticate = require('./routes/authenticate');
 //var saveSession = require('./routes/saveSession');
-var insertProgress = require('./routes/insertProgress');
+//var insertProgress = require('./routes/insertProgress');
 //var patrol = require('./routes/patrol');
 
 //Creates express app
@@ -70,7 +70,7 @@ app.configure(function() {
 passport.use(new googleAuth({
 	clientID: config.consumer_key,
 	clientSecret: config.consumer_secret,
-	callbackURL: "http://cogs120-goalpatrol.herokuapp.com/auth/callback",
+	callbackURL: "http://goalpatrol2.herokuapp.com/auth/callback",
 	scope: ['openid', 'email', 'https://www.googleapis.com/auth/calendar']
 },
 function(accessToken, refreshToken, profile, done) {
@@ -208,7 +208,7 @@ app.get('/:id/:myid', patrolInfo.yourGoalForPatrol);
 app.get('/setgoal', setgoal.html); //setgoal
 app.get('/index', index.html);
 app.get('/login', login.html);
-app.get('/trackprogress', trackprogress.html);
+app.get('/trackprogress/:goalInfoID/track', trackprogress.html);
 app.get('/inputprogress', inputprogress.html);
 app.get('/settings', settings.html);
 app.get('/sendgoal', sendgoal.html);
@@ -221,7 +221,7 @@ app.get('/home_alt', home2.html);
 //Json routes
 app.all('/insertUserInfo', userinfo.html);
 //app.all('/saveSessionEmail', saveSession.html);
-app.all('/insertProgressInfo', insertProgress.html);
+//app.all('/insertProgressInfo', insertProgress.html);
 app.all('/authenticate', authenticate.login);
 app.all('/createUserInfo', authenticate.create);
 app.all('/getUsers', authenticate.getUsers);
@@ -229,7 +229,10 @@ app.all('/checkAlreadyHaveGoal', authenticate.checkAlreadyHaveGoal);
 app.all('/saveGoal', authenticate.saveGoal);
 app.all('/deleteGoal', authenticate.deleteGoal);
 app.all('/saveGoalID', authenticate.saveGoalID);
+app.all('/getGoalID', authenticate.getGoalID);
 app.all('/removeGoalWaiting', authenticate.removeGoalWaiting);
+app.all('/insertProgressInfo', authenticate.insertProgress);
+app.all('/logout', authenticate.logout);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

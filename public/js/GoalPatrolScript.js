@@ -16,18 +16,6 @@ function doInspireMe() {
     //document.getElementById("demo").innerHTML = x;
 }
 
-/*function doFakeAlert() {
-    
-
-    $('#inspire1').click(function() {
-        alert('You have been inspired!');
-    });
-    $('#inspire2').click(function() {
-        alert('You have been inspired!');
-    });
-
-};*/
-
 function doFakeAcceptReject() {
     $('.AccRej').on('click', function() {
         $(this).parents('div').hide();
@@ -50,3 +38,17 @@ function doFakeAcceptReject() {
         };
     });
 })();
+
+$(function() {
+
+    $('#logout').click(function(evt) {
+        evt.preventDefault();
+
+        $.get('/logout', afterLogout);
+
+        function afterLogout(err) {
+            window.location.href = '/index';
+        }
+    });
+
+});

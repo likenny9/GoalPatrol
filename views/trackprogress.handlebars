@@ -5,15 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Goal Patrol - Track Progress</title>
-    <link href="/css/bootstrap.css" rel="stylesheet">
-    <link href="/css/bootstrap-theme.css" rel="stylesheet">
-    <link href="/css/star-rating.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" rel="stylesheet">
+    <link href="../../css/bootstrap-theme.css" rel="stylesheet">
+    <link href="../../css/star-rating.min.css" rel="stylesheet">
     <!--<link href="css/GoalPatrol.css" rel="stylesheet">-->
-    <script src="js/angular.1.2.26.min.js"></script>
-    <script src="js/jquery-1.11.2.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/star-rating.min.js"></script>
-    <script src="js/GoalPatrolScript.js"></script>
+    <script src="../../js/angular.1.2.26.min.js"></script>
+    <script src="../../js/jquery-1.11.2.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/star-rating.min.js"></script>
+    <script src="../../js/GoalPatrolScript.js"></script>
 
     <style type="text/css">
       /* Weird bug - with a font, stars show up as boxes */
@@ -135,7 +135,36 @@
     </style>
 
     <script>
-    var patrolName = "Soohyun";
+      $(function() {
+        $('#input-progress').click(function(evt) {
+          evt.preventDefault();
+          var pathArray = window.location.pathname.split('/');
+          var goalInfoID = pathArray[2]; //this is the goal ID from the address bar
+
+          var idJSON = {
+            "idToSave" : goalInfoID
+          };
+
+          idJSON = JSON.stringify(idJSON);
+
+          //Ajax GET call to the server.
+          $.ajax({
+            url: "/saveGoalID",
+            method: "POST",
+            data: idJSON,
+            contentType: "application/json",
+            processdata: true
+          }).done(function(info) {
+            if(info.error) {
+              alert(info.error); //Alert any errors that were checked in server side
+            }
+            else {
+              window.location.href = '/inputprogress';     
+            }
+          });
+        });
+
+      });
     </script>
   </head>
 
@@ -155,6 +184,10 @@
 
       <p>Week Progress</p>
 
+      <h2 id="input-progress" class="btn btn-warning btn-block" type="button">
+        Input Today's Progress
+      </h2>
+      <br>
       <div class="container">            
         <table class="table table-striped rwd-table">
           <tr>
@@ -165,10 +198,6 @@
             <th data-th="Stress">Stress</th>
             <th data-th="Comments">Comments</th>
           </tr>
-          {{#users}}
-          {{#compare name "Kenny" operator="=="}}
-          {{#patrol}}
-          {{#compare pname "Alexandra" operator="=="}}
           {{#progress}}
           <tr>
             <td data-th="Date"><span class="text-tab">{{date}}</span></td>
@@ -179,19 +208,10 @@
             <td data-th="Comments"><span class="text-tab">{{comments}}</span></td>
           </tr>
           {{/progress}}
-          {{/compare}}
-          {{/patrol}}
-          {{/compare}}
-          {{/users}}
         </table>
       </div>
 
       <br>
-
-      <h2 class="btn btn-warning btn-block" type="button" 
-        onclick="window.location.href='/inputprogress';">
-        Input Today's Progress
-      </h2>
     </div>
 
     <script>
