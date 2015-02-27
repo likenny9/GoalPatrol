@@ -1,0 +1,101 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Goal Patrol - Home</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="/css/GoalPatrol2.css" rel="stylesheet"> 
+  </head>
+  <body>
+
+  <div class="page-container">
+  
+  <!-- top navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+       <div class="container">
+      <div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".sidebar-nav">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <a class="navbar-brand" href="#">Goal Patrol</a>
+      </div>
+
+      
+
+
+       </div>
+    </div>   
+
+
+    <div class="container">
+      <div class="nav navbar-nav navbar-left" id="search">
+        <input type="text" class="form-control" placeholder="Search patrol by email">
+      </div>
+      <div class="btn-group" id="btn-search">
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+      </div>
+      <div class="btn-group" id="btn">
+        <button type="button" class="btn btn-default dropdown-toggle" class="navbar-btn" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-user"></span></button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1 pending goal request from Kenny</a></li>
+          </ul>
+      </div>
+    </div>
+
+
+
+    <div class="container">
+      <div class="row row-offcanvas row-offcanvas-left">
+
+        <!-- sidebar -->
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">My Patrols</a></li>
+              <li><a href="#">Calendar</a></li>
+              <li><a href="#">Settings</a></li>  
+              <li><a href="#">Help</a></li>            
+            </ul>
+        </div>
+
+        <div class="container">
+          <div class="col-xs-12 col-sm-9 col-med-9 col-lg-9">
+          <h1>My Goals</h1>
+            <ul>
+              <li>Go to the gym for 1 hour, 5 times a week.
+                <br></br>
+                <div class="thumbnail">
+                <img src="http://www.kospol.gr/wp-content/uploads/2012/01/I-May-Not-Be-There-Yet-But-I-Am-Closer-Than-I-Was-Yesterday.jpg">
+                <p>sent by Jenny</p>
+                </div>
+              </li>
+              <li>Practice piano for 2 hours, 7 times a week.
+                <br></br>
+                <div class="thumbnail">
+                  <img src="http://ideascrossroads.com/wp-content/uploads/2012/07/life-is-like-piano-inspirational-quote.jpg">
+                  <p>sent by Bob</p>
+                </div>
+              </li>
+            </ul>
+          </div><!-- /.col-xs-12 main -->
+        </div>
+      </div>
+    </div>
+
+    </div><!--/.row-->
+  </div><!--/.container-->
+</div><!--/.page-container-->
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/GoalPatrolScript.js"></script>
+    <script src="js/scripts.js"></script>
+
+  </body>
+
+</html>

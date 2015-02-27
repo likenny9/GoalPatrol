@@ -8,6 +8,7 @@ var googleAuth = require('passport-google-oauth').OAuth2Strategy;
 var passport = require('passport');
 var config = require('./config');
 
+
 var http = require('http');
 var path = require('path');
 
@@ -31,6 +32,7 @@ var help = require('./routes/help');
 var createaccount = require('./routes/createaccount');
 var goaldetails = require('./routes/goaldetails');
 var history = require('./routes/history');
+var home2 = require('./routes/home2');
 
 //Add requires for ajax calling here
 var userinfo = require('./routes/userinfo');
@@ -214,6 +216,7 @@ app.get('/help', help.html);
 app.get('/createaccount', createaccount.html);
 app.get('/goaldetails', goaldetails.html);
 app.get('/history', history.html);
+app.get('/home_alt', home2.html);
 
 //Json routes
 app.all('/insertUserInfo', userinfo.html);
