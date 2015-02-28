@@ -31,6 +31,7 @@ var sendgoal = require('./routes/sendgoal');
 var help = require('./routes/help');
 var createaccount = require('./routes/createaccount');
 var goaldetails = require('./routes/goaldetails');
+var goaldetails_alt = require('./routes/goaldetails_alt');
 var history = require('./routes/history');
 var home2 = require('./routes/home2');
 
@@ -215,6 +216,7 @@ app.get('/sendgoal', sendgoal.html);
 app.get('/help', help.html);
 app.get('/createaccount', createaccount.html);
 app.get('/goaldetails', goaldetails.html);
+app.get('/goaldetails_alt', goaldetails_alt.html);
 app.get('/history', history.html);
 app.get('/home_alt', home2.html);
 
