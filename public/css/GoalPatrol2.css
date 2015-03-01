@@ -20,6 +20,14 @@ html, body {
 	position: relative;
 }
 
+#search-input {
+	width: 50%;
+	float: right;
+}
+
+.navbar-header {
+	width: inherit;
+}
 .btn-group {
 	margin: 0 auto;
 }
@@ -67,7 +75,7 @@ html, body {
 
 /* HOME GOAL REQUESTS */
 .goalrequest-container {
-	background: ;
+
 	border: 2px solid black;
 	border-radius: 10px;
 }
