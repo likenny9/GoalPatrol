@@ -20,9 +20,26 @@
         margin-top: 5%;
       }
 
-            body {
-    background-image: url("http://www.eatthedamncake.com/wordpress/wp-content/uploads/2013/07/Mountain-Climbers.jpg");
-}
+      body {
+        background-color: #8CBED6;
+        background-image: url("http://www.eatthedamncake.com/wordpress/wp-content/uploads/2013/07/Mountain-Climbers.jpg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .btn {
+        margin-top: 5px;
+      }
+
+      .btn-xlg {
+        padding: 18px 28px;
+        font-size: 30px; //change this to your desired size
+        line-height: normal;
+        -webkit-border-radius: 8px;
+           -moz-border-radius: 8px;
+                border-radius: 8px;
+      }
 
     </style>
 
@@ -37,30 +54,15 @@
     </div>
 
     <!-- Main Container -->
-    <div>
-       <div>
-          
-          <h1 style="color:white; margin-left:2em;">Welcome to Goal Patrol!</h1>
-          <p>
-          <h1 style="margin-left:2em; color:white" font-weight="bold">Help your friends stay motivated.</h1>
-          </p>
-
-          <p>
-            <a style="margin-left:5em;" class="btn btn-primary btn-lg" role="button" href="/createaccount">
-             Get Started
-            </a>
-          </p>
-
-           <p>
-            <a style="margin-left:5em;" class="btn btn-primary btn-lg" role="button" href="/help">
-             Learn More
-            </a>
-          </p>
-
-          <p>
-            <a style="margin-left:6.5em;" href="/login" role="button" class="btn btn-default"> Log In </a>
-          </p>
-       </div>
+    <div class="container">
+      <div class="index-container">
+        <br>
+        <h1 style="color: white;">Welcome to Goal Patrol!</h1>
+        <h1 style="color: white;">Help your friends stay motivated.</h1>
+        <a class="btn btn-primary btn-xlg" role="button" href="/index-help">Learn More</a><br>
+        <a class="btn btn-primary btn-lg" role="button" href="/createaccount">Get started</a><br>
+        <a href="/login" role="button" class="btn btn-default"> Log In </a>
+      </div>
     </div>
 
   </body>

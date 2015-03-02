@@ -214,6 +214,8 @@ app.get('/inputprogress', inputprogress.html);
 app.get('/settings', settings.html);
 app.get('/sendgoal', sendgoal.html);
 app.get('/help', help.html);
+app.get('/new-help', help.newaccount);
+app.get('/index-help', help.indexhelp);
 app.get('/createaccount', createaccount.html);
 app.get('/goaldetails', goaldetails.html);
 app.get('/goaldetails_alt', goaldetails_alt.html);

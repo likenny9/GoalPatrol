@@ -12,7 +12,7 @@ html, body {
     height: 100%;
     width: 100%;
 	text-align: left;
-	background: #FFF;
+	background: #DDD;
 }
 
 /* HOME HEADER */
@@ -22,9 +22,11 @@ html, body {
 	-border: 2px solid black;
 }
 #title {
-	font-size: 45px;
+	font-size: 3rem;
 	font-weight: bold;
 	float: left;
+	border-bottom: 1px inset blue;
+	margin-left: 8px;
 }
 
 #dropdown-icon {

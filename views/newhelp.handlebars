@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Goal Patrol - Help</title>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/GoalPatrol.css" rel="stylesheet">
+    <script src="js/angular.1.2.26.min.js"></script>
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/GoalPatrolScript.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Header: Title & Name -->
+  	<div class="header-container container">
+    {{> header}}
+    </div>
+
+    <br> <!--Extra spacing-->
+    <br>
+
+    <div class= "container">
+      <h1 align="center">Help/Tutorial</h1>
+      <h3 style="display: inline-block">Don't need help? Send a goal to someone now. &nbsp; &nbsp;</h3>
+      <button class="btn btn-warning" onclick="window.location.href='/sendgoal'" style="width: 150px">Send Goal</button>
+      <br>
+      <h3 style="display: inline-block">Don't want to do that now? &nbsp; &nbsp;</h3>
+      <button class="btn btn-info" onclick="window.location.href='/'" style="width: 150px">Go Home</button>
+      <br><br>
+      <ol>
+        <h2>Instructions</h2>
+        <li>Connect with friends by searching for their emails.</li>
+        <li>Set a goal for your friend and wait to receive a goal from your friend, or if you've already received a goal from a friend, you can either accept or decline the goal.</li>
+        <li>Upon accepting the goal, set up a specific plan for achieving this goal (i.e. how many hours you will spend for a certain number of days per week).</li>
+        <li>Record your progress by rating the goal (difficulty, experience, and preference) as you work towards achieving your goal.</li>
+        <li>At the end of the week, discuss the goals with your goal patrol buddy, using the progress you've recorded as a reference. </li>
+      </ol>
+      <h2>Tips</h2>
+        <ul>
+          <li>You can integrate your Google calendar when planning your goals! </li>
+          <li>Try to keep the goals you set for your friends as specific as possible so that they can work out a plan for achieving the goal by setting the number of hours they will spend as well as the days they will pick to work on the goal.</li>
+        </ul>
+    </div>
+
+  </body>
+
+</html>

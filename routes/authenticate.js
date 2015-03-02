@@ -29,7 +29,7 @@ exports.create = function(req, res){
 	var name = req.body.name;
 	var email = req.body.email;
 	var password = req.body.password;
-	var profilepic = "";
+	var profilepic = "/images/silhouette-question-mark.jpg";
 
 	models.User
 		.find( { "email" : email })
