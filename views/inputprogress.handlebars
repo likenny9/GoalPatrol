@@ -29,7 +29,7 @@
         height: 100%;
         width: 100%;
         text-align: left;
-        background: #FFF;
+        background: #DDD;
       }
 
       /* HOME HEADER */
@@ -39,9 +39,12 @@
         -border: 2px solid black;
       }
       #title {
-        font-size: 45px;
+        font-family: Calibri;
+        font-size: 3rem;
         font-weight: bold;
         float: left;
+        border-bottom: 1px inset blue;
+        margin-left: 8px;
       }
 
       #dropdown-icon {
@@ -209,7 +212,7 @@
   <body>
 
     <!-- Header: Title & Name -->
-    <div class="header-container container">
+    <div class="header-container container" style="font-family: Calibri">
     {{> header}}
     </div>
 
@@ -217,7 +220,7 @@
 
     <div class= "container">
 
-      <h2>Input Today's Progress</h2>
+      <h2 style="font-family: Calibri">Input Today's Progress</h2>
 
       <br>
 

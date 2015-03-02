@@ -38,6 +38,7 @@ var home2 = require('./routes/home2');
 //Add requires for ajax calling here
 var userinfo = require('./routes/userinfo');
 var authenticate = require('./routes/authenticate');
+var inspireme = require('./routes/inspireme');
 //var saveSession = require('./routes/saveSession');
 //var insertProgress = require('./routes/insertProgress');
 //var patrol = require('./routes/patrol');
@@ -223,6 +224,7 @@ app.get('/history', history.html);
 app.get('/home_alt', home2.html);
 
 //Json routes
+app.all('/inspireme', inspireme.html);
 app.all('/insertUserInfo', userinfo.html);
 //app.all('/saveSessionEmail', saveSession.html);
 //app.all('/insertProgressInfo', insertProgress.html);

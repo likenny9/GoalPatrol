@@ -89,6 +89,7 @@
         });
       });
 
+      //Track Progress
       $('.track-progress').click(function(evt) {
         evt.preventDefault();
 
@@ -96,8 +97,35 @@
         window.location.href = '/trackprogress/' + goalInfoID + '/track';
       });
 
-    });
+      //Inspire Me
+      $('.inspire-me').click(function(evt) {
+        evt.preventDefault();
 
+        var goalInfoID = evt.currentTarget.name;
+        var idJSON = {
+          "idToSave" : goalInfoID
+        };
+
+        idJSON = JSON.stringify(idJSON);
+
+        //Ajax GET call to the server.
+        $.ajax({
+          url: "/inspireme",
+          method: "POST",
+          data: idJSON,
+          contentType: "application/json",
+          processdata: true
+        }).done(function(info) {
+          if(info.error) {
+            alert(info.error); //Alert any errors that were checked in server side
+          }
+          else {
+            alert(info);
+          }
+        });
+      });
+
+    });
 
   </script>
     
@@ -155,7 +183,7 @@
                   <a href="/{{user}}/{{myid}}">{{pname}}</a>
                 </p>
                 <p class="bubble">{{goal}} for {{hoursweek}} hours {{timesweek}} times a week</p>
-                <button class="btn btn-lg btn-success alert" onclick="doInspireMe()" id="inspire1">Inspire Me</button>
+                <button class="btn btn-lg btn-success alert inspire-me" name="{{_id}}">Inspire Me</button>
                 <button class="btn btn-lg btn-info alert track-progress" name="{{_id}}">Track Progress</button>
               </div>
               <br>

@@ -30,6 +30,7 @@
 
     $(function() {
       var motivations = []; //initialize empty array
+      motivations.push("Good job! Keep up the work!");
 
       $('#sendgoal-button').click(function() {
         var goal = $('#goal-info')[0].value;
@@ -66,8 +67,13 @@
 
       $('#text-button').click(function() {
         var inspiration = $('#message-info')[0].value;
-        motivations.push(inspiration);
-        $('#added-info').html("Text added!");
+        if(inspiration != "") {
+          motivations.push(inspiration);
+          $('#added-info').html("Text added!");
+        }
+        else {
+          $('#added-info').html("Enter an inspiration!");
+        }
         $('#added-info').fadeOut(1500, function() {
           $('#added-info').html("");
           $('#added-info').css('display', 'block');
@@ -76,8 +82,14 @@
 
       $('#url-button').click(function() {
         var inspiration = $('#message-info')[0].value;
-        motivations.push(inspiration);
-        $('#added-info').html("URL Link added!");
+        if(inspiration != "") {
+          motivations.push(inspiration);
+          $('#added-info').html("URL Link added!");
+        }
+        else {
+          $('#added-info').html("Enter an inspiration!");
+        }
+
         $('#added-info').fadeOut(1500, function() {
           $('#added-info').html("");
           $('#added-info').css('display', 'block');

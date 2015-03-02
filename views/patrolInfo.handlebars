@@ -12,8 +12,21 @@
     <script src="../js/jquery-1.11.2.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/GoalPatrolScript.js"></script>
-   <script > 
-  </script>
+    <script > 
+    $(function() {
+      if($('#tab-goal-for-you').length == 0) {
+        $('.no-goals').css('display', 'block');
+        $('.a-goal').css('display', 'none');
+      }
+      
+      $('.track-progress').click(function(evt) {
+        evt.preventDefault();
+
+        var goalInfoID = evt.currentTarget.name;
+        window.location.href = '/trackprogress/' + goalInfoID + '/track';
+      });
+    })
+    </script>
     
 
   </head>
@@ -42,20 +55,28 @@
             <h3>Your Goal for {{name}}</h3><br>
             {{/goalUserInfo}}
 
-            <div class="goal-container container">
+            <div class="goal-container container a-goal">
               <div class="Users">
               {{#goalUserInfo}}
               <img class="avatar-image" src={{pprofilepic}}>
               {{/goalUserInfo}}
               {{#patrols}}      
-              <p class="bubble" id="tab-goal-for-you">{{goal}}</p>
+              <p class="bubble" id="tab-goal-for-you">{{goal}} for {{hoursweek}} hours {{timesweek}} times a week</p>
               {{/patrols}}
               </div>
-              <button class="btn btn-lg btn-info alert" id="progress1" onclick="window.location.href='trackprogress'">Their Progress</button>
-              <button id="tab-back-button" class="btn btn-block" onclick="window.location.href='/'"> 
-                Back
-              </button>
+              {{#patrols}}
+              <button class="btn btn-lg btn-info alert track-progress" name="{{_id}}">Their Progress</button>
+              {{/patrols}}
             </div>
+
+            <!-- User has no goals -->
+            <div class="no-goals" style="display: none;">
+              <p>What goal? <br> How about you send {{#goalUserInfo}}{{name}}{{/goalUserInfo}} a goal? </p>
+            </div>
+
+            <button id="tab-back-button" class="btn btn-block" onclick="window.location.href='/'"> 
+                Back
+            </button>
 
         </div>
 

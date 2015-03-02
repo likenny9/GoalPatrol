@@ -19,6 +19,7 @@ exports.html = function(req, res){
 			.exec(foundProgress);
 
 		function foundProgress(err, progress) {
+
 			var newProgress = [];
 
 			for(var i=0; i < progress.length; i++) {
@@ -33,7 +34,34 @@ exports.html = function(req, res){
 				}
 				newProgress.push(newJson);
 			}
-			res.render('trackprogress', { 'users': users, 'progress' : newProgress });
+
+			models.Patrol
+				.find({ "_id" : goalInfoID})
+				.exec(patrolInfo);
+
+			//Tracking own progress or patrols?
+			function patrolInfo(err, patrol) {
+				if(patrol[0].user == req.session.myid) {
+					renderMyTrackProgress();
+				}
+				else {
+					models.User
+						.find({ "_id" : patrol[0].user})
+						.exec(patrolUser);
+
+					function patrolUser(err, patrolPerson) {
+						renderPatrolTrackProgress(patrolPerson);
+					}
+				}
+			}
+
+			function renderMyTrackProgress() {
+				res.render('trackprogress', { 'users': users, 'progress' : newProgress });
+			}
+
+			function renderPatrolTrackProgress(patrol) {
+				res.render('patrolprogress', { 'users': users, 'patrols': patrol, 'progress' : newProgress });
+			}
 		}
 	}
 };

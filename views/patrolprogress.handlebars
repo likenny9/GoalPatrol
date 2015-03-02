@@ -39,7 +39,6 @@
         -border: 2px solid black;
       }
       #title {
-        font-family: Calibri;
         font-size: 3rem;
         font-weight: bold;
         float: left;
@@ -167,6 +166,11 @@
           });
         });
 
+        if($('.text-tab').length == 0) {
+          $('.no-progress').css('display', 'block');
+          $('.table').css('display', 'none');
+        }
+
       });
     </script>
   </head>
@@ -174,7 +178,7 @@
   <body>
 
     <!-- Header: Title & Name -->
-    <div class="header-container container" style="font-family: Calibri">
+    <div class="header-container container">
     {{> header}}
     </div>
 
@@ -183,14 +187,10 @@
     <!-- Goal Giving -->
     <div class= "container">
 
-      <h1 style="font-family: Calibri">Track Progress</h1>
+      <h1>Track Progress</h1>
 
-      <p style="font-family: Calibri">Your Progress</p>
+      <p>Progress for {{#patrols}}{{name}}{{/patrols}}</p>
 
-      <h2 id="input-progress" class="btn btn-warning btn-block" type="button">
-        Input Today's Progress
-      </h2>
-      <br>
       <div class="container">            
         <table class="table table-striped rwd-table">
           <tr>
@@ -201,6 +201,7 @@
             <th data-th="Stress">Stress</th>
             <th data-th="Comments">Comments</th>
           </tr>
+
           {{#progress}}
           <tr>
             <td data-th="Date"><span class="text-tab">{{date}}</span></td>
@@ -212,6 +213,14 @@
           </tr>
           {{/progress}}
         </table>
+      </div>
+
+      <!-- User has no progress -->
+      <div class="no-progress" style="display: none;">
+        <br>
+        <p>Uh oh.<br> There's no progress here. <br>
+           Tell {{#patrols}}<b>{{name}}</b> to fill out the progress form. <br>
+           Email {{name}} at {{email}}{{/patrols}} now. </p>
       </div>
 
       <br>
