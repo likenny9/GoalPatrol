@@ -6,6 +6,7 @@ var models = require('../models');
 //Render Home HTML Page
 exports.html = function(req, res){
 	var sessionUser = req.session.userEmail;
+	var partial = req.session.partial;
 
 	if(typeof sessionUser == 'undefined') {
 		res.redirect('/login');
@@ -22,7 +23,7 @@ exports.html = function(req, res){
 				.exec(renderPatrols);
 
 			function renderPatrols(err, patrols) {
-				res.render('home', {'users': users, 'patrols' : patrols });
+				res.render('home', {'users': users, 'patrols' : patrols, 'partial' : partial });
 			}
 		}
 	}

@@ -87,6 +87,7 @@ app.get('/auth', passport.authenticate('google', { session: false }));
 app.get('/auth/callback', 
 	passport.authenticate('google', { session: false, failureRedirect: '/goaldetails' }),
 	function(req, res) {
+    console.log("hi");
 		req.session.access_token = req.user.accessToken;
 		res.redirect('/goaldetails');
 	});

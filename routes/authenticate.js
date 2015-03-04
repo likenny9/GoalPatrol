@@ -19,6 +19,7 @@ exports.login = function(req, res){
 			req.session.name = loginResults[0].name;
 			req.session.myid = loginResults[0]._id;
 			req.session.profilepic = loginResults[0].profilepic;
+			req.session.partial = Math.floor((Math.random() * 2) + 1);
 			res.send();			
 		}
 	}
@@ -63,6 +64,7 @@ exports.create = function(req, res){
 				req.session.name = name;
 				req.session.myid = newUser._id;
 				req.session.profilepic = profilepic;
+				req.session.partial = Math.floor((Math.random() * 2) + 1);
 				res.send();
 			}
 		}

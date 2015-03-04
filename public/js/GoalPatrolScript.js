@@ -41,7 +41,7 @@ function doFakeAcceptReject() {
 
 $(function() {
 
-    $('#logout').click(function(evt) {
+    $('[id="logout"]').click(function(evt) {
         evt.preventDefault();
 
         $.get('/logout', afterLogout);

@@ -33,12 +33,15 @@ html, body {
 	float: right;
 }
 
-#dropdown-icon > h2 {
-	font-size: 25px;
-	font-weight: bold;
+#dropdown-icon-mobile {
+	float: right;
 }
 
 #dropdown-icon ul li a {
+	font-size: 15px;
+}
+
+#dropdown-icon-mobile ul li a {
 	font-size: 15px;
 }
 
@@ -127,3 +130,19 @@ html, body {
 	display: inline;
 	width: auto;
 }
+
+@media (max-width: 680px) {
+  #dropdown-icon-mobile {
+    display: block !important;
+  }
+  #mobile-name {
+  	display: block !important;
+  }
+}
+
+@media (max-width: 680px) {
+  #dropdown-icon {
+    display: none !important;
+  }
+}
+
