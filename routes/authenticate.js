@@ -250,6 +250,8 @@ exports.removeGoalWaiting = function(req, res){
 					res.send({ error: 'Encountered an error while deleting the goal.'});
 				}
 			}
+			console.log("User's name" + req.session.name);
+			console.log("Info in patrol" + patrol);
 
 			var patrolModel = new models.Patrol({
 				"_id" : patrol[0]._id,
