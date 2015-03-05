@@ -18,7 +18,8 @@ exports.html = function(req, res) {
 
 exports.newaccount = function(req, res) {
 	var name = req.session.name;
-
+	var partial = req.session.partial;
+	
 	if(typeof name == 'undefined') {
 		res.redirect('/login');
 	}
