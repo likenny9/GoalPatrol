@@ -4,6 +4,7 @@ exports.html = function(req, res){
 	var sessionUser = req.session.userEmail;
 	var goalInfoID = req.session.goalID;
 	var name = req.session.name;
+	var partial = req.session.partial;
 
 	var users = {
 		"name" : name
@@ -36,7 +37,7 @@ exports.html = function(req, res){
 				}
 			}
 
-			res.render('inputprogress', { 'users': users, 'progress' : newProgress });
+			res.render('inputprogress', { 'users': users, 'progress' : newProgress, 'partial' : partial });
 		}
 	}	
 };

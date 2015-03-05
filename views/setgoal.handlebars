@@ -29,6 +29,16 @@
     }
 
     $(function() {
+
+      //Randomly choose patial
+      var randomPartial = $('#getPartial').attr('name');
+      if(randomPartial == 1) {
+        $('#originalPartial').css('display','block');
+      }
+      else {
+        $('#newPartial').css('display', 'block');
+      }
+      
       var motivations = []; //initialize empty array
       motivations.push("Good job! Keep up the work!");
 
@@ -103,7 +113,16 @@
 
     <!-- Header: Title & Name -->
     <div class="header-container container">
-    {{> header}}
+      <div name="{{partial}}" id="getPartial" style="display: none"></div>
+      <span id="originalPartial" style="display: none;">
+        {{> headerOriginal}}
+      </span>
+      <span id="newPartial" style="display: none;">
+        {{> header}}
+      </span>
+      <div id="mobile-name" style="clear: left; float: left; margin-top: 15px; margin-left: 8px; display: none">
+      Hi, {{#users}}{{name}}{{/users}}
+      </div>
     </div>
 
 

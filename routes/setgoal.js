@@ -4,6 +4,7 @@ exports.html = function(req, res){
 	var sessionUser = req.session.userEmail;
 	var sessionName = req.session.name;
 	var personToSendGoalTo = req.session.sendGoalToID;
+	var partial = req.session.partial;
 
 	if(typeof sessionUser == 'undefined') {
 		res.redirect('/login');
@@ -16,7 +17,7 @@ exports.html = function(req, res){
 			.find( { "_id" : personToSendGoalTo })
 			.exec(renderSetGoal);
 		function renderSetGoal(err, users) {
-  			res.render('setgoal', { "users" : { "name" : sessionName}, "goalToUser" : users});
+  			res.render('setgoal', { "users" : { "name" : sessionName}, "goalToUser" : users, 'partial' : partial });
 		}
   	}
 };

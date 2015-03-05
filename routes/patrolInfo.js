@@ -2,6 +2,7 @@ var models = require('../models');
 
 exports.yourGoalForPatrol = function(req, res){
 	var sessionUser = req.session.userEmail;
+	var partial = req.session.partial;
 	
 	if(typeof sessionUser == 'undefined') {
 		res.redirect('/login');
@@ -23,7 +24,7 @@ exports.yourGoalForPatrol = function(req, res){
 					.exec(afterFind);
 
 				function afterFind(err, patrols) {
-					res.render('patrolInfo', {'users': users, 'patrols' : patrols, 'goalUserInfo' : goalUserInfo });
+					res.render('patrolInfo', {'users': users, 'patrols' : patrols, 'goalUserInfo' : goalUserInfo, 'partial' : partial });
 				}
 			}
 		}

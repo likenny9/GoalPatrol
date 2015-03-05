@@ -14,6 +14,16 @@
     <script src="../js/GoalPatrolScript.js"></script>
     <script > 
     $(function() {
+
+      //Randomly choose patial
+      var randomPartial = $('#getPartial').attr('name');
+      if(randomPartial == 1) {
+        $('#originalPartial').css('display','block');
+      }
+      else {
+        $('#newPartial').css('display', 'block');
+      }
+        
       if($('#tab-goal-for-you').length == 0) {
         $('.no-goals').css('display', 'block');
         $('.a-goal').css('display', 'none');
@@ -34,15 +44,22 @@
   <body>
 
     <!-- Header: Title & Name -->
-  	<div class="header-container container">
-      {{> header}}
-      
+    <div class="header-container container">
+      <div name="{{partial}}" id="getPartial" style="display: none"></div>
+      <span id="originalPartial" style="display: none;">
+        {{> headerOriginal}}
+      </span>
+      <span id="newPartial" style="display: none;">
+        {{> header}}
+      </span>
+      <div id="mobile-name" style="clear: left; float: left; margin-top: 15px; margin-left: 8px; display: none">
+      Hi, {{#users}}{{name}}{{/users}}
+      </div>
       <!-- Send Goal Button -->
       <div id="sendgoal-icon">
         <h2 class="btn btn-warning" type="button" onclick="window.location.href='sendgoal'">Send Goal</h2>
       </div>
-
-  	</div>
+    </div>
 
 
     <!-- Goals -->

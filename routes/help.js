@@ -2,6 +2,7 @@ var models = require('../models');
 
 exports.html = function(req, res) {
 	var name = req.session.name;
+	var partial = req.session.partial;
 
 	if(typeof name == 'undefined') {
 		res.redirect('/login');
@@ -11,7 +12,7 @@ exports.html = function(req, res) {
 			"name" : name
 		};
 
-		res.render('help', { "users" : users });
+		res.render('help', { "users" : users, 'partial' : partial });
 	}
 }
 
@@ -26,7 +27,7 @@ exports.newaccount = function(req, res) {
 			"name" : name
 		};
 
-		res.render('newhelp', { "users" : users });
+		res.render('newhelp', { "users" : users, 'partial' : partial });
 	}
 }
 

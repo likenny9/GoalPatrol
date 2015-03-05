@@ -133,11 +133,36 @@
           padding-right: 0;
         }
       }
+      
+      @media (max-width: 680px) {
+        #dropdown-icon-mobile {
+          display: block !important;
+        }
+        #mobile-name {
+          display: block !important;
+        }
+      }
+
+      @media (max-width: 680px) {
+        #dropdown-icon {
+          display: none !important;
+        }
+      }
 
     </style>
 
     <script>
       $(function() {
+
+        //Randomly choose patial
+        var randomPartial = $('#getPartial').attr('name');
+        if(randomPartial == 1) {
+          $('#originalPartial').css('display','block');
+        }
+        else {
+          $('#newPartial').css('display', 'block');
+        }
+
         $('#input-progress').click(function(evt) {
           evt.preventDefault();
           var pathArray = window.location.pathname.split('/');
@@ -179,7 +204,16 @@
 
     <!-- Header: Title & Name -->
     <div class="header-container container">
-    {{> header}}
+      <div name="{{partial}}" id="getPartial" style="display: none"></div>
+      <span id="originalPartial" style="display: none;">
+        {{> headerOriginal}}
+      </span>
+      <span id="newPartial" style="display: none;">
+        {{> header}}
+      </span>
+      <div id="mobile-name" style="clear: left; float: left; margin-top: 15px; margin-left: 8px; display: none">
+      Hi, {{#users}}{{name}}{{/users}}
+      </div>
     </div>
 
     <br><!--Extra spacing-->

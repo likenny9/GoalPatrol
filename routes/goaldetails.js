@@ -1,6 +1,7 @@
 exports.html = function(req, res) {
 
 	var sessionUser = req.session.userEmail;
+	var partial = req.session.partial;
 
 	if(typeof sessionUser == 'undefined') {
 		res.redirect('/login');
@@ -13,6 +14,6 @@ exports.html = function(req, res) {
 
 		users = [users];
 
-		res.render('goaldetails', { 'users' : users });
+		res.render('goaldetails', { 'users' : users, 'partial' : partial });
 	}	
 };

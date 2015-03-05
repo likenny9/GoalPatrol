@@ -4,6 +4,7 @@ exports.html = function(req, res){
 	var sessionUser = req.session.userEmail;
 	var goalInfoID = req.params.goalInfoID;
 	var name = req.session.name;
+	var partial = req.session.partial;
 
 	var users = {
 		"name" : name
@@ -56,11 +57,11 @@ exports.html = function(req, res){
 			}
 
 			function renderMyTrackProgress() {
-				res.render('trackprogress', { 'users': users, 'progress' : newProgress });
+				res.render('trackprogress', { 'users': users, 'progress' : newProgress, 'partial' : partial });
 			}
 
 			function renderPatrolTrackProgress(patrol) {
-				res.render('patrolprogress', { 'users': users, 'patrols': patrol, 'progress' : newProgress });
+				res.render('patrolprogress', { 'users': users, 'patrols': patrol, 'progress' : newProgress, 'partial' : partial });
 			}
 		}
 	}
