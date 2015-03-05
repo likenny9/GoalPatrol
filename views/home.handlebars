@@ -84,7 +84,7 @@
 
         //Ajax GET call to the server.
         $.ajax({
-          url: "/saveGoalID",
+          url: "/removeGoalWaiting", //"saveGoal"
           method: "POST",
           data: idJSON,
           contentType: "application/json",
@@ -94,7 +94,7 @@
             alert(info.error); //Alert any errors that were checked in server side
           }
           else {
-            window.location.href='/goaldetails';
+            window.location.href='/'; //"GoalDetails"
           }
         });
       });

@@ -229,7 +229,8 @@ exports.getGoalID = function(req, res) {
 
 //Removes goal waiting
 exports.removeGoalWaiting = function(req, res){
-	var goalID = req.session.goalID;
+	//var goalID = req.session.goalID;
+	var goalID = req.body.idToSave;
 	
 	models.Patrol
 		.find({ "_id" : goalID})
