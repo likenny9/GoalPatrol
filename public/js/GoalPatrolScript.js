@@ -12,6 +12,10 @@ function initializePage() {
     $(".version_b").click(function(){
         woopra.track("b_version_home_click");
     })
+
+    $(".version_b_logo").click(function() {
+        woopra.track("b_home_click");
+    })
 }
 
 
