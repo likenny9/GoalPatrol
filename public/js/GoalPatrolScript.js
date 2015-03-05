@@ -5,11 +5,11 @@ $(document).ready(function() {
 })
 
 function initializePage() {
-    $(".a_version_home_click").click(function(){
+    $(".version_a").click(function(){
         woopra.track("a_version_home_click");
     })
 
-    $(".b_version_home_click").click(function(){
+    $(".version_b").click(function(){
         woopra.track("b_version_home_click");
     })
 }
