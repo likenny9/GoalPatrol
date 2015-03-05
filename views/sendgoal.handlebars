@@ -26,6 +26,7 @@
       }
         
       var userInfo = "";
+      var userEmail = "";
 
       //User clicks on search
       $('#search-partner').submit(function(evt) {
@@ -70,6 +71,8 @@
 
               //Render the email address onto the page
               $('#render-email').html(email + " not found. Invite this person?");
+
+              userEmail = email;
             }
             //User founds
             else {
@@ -86,7 +89,9 @@
 
               //Render the user's information onto the page
               $('#profileimg').attr('src',profilepic);
-              $('#namecaption').html(name + "  -  " + email);                
+              $('#namecaption').html(name + "  -  " + email);  
+
+              userEmail = email;              
             }
           }
         });
@@ -106,10 +111,40 @@
           else {
             window.location.href = '/setgoal';            
           }
-         
         }
+      });
 
+      //User clicks on send email
+      $('#send-email').click(function(evt) {
+        evt.preventDefault();
 
+        //Get text to email
+        var emailText = $('#notes')[0].value;
+        var addressToSend = userEmail;
+
+        var emailTextJson = {
+          "emailText" : emailText,
+          "toAddress" : addressToSend
+        };
+
+        emailTextJson = JSON.stringify(emailTextJson);
+
+        //Ajax GET call to the server.
+        $.ajax({
+          url: "/sendEmail",
+          method: "POST",
+          data: emailTextJson,
+          contentType: "application/json",
+          processdata: true
+        }).done(function(info) {
+          if(info.error) {
+            alert(info.error); //Alert any errors that were checked in server side
+          }
+          else {
+            alert('Email sent! Redirecting to home page...');
+            window.location.href = '/';
+          }
+        });
       });
 
     });
@@ -175,7 +210,7 @@
       <h1>Add a Partner</h1>
       <p id="render-email"></p> <!-- render's email address from javascript code -->
 
-      <form role="form" id="send-email">
+      <form role="form">
 
         <div class="row">
           <div class="form-group">
@@ -186,8 +221,8 @@
           </div>
         </div>
 
-        <h2 class="btn btn-warning btn-block" type="submit" 
-          onclick="alert('Email Sent. Redirecting to home page.'); window.location.href='/';">
+        <h6>Note: This will actually send an email. This typically takes about 1 second.</h6>
+        <h2 class="btn btn-warning btn-block" type="submit"  id="send-email">
           Send Email
         </h2>
         <h2 class="btn btn-danger btn-block" type="button" 

@@ -7,6 +7,14 @@ var googleCal = require('google-calendar');
 var googleAuth = require('passport-google-oauth').OAuth2Strategy;
 var passport = require('passport');
 var config = require('./config');
+var nodemailer = require('nodemailer');
+var transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "goalpatrol3@gmail.com",
+    pass: "GoalPatrol123"
+  }
+});
 
 
 var http = require('http');
@@ -240,6 +248,42 @@ app.all('/getGoalID', authenticate.getGoalID);
 app.all('/removeGoalWaiting', authenticate.removeGoalWaiting);
 app.all('/insertProgressInfo', authenticate.insertProgress);
 app.all('/logout', authenticate.logout);
+
+//Email
+app.all('/sendEmail', function(req, res) {
+  var name = req.session.name;
+  var email = req.session.userEmail;
+  var emailText = req.body.emailText;
+  var toAddress = req.body.toAddress;
+
+  transporter.sendMail({
+    from: name + '<' + email +'>',
+    to: toAddress,
+    replyTo: email,
+    subject: 'Join me in Goal Patrol',
+    text: 'Hi! We are part of a team enrolled in COGS 120/ CSE 170 - Human Computer Interaction ' +
+          'at UC San Diego.  We are currently testing our app.  If you have ever wanted to give ' +
+          'someone a goal, now is the time! ' + name + ' wants to send you a goal, but you are ' +
+          'not on Goal Patrol.  Sign up at goalpatrol3.herokuapp.com/index now!  ' +
+          'Send ' + name + ' a goal at using his email ' + email + ' when you sign up. ' +
+          'Here is the message your friend sent you. ==========> ' + emailText,
+    html: 'Hi! <br><br> We are part of a team enrolled in COGS 120/ CSE 170 - Human Computer Interaction ' +
+          'at UC San Diego.  We are currently testing our app.  If you have ever wanted to give ' +
+          'someone a goal, now is the time! ' + name + ' wants to send you a goal, but you are ' +
+          'not on Goal Patrol.  Sign up at <b><a href="goalpatrol3.herokuapp.com/index">goalpatrol3.herokuapp.com/index</a></b> now! <br><br>' +
+          'Send <b>' + name + '</b> a goal at using his email <b>' + email + '</b> when you sign up.<br><br>' +
+          'Here is the message your friend sent you.<br><p style="border: 1px solid black">' + emailText + 
+          '</p><br><br>Best,<br>The Goal Patrol Team'
+  }, function(err, info) {
+    if(err) {
+      console.log(err);
+      res.send({ error : err});
+    }
+    else {
+      res.send();
+    }
+  });
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
