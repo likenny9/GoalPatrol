@@ -1,4 +1,12 @@
 var models = require('../models');
+var nodemailer = require('nodemailer');
+var transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "goalpatrol3@gmail.com",
+    pass: "GoalPatrol123"
+  }
+});
 
 //Searches for account in database, log in
 exports.login = function(req, res){
@@ -76,6 +84,7 @@ exports.create = function(req, res){
 exports.getUsers = function(req, res){
 	var email = req.body.email;
 	var sessionUser = req.session.userEmail;
+	req.session.patrolEmail = email;
 
 	if(email == sessionUser) {
 		res.send({ error: 'You cannot send a goal to yourself.'});
@@ -95,6 +104,7 @@ exports.getUsers = function(req, res){
 				}
 				else {
 					req.session.sendGoalToID = user[0]._id;
+					req.session.toPatrolName = user[0].name;
 					res.send(user[0]);
 				}
 			}
@@ -159,6 +169,28 @@ exports.saveGoal = function(req, res){
 			res.send({ error: 'Encountered an error while saving the goal.'});
 		}
 		else {
+
+			var name = req.session.toPatrolName;
+			var email = req.session.patrolEmail;
+
+			transporter.sendMail({
+			  from: 'Goal Patrol <goalpatrol3@gmail.com>',
+			  to: email,
+			  replyTo: 'goalpatrol3@gmail.com',
+			  subject: 'New Goal at GoalPatrol!',
+			  text: 'Hi, you just received a goal from ' + pname + '.  Login into GoalPatrol at ' +
+			    	'goalpatrol3.herokuapp.com to accept it.  Best, The Goal Patrol Team',
+			  html: 'Hi ' + name +', <br><br>You just received a goal from <b>' + pname + 
+			    	'</b>.  Login into GoalPatrol at <a href="https://goalpatrol3.herokuapp.com/">' +
+			    	'goalpatrol3.herokuapp.com</a> to accept it. <br><br> Best, <br> The Goal Patrol Team'
+			}, function(err, info) {
+			  if(err) {
+			    res.send({ error : err});
+			  }
+			  else {
+			    res.send();
+			  }
+			 });
 			res.send();
 		}
 	}

@@ -270,7 +270,7 @@ app.all('/sendEmail', function(req, res) {
     html: 'Hi! <br><br> We are part of a team enrolled in COGS 120/ CSE 170 - Human Computer Interaction ' +
           'at UC San Diego.  We are currently testing our app.  If you have ever wanted to give ' +
           'someone a goal, now is the time! ' + name + ' wants to send you a goal, but you are ' +
-          'not on Goal Patrol.  Sign up at <b><a href="goalpatrol3.herokuapp.com/index">goalpatrol3.herokuapp.com/index</a></b> now! <br><br>' +
+          'not on Goal Patrol.  Sign up at <b><a href="https://goalpatrol3.herokuapp.com/index">goalpatrol3.herokuapp.com/index</a></b> now! <br><br>' +
           'Send <b>' + name + '</b> a goal at using his email <b>' + email + '</b> when you sign up.<br><br>' +
           'Here is the message your friend sent you.<br><p style="border: 1px solid black">' + emailText + 
           '</p><br><br>Best,<br>The Goal Patrol Team'
