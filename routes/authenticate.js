@@ -249,28 +249,30 @@ exports.removeGoalWaiting = function(req, res){
 				if(err) {
 					res.send({ error: 'Encountered an error while deleting the goal.'});
 				}
-			}
-			console.log("User's name" + req.session.name);
-			console.log("Info in patrol" + patrol);
+				else {
+					console.log("User's name" + req.session.name);
+					console.log("Info in patrol" + patrol);
 
-			var patrolModel = new models.Patrol({
-				"_id" : patrol[0]._id,
-				"pname" : patrol[0].pname,
-				"pprofilepic" : patrol[0].profilepic,
-				"goal" : patrol[0].goal,
-				"hoursweek" : patrol[0].hoursweek,
-				"timesweek" : patrol[0].timesweek,
-				"motivations" : patrol[0].motivations,
-				"goalwaiting" : "false",
-				"user" : patrol[0].user,
-				"myid" : patrol[0].myid
-			});
+					var patrolModel = new models.Patrol({
+						"_id" : patrol[0]._id,
+						"pname" : patrol[0].pname,
+						"pprofilepic" : patrol[0].profilepic,
+						"goal" : patrol[0].goal,
+						"hoursweek" : patrol[0].hoursweek,
+						"timesweek" : patrol[0].timesweek,
+						"motivations" : patrol[0].motivations,
+						"goalwaiting" : "false",
+						"user" : patrol[0].user,
+						"myid" : patrol[0].myid
+					});
 
-			patrolModel.save(afterUpdating);
+					patrolModel.save(afterUpdating);
 
-			function afterUpdating(err) {
-				if(err) { res.send({ error: 'Encountered updating patrol information. '}); }
-				else { res.send(); }
+					function afterUpdating(err) {
+						if(err) { res.send({ error: 'Encountered updating patrol information. '}); }
+						else { res.send(); }
+					}
+				}
 			}
 		}
 	}
