@@ -54,89 +54,16 @@
         });
 
     });
-
-
-/*
-    var attempt = 3;
-    //login function! used in login.handlebars
-    function validate() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-
-    /* TRYING to PARSE it FROM JSON.... DOESN'T WORK!!!!! 
-    var json = JSON.parse('../data.json');
-    for (var i = 0; i < json.length; i++) {
-        var email = json[i];
-        var pwd = json[i+2];
-
-        if (email == username && pwd == password) {
-            // run your code for processing Mercedes data
-            alert ("Login successfullyyyyyyyyyy!");
-            window.location = "/"; // Redirecting to other page.
-        return false;
-        }
-         else{
-        attempt --;// Decrementing by one.
-        alert("You have "+attempt+" attempt left");
-        // Disabling fields after 3 attempts.
-        if( attempt == 0){
-        document.getElementById("username").disabled = true;
-        document.getElementById("password").disabled = true;
-        document.getElementById("submit").disabled = true;
-        return false;
-        }
-        }
-    }
-    */
-
-/*
-    if ( username == "k3li@ucsd.edu" && password == "kennyli"){
-    alert ("Login successfully");
-    window.location = "/"; // Redirecting to other page.
-    //var currentuserName = "Kenny";
-    //doShowCurrentUserName(currentuserName);
-
-    //document.getElementById("demo").innerHTML = currentuserName;
-    return false;
-    }
-    if ( username == "snam@ucsd.edu" && password == "soohyunnam"){
-    alert ("Login successfully");
-    window.location = "/"; // Redirecting to other page.
-    return false;
-    }
-    if ( username == "a5huang@ucsd.edu" && password == "alexhuang"){
-    alert ("Login successfully");
-    window.location = "/"; // Redirecting to other page.
-    return false;
-    }
-    if ( username == "gpertica@ucsd.edu" && password == "giulioperticari"){
-    alert ("Login successfully");
-    window.location = "/"; // Redirecting to other page.
-    return false;
-    }
-     else{
-        attempt --;// Decrementing by one.
-        alert("You have "+attempt+" attempt left");
-        // Disabling fields after 3 attempts.
-        if( attempt == 0){
-        document.getElementById("username").disabled = true;
-        document.getElementById("password").disabled = true;
-        document.getElementById("submit").disabled = true;
-        return false;
-        }
-    }
-
-}*/
+ 
     </script>
-
 
   </head>
 
   <body>
 
     <!-- Header: Title & Name -->
-    <div class="header-container container">
-      <a href="/index"><h1 id="title">Goal Patrol</h1></a>
+    <div class="header-container container" style="margin: -15px">
+        <a href="/index"><h1 id="title">Goal Patrol</h1></a>
     </div>
 
     <br><!--Extra spacing-->

@@ -257,7 +257,7 @@ exports.removeGoalWaiting = function(req, res){
 					var patrolModel = new models.Patrol({
 						"_id" : patrol[0]._id,
 						"pname" : patrol[0].pname,
-						"pprofilepic" : patrol[0].profilepic,
+						"pprofilepic" : patrol[0].pprofilepic,
 						"goal" : patrol[0].goal,
 						"hoursweek" : patrol[0].hoursweek,
 						"timesweek" : patrol[0].timesweek,

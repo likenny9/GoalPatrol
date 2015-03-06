@@ -156,12 +156,14 @@
     <!-- Header: Title & Name -->
     <div class="header-container container">
       <div name="{{partial}}" id="getPartial" style="display: none"></div>
-      <span id="originalPartial" style="display: none;">
-        {{> headerOriginal}}
-      </span>
-      <span id="newPartial" style="display: none;">
-        {{> header}}
-      </span>
+      <div class="top">
+        <span id="originalPartial" style="display: none;">
+          {{> headerOriginal}}
+        </span>
+        <span id="newPartial" style="display: none;">
+          {{> header}}
+        </span>
+      </div>
       <div id="mobile-name" style="clear: left; float: left; margin-top: 15px; margin-left: 8px; display: none">
       Hi, {{#users}}{{name}}{{/users}}
       </div>
@@ -198,7 +200,7 @@
         Yes
       </h2>
       <h2 class="btn btn-danger btn-block" type="button" 
-        onclick="alert('Returing to search page.'); window.location.href='/sendgoal';">
+        onclick="alert('Returning to search page.'); window.location.href='/sendgoal';">
         No
       </h2>
 
@@ -215,9 +217,7 @@
         <div class="row">
           <div class="form-group">
             <textarea type="text" id="notes" class="form-control" 
-              rows="5" style="resize: none;">
-              Please join me in Goal Patrol.
-            </textarea>
+              rows="5" style="resize: none;">Please join me in Goal Patrol.</textarea>
           </div>
         </div>
 

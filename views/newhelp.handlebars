@@ -31,12 +31,14 @@
     <!-- Header: Title & Name -->
     <div class="header-container container">
       <div name="{{partial}}" id="getPartial" style="display: none"></div>
-      <span id="originalPartial" style="display: none;">
-        {{> headerOriginal}}
-      </span>
-      <span id="newPartial" style="display: none;">
-        {{> header}}
-      </span>
+      <div class="top">
+        <span id="originalPartial" style="display: none;">
+          {{> headerOriginal}}
+        </span>
+        <span id="newPartial" style="display: none;">
+          {{> header}}
+        </span>
+      </div>
       <div id="mobile-name" style="clear: left; float: left; margin-top: 15px; margin-left: 8px; display: none">
       Hi, {{#users}}{{name}}{{/users}}
       </div>
@@ -46,7 +48,7 @@
     <br>
 
     <div class= "container">
-      <h1 align="center">Help/Tutorial</h1>
+      <h1 align="center">Help</h1>
       <h3 style="display: inline-block">Don't need help? Send a goal to someone now. &nbsp; &nbsp;</h3>
       <button class="btn btn-warning" onclick="window.location.href='/sendgoal'" style="width: 150px">Send Goal</button>
       <br>
@@ -61,11 +63,11 @@
         <li>Record your progress by rating the goal (difficulty, experience, and preference) as you work towards achieving your goal.</li>
         <li>At the end of the week, discuss the goals with your goal patrol buddy, using the progress you've recorded as a reference. </li>
       </ol>
-      <h2>Tips</h2>
-        <ul>
+      <ul class="help">
+        <h2>Tips</h2>
           <li>You can integrate your Google calendar when planning your goals! </li>
           <li>Try to keep the goals you set for your friends as specific as possible so that they can work out a plan for achieving the goal by setting the number of hours they will spend as well as the days they will pick to work on the goal.</li>
-        </ul>
+      </ul>
     </div>
 
   </body>

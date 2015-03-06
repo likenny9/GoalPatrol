@@ -147,12 +147,15 @@
     <!-- Header: Title & Name -->
   	<div class="header-container container">
       <div name="{{partial}}" id="getPartial" style="display: none"></div>
-      <span id="originalPartial" style="display: none;">
-        {{> headerOriginal}}
-      </span>
-      <span id="newPartial" style="display: none;">
-        {{> header}}
-      </span>
+      <div class="top">
+        <span id="originalPartial" style="display: none;">
+          {{> headerOriginal}}
+        </span>
+        <span id="newPartial" style="display: none;">
+          {{> header}}
+        </span>
+      </div>
+
       <div id="mobile-name" style="clear: left; float: left; margin-top: 15px; margin-left: 8px; display: none">
       Hi, {{#users}}{{name}}{{/users}}
       </div>
@@ -172,8 +175,10 @@
       <p>From: {{pname}}<br>
          Goal: {{goal}} for {{hoursweek}} hours {{timesweek}} times a week.<br>
       </p>
-      <button name="{{_id}}" class="btn btn-block accept-btn"> Accept</button>
-      <button name="{{_id}}" class="btn btn-block decline-btn">Decline</button>
+      <div style="text-align:center">
+        <button name="{{_id}}" class="btn btn-success btn-block accept-btn"> Accept</button>
+        <button name="{{_id}}" class="btn btn-danger btn-block decline-btn" style="margin-bottom: 5px">Decline</button>
+      </div>
     </div>
     {{/compare}}
     {{/patrols}}
@@ -196,10 +201,10 @@
 
               <img class="avatar-image" src={{pprofilepic}}>
 
-                <p class="patrol-info"><b>Patrol:</b>
+                <p class="patrol-info"><strong>Patrol:</strong> 
                   <a href="/{{user}}/{{myid}}">{{pname}}</a>
                 </p>
-                <p class="bubble">{{goal}} for {{hoursweek}} hours {{timesweek}} times a week</p>
+                <p class="bubble" style="padding: 0 5px 0 5px">{{goal}} for {{hoursweek}} hours {{timesweek}} times a week</p>
                 <button class="btn btn-lg btn-success alert inspire-me" name="{{_id}}">Inspire Me</button>
                 <button class="btn btn-lg btn-info alert track-progress" name="{{_id}}">Track Progress</button>
               </div>

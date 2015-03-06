@@ -202,12 +202,14 @@
     <!-- Header: Title & Name -->
     <div class="header-container container">
       <div name="{{partial}}" id="getPartial" style="display: none"></div>
-      <span id="originalPartial" style="display: none;">
-        {{> headerOriginal}}
-      </span>
-      <span id="newPartial" style="display: none;">
-        {{> header}}
-      </span>
+      <div class="top">
+        <span id="originalPartial" style="display: none;">
+          {{> headerOriginal}}
+        </span>
+        <span id="newPartial" style="display: none;">
+          {{> header}}
+        </span>
+      </div>
       <div id="mobile-name" style="clear: left; float: left; margin-top: 15px; margin-left: 8px; display: none">
       Hi, {{#users}}{{name}}{{/users}}
       </div>

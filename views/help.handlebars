@@ -32,12 +32,14 @@
     <!-- Header: Title & Name -->
     <div class="header-container container">
       <div name="{{partial}}" id="getPartial" style="display: none"></div>
-      <span id="originalPartial" style="display: none;">
-        {{> headerOriginal}}
-      </span>
-      <span id="newPartial" style="display: none;">
-        {{> header}}
-      </span>
+      <div class="top">
+        <span id="originalPartial" style="display: none;">
+          {{> headerOriginal}}
+        </span>
+        <span id="newPartial" style="display: none;">
+          {{> header}}
+        </span>
+      </div>
       <div id="mobile-name" style="clear: left; float: left; margin-top: 15px; margin-left: 8px; display: none">
       Hi, {{#users}}{{name}}{{/users}}
       </div>
@@ -56,7 +58,7 @@
         <li>At the end of the week, discuss the goals with your goal patrol buddy, using the progress you've recorded as a reference. </li>
       </ol>
       <h2>Tips</h2>
-        <ul>
+        <ul class="help">
           <li>You can integrate your Google calendar when planning your goals! </li>
           <li>Try to keep the goals you set for your friends as specific as possible so that they can work out a plan for achieving the goal by setting the number of hours they will spend as well as the days they will pick to work on the goal.</li>
         </ul>

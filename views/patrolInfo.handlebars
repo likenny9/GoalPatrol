@@ -46,12 +46,14 @@
     <!-- Header: Title & Name -->
     <div class="header-container container">
       <div name="{{partial}}" id="getPartial" style="display: none"></div>
-      <span id="originalPartial" style="display: none;">
-        {{> headerOriginal}}
-      </span>
-      <span id="newPartial" style="display: none;">
-        {{> header}}
-      </span>
+      <div class="top">
+        <span id="originalPartial" style="display: none;">
+          {{> headerOriginal}}
+        </span>
+        <span id="newPartial" style="display: none;">
+          {{> header}}
+        </span>
+      </div>
       <div id="mobile-name" style="clear: left; float: left; margin-top: 15px; margin-left: 8px; display: none">
       Hi, {{#users}}{{name}}{{/users}}
       </div>
@@ -90,10 +92,6 @@
             <div class="no-goals" style="display: none;">
               <p>What goal? <br> How about you send {{#goalUserInfo}}{{name}}{{/goalUserInfo}} a goal? </p>
             </div>
-
-            <button id="tab-back-button" class="btn btn-block" onclick="window.location.href='/'"> 
-                Back
-            </button>
 
         </div>
 

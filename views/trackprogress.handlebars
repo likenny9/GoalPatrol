@@ -17,19 +17,39 @@
 
     <style type="text/css">
       /* Weird bug - with a font, stars show up as boxes */
+      @font-face {
+          font-family: 'LatoLight';
+          src: url('../../fonts/Lato/Lato-Regular.eot'); /* IE9 Compat Modes */
+          src: url('../../fonts/Lato/Lato-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+               url('../../fonts/Lato/Lato-Regular.woff') format('woff'), /* Modern Browsers */
+               url('../../fonts/Lato/Lato-Regular.ttf') format('truetype'); 
+          font-style: normal;
+          font-weight: normal;
+          text-rendering: optimizeLegibility;
+      }
+
       * {
-        -font-family: Calibri;
-        font-size: 2.0rem;
+        -font-family: LatoLight;
+        font-size: 1.6rem;
         color: black;
         margin: 0;
         padding: 0;
       }
 
-      html, body {
-        height: 100%;
-        width: 100%;
+      html {
+          height: 100%;
+          -position: relative;
+          width: 100%;
         text-align: left;
-        background: #DDD;
+      }
+
+      body {
+        background: -webkit-linear-gradient(rgba(0,70,230,0),rgba(0,70,230,0.3)); /* For Safari 5.1 to 6.0 */
+          background: -o-linear-gradient(rgba(0,70,230,0),rgba(0,70,230,0.3)); /* For Opera 11.1 to 12.0 */
+          background: -moz-linear-gradient(rgba(0,70,230,0),rgba(0,70,230,0.3)); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(rgba(0,70,230,0),rgba(0,70,230,0.3)); /* Standard syntax */
+        background-repeat: no-repeat;
+        background-attachment: fixed;
       }
 
       /* HOME HEADER */
@@ -38,15 +58,25 @@
         -height: 10%;
         -border: 2px solid black;
       }
+
+      .top {
+        margin: -15px; 
+        height: 60px;
+        background: #D0D0F7;
+        box-shadow: 0px 3px 5px #888888;
+      }
+
       #title {
-        font-family: Calibri;
+        color: #5E5EFF;
         font-size: 3rem;
         font-weight: bold;
         float: left;
         border-bottom: 1px inset blue;
         margin-left: 8px;
+        background: -webkit-linear-gradient(#8787FF, #00007D);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
       }
-
       #dropdown-icon {
         float: right;
       }
@@ -199,14 +229,16 @@
   <body>
 
     <!-- Header: Title & Name -->
-    <div class="header-container container" style="font-family: Calibri">
+    <div class="header-container container" style="font-family: LatoLight">
       <div name="{{partial}}" id="getPartial" style="display: none"></div>
-      <span id="originalPartial" style="display: none;">
-        {{> headerOriginal}}
-      </span>
-      <span id="newPartial" style="display: none;">
-        {{> header}}
-      </span>
+      <div class="top">
+        <span id="originalPartial" style="display: none;">
+          {{> headerOriginal}}
+        </span>
+        <span id="newPartial" style="display: none;">
+          {{> header}}
+        </span>
+      </div>
       <div id="mobile-name" style="clear: left; float: left; margin-top: 15px; margin-left: 8px; display: none">
       Hi, {{#users}}{{name}}{{/users}}
       </div>
@@ -217,9 +249,9 @@
     <!-- Goal Giving -->
     <div class= "container">
 
-      <h1 style="font-family: Calibri">Track Progress</h1>
+      <h1 style="font-family: LatoLight">Track Progress</h1>
 
-      <p style="font-family: Calibri">Your Progress</p>
+      <p style="font-family: LatoLight">Your Progress</p>
 
       <h2 id="input-progress" class="btn btn-warning btn-block" type="button">
         Input Today's Progress
