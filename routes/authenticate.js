@@ -38,7 +38,9 @@ exports.create = function(req, res){
 	var name = req.body.name;
 	var email = req.body.email;
 	var password = req.body.password;
-	var profilepic = "/images/silhouette-question-mark.jpg";
+
+	var picNum = Math.floor((Math.random() * 26) + 1);
+	var profilepic = "/images/inspirations/" + picNum + ".jpg";
 
 	models.User
 		.find( { "email" : email })

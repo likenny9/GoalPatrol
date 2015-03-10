@@ -67,7 +67,6 @@
     <!-- Goals -->
     <div class="central-container container">
       <section>
-        <br>
         <!-- TAB Information -->
         <div>
             {{#goalUserInfo}}
@@ -76,9 +75,9 @@
 
             <div class="goal-container container a-goal">
               <div class="Users">
-              {{#goalUserInfo}}
-              <img class="avatar-image" src={{pprofilepic}}>
-              {{/goalUserInfo}}
+              {{#users}}
+              <img class="avatar-image" src={{profilepic}}>
+              {{/users}}
               {{#patrols}}      
               <p class="bubble" id="tab-goal-for-you">{{goal}} for {{hoursweek}} hours {{timesweek}} times a week</p>
               {{/patrols}}
