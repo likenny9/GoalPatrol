@@ -39,7 +39,7 @@ exports.create = function(req, res){
 	var email = req.body.email;
 	var password = req.body.password;
 
-	var picNum = Math.floor((Math.random() * 26) + 1);
+	var picNum = Math.floor((Math.random() * 26) +  1);
 	var profilepic = "/images/inspirations/" + picNum + ".jpg";
 
 	models.User
@@ -88,31 +88,25 @@ exports.getUsers = function(req, res){
 	var sessionUser = req.session.userEmail;
 	req.session.patrolEmail = email;
 
-	if(email == sessionUser) {
-		res.send({ error: 'You cannot send a goal to yourself.'});
-	}
-	else {
-		models.User
-			.find( { "email" : email })
-			.exec(afterSearch);
+	models.User
+		.find( { "email" : email })
+		.exec(afterSearch);
 
-		function afterSearch(err, user) {
-			if(err) {
-				res.send({ error: 'Encountered an error searching for a user'});
+	function afterSearch(err, user) {
+		if(err) {
+			res.send({ error: 'Encountered an error searching for a user'});
+		}
+		else {
+			if(user.length == 0) {
+				res.send("NotFound");
 			}
 			else {
-				if(user.length == 0) {
-					res.send("NotFound");
-				}
-				else {
-					req.session.sendGoalToID = user[0]._id;
-					req.session.toPatrolName = user[0].name;
-					res.send(user[0]);
-				}
+				req.session.sendGoalToID = user[0]._id;
+				req.session.toPatrolName = user[0].name;
+				res.send(user[0]);
 			}
 		}
 	}
-
 };
 
 //Checks that user does not already have that patrol
