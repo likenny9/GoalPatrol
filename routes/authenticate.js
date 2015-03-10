@@ -251,8 +251,6 @@ exports.removeGoalWaiting = function(req, res){
 					res.send({ error: 'Encountered an error while deleting the goal.'});
 				}
 				else {
-					console.log("User's name" + req.session.name);
-					console.log("Info in patrol" + patrol);
 
 					var patrolModel = new models.Patrol({
 						"_id" : patrol[0]._id,
@@ -271,7 +269,26 @@ exports.removeGoalWaiting = function(req, res){
 
 					function afterUpdating(err) {
 						if(err) { res.send({ error: 'Encountered updating patrol information. '}); }
-						else { res.send(); }
+						else { 
+							models.Patrol
+								.find({ "user" : patrol[0].myid, 
+										"myid" : patrol[0].user })
+								.exec(afterCheck);
+
+							function afterCheck(err, info) {
+								if(err) { res.send({ error: 'Error checking for whether patrol has goal or not.'});}
+								else {
+									//Found
+									if(info.length > 0) {
+										res.send({ redirect: '/'});
+									}
+									//Not Found
+									else {
+										res.send({ redirect: '/setgoal'});
+									}
+								}
+							}
+						}
 					}
 				}
 			}

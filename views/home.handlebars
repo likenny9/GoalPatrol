@@ -94,7 +94,13 @@
             alert(info.error); //Alert any errors that were checked in server side
           }
           else {
-            window.location.href='/'; //"GoalDetails"
+            if(info.redirect == '/') {
+              window.location.href='/'; //"GoalDetails"
+            }
+            else {
+              alert('You accepted the goal!  Now set a goal for your patrol.');
+              window.location.href='/setgoal';
+            }
           }
         });
       });

@@ -25,6 +25,10 @@
         var password = $('#personpassword')[0].value;
         var passwordConfirmation = $('#personpasswordconf')[0].value;
 
+        if(name == '' || email == '' || password == '') {
+          alert('All fields are required.');
+          return;
+        }
         if(password != passwordConfirmation) {
           alert("The passwords are not the same.");
           return;
